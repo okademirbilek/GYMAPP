@@ -7,3 +7,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <App />
   </React.StrictMode>
 )
+
+// eslint env: { browser: true, es2020: true, node: true },  (add node env  )
+// package.json "type": "commonjs",   (require is not defined in ES module scope )
