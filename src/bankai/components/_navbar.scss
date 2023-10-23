@@ -1,17 +1,52 @@
 @use "variables" as *;
 @use "breakpoints" as *;
 
-%flex-layout {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-
 .navbar {
-  @extend %flex-layout;
-  padding: $base-padding $base-padding * 2;
-  box-shadow: $base-box-shadow;
-  height: 10vh;
+  background: #330c6e;
+  background: -webkit-linear-gradient(
+    90deg,
+    #330c6e 0%,
+    #7546bc 50%,
+    #465779 100%
+  );
+  width: 100%;
+  background: linear-gradient(90deg, #330c6e 0%, #7546bc 50%, #465779 100%);
+  height: 75px;
+  .wrapper {
+    padding: 0px 40px;
+    height: 100%;
+
+    .search {
+      border: 0.5px solid lightgray;
+      padding: 6px 15px;
+      border-radius: 2px;
+      input {
+        font-size: $base-font-size;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        &::placeholder {
+          font-weight: bold;
+          font-size: $base-font-size;
+          color: rgb(205, 201, 201);
+        }
+      }
+    }
+
+    .items {
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        cursor: pointer;
+
+        .avatar {
+          vertical-align: middle;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
 }

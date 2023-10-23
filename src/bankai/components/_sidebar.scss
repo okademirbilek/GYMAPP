@@ -23,10 +23,21 @@
     &:hover {
       background-color: #9f8cbb;
     }
-    padding: 8px;
-
+    // padding: 8px;
     span {
       margin-left: 10px;
+    }
+
+    a {
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 10px;
+      }
     }
   }
   .top {
@@ -45,7 +56,7 @@
     font-size: 18px;
     font-weight: bold;
     color: #c3c1c1;
-    margin-top: 15px;
+    margin-top: 20px;
     margin-bottom: 5px;
   }
 
@@ -70,7 +81,7 @@
       &:nth-child(3) {
         &:hover {
           background-color: rgb(220, 208, 208);
-          color: black;
+          color: rgb(25, 24, 24);
         }
       }
     }

@@ -1,4 +1,5 @@
 import React from "react"
+import { NavLink } from "react-router-dom"
 import HomeIcon from "@mui/icons-material/Home"
 import DashboardIcon from "@mui/icons-material/Dashboard"
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"
@@ -11,6 +12,9 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined"
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined"
 
 const Sidebar = () => {
+  const activeStyle = {
+    backgroundColor: "rgb(17, 17, 17)",
+  }
   return (
     <div className="sidebar  flex-1">
       <nav>
@@ -22,38 +26,79 @@ const Sidebar = () => {
           <ul className="pl-2 display-f fd-c">
             <p className="title">Admin</p>
             <li>
-              <DashboardIcon />
-              <span>Dashboard</span>
+              <NavLink
+                to="/dashboard"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
+              >
+                <DashboardIcon />
+                <span>Dashboard</span>
+              </NavLink>
             </li>
             <p className="title">Lists</p>
             <li>
-              <HomeIcon />
-              <span>Home</span>
+              <NavLink
+                to="/"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
+              >
+                <HomeIcon />
+                <span>Home</span>
+              </NavLink>
             </li>
             <li>
-              <FitnessCenterIcon />
-              <span>Exercises</span>
+              <NavLink
+                to="/exercises"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
+              >
+                <FitnessCenterIcon />
+
+                <span>Exercises</span>
+              </NavLink>
             </li>
             <li>
-              <RestaurantIcon />
-              <span>Meal</span>
+              <NavLink
+                to="/meal"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
+              >
+                <RestaurantIcon />
+                <span>Meal</span>
+              </NavLink>
             </li>
             <li>
-              <AccessibilityNewIcon />
-              <span>Measurements</span>
+              <NavLink
+                to="/measurements"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
+              >
+                <AccessibilityNewIcon />
+                <span>Measurements</span>
+              </NavLink>
             </li>
             <li>
-              <PaymentsIcon />
-              <span>Payment</span>
+              <NavLink
+                to="/payment"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
+              >
+                <PaymentsIcon />
+                <span>Payment</span>
+              </NavLink>
             </li>
             <p className="title">User</p>
             <li>
-              <PersonOutlineOutlinedIcon />
-              <span>Profile</span>
+              <NavLink
+                to="/profile"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
+              >
+                <PersonOutlineOutlinedIcon />
+                <span>Profile</span>
+              </NavLink>
             </li>
             <li>
-              <ExitToAppOutlinedIcon />
-              <span>Logout</span>
+              <NavLink
+                to="/logout"
+                style={({ isActive }) => (isActive ? activeStyle : null)}
+              >
+                <ExitToAppOutlinedIcon />
+                <span>Logout</span>
+              </NavLink>
             </li>
           </ul>
         </div>
