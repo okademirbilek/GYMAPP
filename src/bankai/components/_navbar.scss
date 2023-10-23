@@ -1,0 +1,82 @@
+@use "variables" as *;
+@use "breakpoints" as *;
+
+%flex-layout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.navbar {
+  @extend %flex-layout;
+  padding: $base-padding $base-padding * 2;
+  box-shadow: $base-box-shadow;
+  height: 10vh;
+
+  .site-title {
+    font-size: $font-size-lg * 1.5;
+  }
+
+  a {
+    font-size: $font-size-md;
+    z-index: 1;
+    &:hover {
+      color: $secondary;
+    }
+  }
+
+  .container {
+    @extend %flex-layout;
+  }
+}
+
+@each $key, $val in $colors {
+  .navbar-#{$key} {
+    @extend .navbar;
+    background-color: $val;
+  }
+}
+
+//header hamburger menu
+
+.responsive-navbar {
+  a {
+    display: none;
+  }
+}
+
+@include lg {
+  .responsive-navbar {
+    a {
+      display: flex;
+    }
+  }
+}
+
+.tab-bar {
+  @extend %flex-layout;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0px;
+  // background: rgba(0, 255, 162, 0.5);
+  // -webkit-backdrop-filter: blur(10px);
+  // backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  height: 10vh;
+
+  a {
+    color: $backColor;
+    div {
+      width: 65px;
+      @include md {
+        width: 100px;
+        height: 80px;
+      }
+    }
+  }
+}

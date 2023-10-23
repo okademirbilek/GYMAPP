@@ -1,0 +1,71 @@
+@use "variables" as *;
+@use "breakpoints" as *;
+
+.about-container {
+  justify-content: center;
+  align-items: center;
+
+  flex-flow: row wrap;
+  max-width: 1300px;
+  margin-top: 1em;
+  margin-bottom: 15vh;
+
+  //@media queries
+  @include lg {
+    margin-top: 9em;
+    gap: 5rem;
+    margin-bottom: 0;
+  }
+
+  .about {
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(35, 60, 122, 0.1);
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    overflow: hidden;
+
+    h2 {
+      font-size: $font-size-xl;
+      strong {
+        color: $secondary;
+      }
+    }
+    p {
+      max-width: 530px;
+      font-size: $font-size-md;
+    }
+  }
+
+  .resume {
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: $backColor;
+    font-weight: bold;
+    background-color: $linkColor;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid $linkColor;
+  }
+  .splash-img-container {
+    position: relative;
+  }
+
+  img {
+    max-width: 600px;
+    min-width: 300px;
+    margin-right: 3em;
+    margin-bottom: 1rem;
+
+    @include lg {
+      margin: 0;
+    }
+  }
+}
