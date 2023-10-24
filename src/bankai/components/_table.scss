@@ -1,0 +1,64 @@
+@use "variables" as *;
+@use "breakpoints" as *;
+
+.dashboard {
+  .listContainer {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: $base-box-shadow;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+
+    .tableCell {
+      font-size: $base-font-size;
+      min-width: 150px;
+
+      .view,
+      .delete {
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .view {
+        background-color: rgb(46, 143, 199);
+      }
+      .delete {
+        margin-left: 10px;
+        background-color: rgb(213, 73, 73);
+      }
+    }
+
+    .listTitle {
+      font-weight: 500;
+      color: gray;
+      margin-bottom: 15px;
+      padding: 0;
+      font-size: $font-size-md;
+    }
+
+    .table {
+      .cellWrapper {
+        .avatarImage {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
+      .status {
+        padding: 5px;
+        border-radius: 5px;
+
+        &.aproved {
+          color: green;
+          background-color: rgba(0, 128, 0, 0.151);
+        }
+        &.pending {
+          color: goldenrod;
+          background-color: rgba(189, 189, 3, 0.103);
+        }
+      }
+    }
+  }
+}

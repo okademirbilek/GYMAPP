@@ -29,8 +29,8 @@ a {
 }
 
 hr {
-  border: 0;
-  border-top: 1px dotted #efefef;
+  height: 0;
+  border: 0.5px solid rgb(207, 204, 204);
 }
 
 img {
@@ -841,6 +841,56 @@ img {
 .sidebar .bottom .colorOption:nth-child(3):hover {
   background-color: rgb(220, 208, 208);
   color: rgb(25, 24, 24);
+}
+
+.dashboard .listContainer {
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+}
+.dashboard .listContainer .tableCell {
+  font-size: 1rem;
+  min-width: 150px;
+}
+.dashboard .listContainer .tableCell .view,
+.dashboard .listContainer .tableCell .delete {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.dashboard .listContainer .tableCell .view {
+  background-color: rgb(46, 143, 199);
+}
+.dashboard .listContainer .tableCell .delete {
+  margin-left: 10px;
+  background-color: rgb(213, 73, 73);
+}
+.dashboard .listContainer .listTitle {
+  font-weight: 500;
+  color: gray;
+  margin-bottom: 15px;
+  padding: 0;
+  font-size: 1.2rem;
+}
+.dashboard .listContainer .table .cellWrapper .avatarImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.dashboard .listContainer .table .status {
+  padding: 5px;
+  border-radius: 5px;
+}
+.dashboard .listContainer .table .status.aproved {
+  color: green;
+  background-color: rgba(0, 128, 0, 0.151);
+}
+.dashboard .listContainer .table .status.pending {
+  color: goldenrod;
+  background-color: rgba(189, 189, 3, 0.103);
 }
 
 .p-0 {

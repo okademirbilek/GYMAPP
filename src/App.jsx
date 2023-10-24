@@ -8,6 +8,7 @@ import Meal from "./pages/Meal"
 import Measurements from "./pages/Measurements"
 import Payment from "./pages/Payment"
 import Profile from "./pages/Profile"
+import UserDetail from "./pages/UserDetail"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/:id" element={<UserDetail />} />
           <Route path="/exercises" element={<Exercises />} />
           <Route path="/meal" element={<Meal />} />
           <Route path="/measurements" element={<Measurements />} />
