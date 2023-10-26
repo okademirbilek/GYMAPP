@@ -961,6 +961,162 @@ img {
   background-color: rgba(189, 189, 3, 0.103);
 }
 
+/******************************************* LOGIN PAGE ********************************* */
+.login-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 27px;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 10%;
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
+}
+
+.glass-container > h1 {
+  color: #53ddff;
+}
+
+.link-div {
+  margin-top: 1em;
+}
+
+.link-div > a {
+  color: #53ddff;
+  font-weight: 600;
+}
+
+.link-div > a:hover {
+  color: #00ccff;
+}
+
+a {
+  text-decoration: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.glass-container {
+  padding: 2em;
+  background: rgba(37, 35, 35, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(37, 35, 35, 0.125);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 27px;
+  align-items: center;
+  justify-content: center;
+  max-width: 441px;
+}
+
+.input-label {
+  margin-top: 0.4em;
+  /* font-size: var(--smallFontL); */
+}
+
+.form > input {
+  border: 1px solid rgb(209, 213, 219);
+  height: 50px;
+  text-indent: 10px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+  border-radius: 6px;
+  color: black;
+}
+
+.form > input:focus {
+  outline: none;
+}
+
+.form > button {
+  /* background-color: #c74e03; */
+  border: none;
+  border-radius: 6px;
+  height: 50px;
+  margin-top: 22px;
+  color: black;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+
+.form > button:hover {
+  background-color: #53ddff;
+}
+
+.form > button:disabled {
+  background-color: #aaaaaa;
+  cursor: not-allowed;
+}
+
+/* The alert message box */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7em;
+  background-color: #ea564b; /* Red */
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+/* The close button */
+.login-error {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.input-with-icon {
+  display: flex;
+  background-color: white;
+  height: 50px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+  border-radius: 6px;
+  color: black;
+}
+
+.custom-input {
+  width: 90%;
+  border: 1px solid rgb(209, 213, 219);
+  text-indent: 10px;
+  border-radius: 6px 0px 0px 6px;
+  border-right: none;
+}
+
+.icon-comp {
+  width: 10%;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  cursor: pointer;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0 6px 6px 0;
+  border-left: none;
+}
+
+@media (min-width: 768px) {
+  .login-error {
+    font-size: 22px;
+  }
+}
 .p-0 {
   padding: 0;
 }

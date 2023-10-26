@@ -1,14 +1,21 @@
 import { Routes, Route } from "react-router-dom"
-import Home from "./pages/home"
-import Layout from "./pages/Layout"
 import "./css/index.css"
-import Dashboard from "./pages/Dashboard"
-import Exercises from "./pages/Exercises"
-import Meal from "./pages/Meal"
-import Measurements from "./pages/Measurements"
-import Payment from "./pages/Payment"
-import Profile from "./pages/Profile"
-import UserDetail from "./pages/UserDetail"
+import AuthRequired from "./components/AuthRequired"
+
+import {
+  SignUp,
+  Login,
+  ForgotPassword,
+  Home,
+  Layout,
+  Dashboard,
+  UserDetail,
+  Exercises,
+  Meal,
+  Measurements,
+  Payment,
+  Profile,
+} from "./pages/index"
 
 function App() {
   return (
@@ -16,13 +23,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/:id" element={<UserDetail />} />
-          <Route path="/exercises" element={<Exercises />} />
-          <Route path="/meal" element={<Meal />} />
-          <Route path="/measurements" element={<Measurements />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          {/* you cannot see the pages without authentication */}
+          <Route element={<AuthRequired />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/:id" element={<UserDetail />} />
+            <Route path="/exercises" element={<Exercises />} />
+            <Route path="/meal" element={<Meal />} />
+            <Route path="/measurements" element={<Measurements />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
         </Route>
       </Routes>
     </>

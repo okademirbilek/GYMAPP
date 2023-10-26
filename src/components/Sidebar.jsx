@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import HomeIcon from "@mui/icons-material/Home"
 import DashboardIcon from "@mui/icons-material/Dashboard"
@@ -11,10 +11,28 @@ import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined"
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined"
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined"
 
+import { useAuth } from "../context/AuthContext"
+
 const Sidebar = () => {
+  const [error, setError] = useState("")
+
+  const { logout } = useAuth()
+
+  //style for active page
   const activeStyle = {
     backgroundColor: "rgb(17, 17, 17)",
   }
+
+  async function handleLogout() {
+    setError(" ")
+
+    await logout()
+      .then(navigate("/login"))
+      .catch((error) => {
+        setError("Failed to log out")
+      })
+  }
+
   return (
     <div className="sidebar  flex-1">
       <nav>
@@ -92,13 +110,8 @@ const Sidebar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/logout"
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-              >
-                <ExitToAppOutlinedIcon />
-                <span>Logout</span>
-              </NavLink>
+              <ExitToAppOutlinedIcon />
+              <button onClick={handleLogout}>Log Out</button>
             </li>
           </ul>
         </div>
