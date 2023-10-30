@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import HomeIcon from "@mui/icons-material/Home"
 import DashboardIcon from "@mui/icons-material/Dashboard"
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"
@@ -13,10 +13,14 @@ import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined"
 
 import { useAuth } from "../context/AuthContext"
 
+const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
+
 const Sidebar = () => {
   const [error, setError] = useState("")
 
-  const { logout } = useAuth()
+  const { logout, currentUser } = useAuth()
+
+  const navigate = useNavigate()
 
   //style for active page
   const activeStyle = {
@@ -42,16 +46,21 @@ const Sidebar = () => {
         <hr />
         <div className="center  mt-2 ml-2">
           <ul className="pl-2 display-f fd-c">
-            <p className="title">Admin</p>
-            <li>
-              <NavLink
-                to="/dashboard"
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-              >
-                <DashboardIcon />
-                <span>Dashboard</span>
-              </NavLink>
-            </li>
+            {currentUser?.uid === adminId && (
+              <>
+                <p className="title">Admin</p>
+                <li>
+                  <NavLink
+                    to="/dashboard"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <DashboardIcon />
+                    <span>Dashboard</span>
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             <p className="title">Lists</p>
             <li>
               <NavLink

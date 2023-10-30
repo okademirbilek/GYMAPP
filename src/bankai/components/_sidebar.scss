@@ -44,6 +44,18 @@
           display: none;
         }
       }
+
+      button {
+        outline: none;
+        border: none;
+        margin-left: 10px;
+        background-color: transparent;
+        font-size: inherit;
+        font-weight: inherit;
+        height: 41px;
+        padding: 8px;
+        cursor: pointer;
+      }
     }
     .top {
       height: 75px;

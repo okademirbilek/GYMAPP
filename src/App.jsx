@@ -1,6 +1,9 @@
 import { Routes, Route } from "react-router-dom"
 import "./css/index.css"
 import AuthRequired from "./components/AuthRequired"
+import { useAuth } from "./context/AuthContext"
+
+const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
 import {
   SignUp,
@@ -18,6 +21,7 @@ import {
 } from "./pages/index"
 
 function App() {
+  const { currentUser } = useAuth()
   return (
     <>
       <Routes>
@@ -28,8 +32,13 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           {/* you cannot see the pages without authentication */}
           <Route element={<AuthRequired />}>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/dashboard/:id" element={<UserDetail />} />
+            {currentUser?.uid === adminId && (
+              <>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/dashboard/:id" element={<UserDetail />} />
+              </>
+            )}
+
             <Route path="/exercises" element={<Exercises />} />
             <Route path="/meal" element={<Meal />} />
             <Route path="/measurements" element={<Measurements />} />

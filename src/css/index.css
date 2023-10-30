@@ -859,6 +859,17 @@ img {
   .sidebar li a span {
     display: none;
   }
+  .sidebar li button {
+    outline: none;
+    border: none;
+    margin-left: 10px;
+    background-color: transparent;
+    font-size: inherit;
+    font-weight: inherit;
+    height: 41px;
+    padding: 8px;
+    cursor: pointer;
+  }
   .sidebar .top {
     height: 75px;
   }
@@ -1001,6 +1012,7 @@ a {
 .form {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 500px;
 }

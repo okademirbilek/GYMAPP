@@ -16,7 +16,7 @@ export default function SignUp() {
 
   const [status, setStatus] = useState("idle")
   const [error, setError] = useState(null)
-  const { signup } = useAuth()
+  const { signup, addDefaultData, addDefaultData2, addDefaultData3 } = useAuth()
 
   const navigate = useNavigate()
 
@@ -28,7 +28,9 @@ export default function SignUp() {
 
     await signup(signUpFormData.email, signUpFormData.password)
       .then((user) => {
-        navigate("/login", { replace: true })
+        navigate("/", { replace: true })
+        //dummy data for new user
+        addDefaultData(user.user.uid)
       })
       .catch((error) => {
         setError("Failed to create an account")

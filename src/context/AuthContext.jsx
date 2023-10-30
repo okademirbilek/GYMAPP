@@ -7,6 +7,12 @@ import {
   collection,
   doc,
   deleteDoc,
+  setDoc,
+  serverTimestamp,
+  getDocs,
+  query,
+  where,
+  updateDoc,
 } from "firebase/firestore"
 import {
   createUserWithEmailAndPassword,
@@ -26,8 +32,11 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [movieData, setMovieData] = useState([])
   const [currentUser, setCurrentUser] = useState()
+  const currentID = currentUser?.uid
+  const [userData, setUserData] = useState([])
+  const [currentUserData, setCurrentUserData] = useState([])
+
   const [loading, setLoading] = useState(true)
 
   function signup(email, password) {
@@ -70,45 +79,110 @@ function AuthProvider({ children }) {
     return unsubscribe
   }, [])
 
-  const moviesCollection = collection(db, `${currentUser?.uid}`)
-  useEffect(() => {
-    const unsubscribedb = onSnapshot(moviesCollection, function (snapshot) {
-      // Sync up our local notes array with the snapshot data
-      const movieArr = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }))
-      setMovieData(movieArr)
-    })
-    return unsubscribedb
-  }, [currentUser])
+  //////////////////ADMIN////////////////////////////////
 
-  async function addNewMovie(movieobj) {
-    let isExist = movieData.some(
-      (filmList) => filmList["imdbID"] === movieobj.imdbID
+  //its gonna check realtimedb if any user changes
+  //its for the adming panel should be private
+  useEffect(() => {
+    const unsubscribedb = onSnapshot(
+      collection(db, "users"),
+      function (snapshot) {
+        // Sync up our local notes array with the snapshot data
+        const userDataArr = snapshot.docs?.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+        setUserData(userDataArr)
+      }
     )
-    let message = isExist ? "Already in watchlist" : "Added to watchlist"
-    let variant = isExist ? "error" : "success"
-    let snackbar = enqueueSnackbar(message, {
-      anchorOrigin: { vertical: "bottom", horizontal: "right" },
-      variant: variant,
-    })
-    if (isExist) {
-      snackbar
-    } else {
-      await addDoc(moviesCollection, { ...movieobj, updatedAt: Date.now() })
-      snackbar
+    return unsubscribedb
+  }, [])
+
+  //add dummy data for the user when the user sign up
+  async function addDefaultData(id) {
+    const userCollection = doc(db, `users/${id}`)
+    try {
+      await setDoc(userCollection, {
+        uid: id,
+        profileInfo: {
+          name: "FirstName",
+          surname: "LastName",
+          picture: "https://www.w3schools.com/howto/img_avatar.png",
+          timeStamp: serverTimestamp(),
+          gsm: "05XXXXXXXXX",
+          birthday: "00-00-0000",
+          totalMonth: 0,
+          gender: {
+            male: true,
+            female: false,
+            theythem: false,
+          },
+          uid: id,
+        },
+        measurements: [],
+        meals: [],
+        exercises: [],
+        payment: [],
+      })
+    } catch (err) {
+      console.log(err)
     }
   }
 
-  async function deleteMovie(id) {
-    const docRef = doc(db, `${currentUser?.uid}`, id)
-    await deleteDoc(docRef)
-    enqueueSnackbar("Removed from watchlist", {
-      anchorOrigin: { vertical: "bottom", horizontal: "right" },
-      variant: "info",
-    })
+  // {
+  //   shoulder: 0,
+  //   chest: 0,
+  //   arm: 0,
+  //   waist: 0,
+  //   hip: 0,
+  //   leg: 0,
+  //   biceps: 0,
+  //   triceps: 0,
+  //   subscapular: 0,
+  //   iliaccrest: 0,
+  //   weight: 0,
+  //   fat: 0,
+  // }
+
+  //user can update his/her  own data
+  const updateUser = async (id, updatedData) => {
+    const userDoc = doc(db, "users", id)
+    try {
+      await updateDoc(userDoc, { profileInfo: updatedData })
+    } catch (err) {
+      console.log(err)
+    }
   }
+
+  // const addMeasurement = async (id,newData) => {
+  //   const userDoc = query(doc(db,"users",id,"") )
+  //   try{
+  //     await addDoc(userDoc,newData)
+  //   }catch(err){
+  //     console.log(err)
+  //   }
+  // }
+
+  ////////////////////////ADMIN////////////////////////////////
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (currentID) {
+        const q = query(collection(db, "users"), where("uid", "==", currentID))
+        try {
+          const querySnapshot = await getDocs(q)
+          querySnapshot?.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            // console.log(doc.id, " => ", doc.data())
+            setCurrentUserData(doc.data())
+          })
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    }
+    fetchData()
+  }, [currentUser, currentID])
 
   /************************************** Firebase Collection****************************************** */
 
@@ -120,10 +194,11 @@ function AuthProvider({ children }) {
     resetPassword,
     updateEmailUser,
     updatePasswordUser,
-    addNewMovie,
-    movieData,
-    deleteMovie,
+    addDefaultData,
+    userData,
     updateUserName,
+    updateUser,
+    currentUserData,
   }
   return (
     <AuthContext.Provider value={value}>

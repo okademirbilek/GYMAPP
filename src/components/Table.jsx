@@ -7,99 +7,16 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
-import DeleteIcon from "@mui/icons-material/Delete"
+// import DeleteIcon from "@mui/icons-material/Delete"
 
-const rows = [
-  {
-    id: 1143155,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "aproved",
-  },
-  {
-    id: 1143156,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "pending",
-  },
-  {
-    id: 1143157,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "aproved",
-  },
-  {
-    id: 1143158,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "aproved",
-  },
-  {
-    id: 1143159,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "pending",
-  },
-  {
-    id: 2143159,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "pending",
-  },
-  {
-    id: 3143159,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "pending",
-  },
-  {
-    id: 4143159,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "pending",
-  },
-  {
-    id: 5143159,
-    name: "okan",
-    surname: "demirbilek",
-    age: "25",
-    date: "1 March",
-    img: "https://www.w3schools.com/howto/img_avatar.png",
-    status: "pending",
-  },
-]
+const List = ({ data }) => {
+  // console.log(data)
+  // const [data, setData] = useState(data)
 
-const List = () => {
-  const [data, setData] = useState(rows)
-
-  const handleDelete = (id) => {
-    console.log("deleted")
-    setData(data.filter((item) => item.id !== id))
-  }
+  // const handleDelete = (id) => {
+  //   console.log("deleted")
+  //   setData(data.filter((item) => item.id !== id))
+  // }
 
   //   const actionColumn = [
   //     {
@@ -126,6 +43,12 @@ const List = () => {
   //       },
   //     },
   //   ]
+
+  function convertTime(timestamp) {
+    const date = new Date(timestamp.seconds * 1000).toDateString()
+    console.log(date)
+    return date
+  }
   return (
     <>
       <TableContainer
@@ -136,39 +59,53 @@ const List = () => {
         <Table stickyHeader aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell className="tableCell">Tracking ID</TableCell>
               <TableCell className="tableCell">Image</TableCell>
+              <TableCell className="tableCell">Tracking ID</TableCell>
               <TableCell className="tableCell">Name</TableCell>
               <TableCell className="tableCell">Surname</TableCell>
+              <TableCell className="tableCell">Time</TableCell>
+              {/* <TableCell className="tableCell">Surname</TableCell>
               <TableCell className="tableCell">Age</TableCell>
               <TableCell className="tableCell">Date</TableCell>
               <TableCell className="tableCell">Status</TableCell>
-              <TableCell className="tableCell">Action</TableCell>
+              <TableCell className="tableCell">Action</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell className="tableCell">{row.id}</TableCell>
+              <TableRow key={row.uid}>
                 <TableCell className="tableCell">
                   <div className="cellWrapper display-f align-center">
-                    <img src={row.img} alt="" className="avatarImage" />
+                    <img
+                      src={row.profileInfo.picture}
+                      alt=""
+                      className="avatarImage"
+                    />
                   </div>
                 </TableCell>
-                <TableCell className="tableCell">{row.name}</TableCell>
+                <TableCell className="tableCell">{row.uid}</TableCell>
+                <TableCell className="tableCell">
+                  {row.profileInfo.name}
+                </TableCell>
+                <TableCell className="tableCell">
+                  {row.profileInfo.surname}
+                </TableCell>
+                <TableCell className="tableCell">
+                  {convertTime(row.profileInfo.timeStamp)}
+                </TableCell>
+
+                {/* <TableCell className="tableCell">{row.name}</TableCell>
                 <TableCell className="tableCell">{row.surname}</TableCell>
                 <TableCell className="tableCell">{row.age}</TableCell>
                 <TableCell className="tableCell">{row.date}</TableCell>
                 <TableCell className="tableCell">
                   <span className={`status ${row.status}`}>{row.status}</span>
-                </TableCell>
+                </TableCell> */}
                 <TableCell className="tableCell">
-                  <Link to={`/dashboard/${row.id}`}>
+                  <Link to={`/dashboard/${row.uid}`}>
                     <span className="view">View</span>
                   </Link>
-                  <span className="delete" onClick={() => handleDelete(row.id)}>
-                    Delete
-                  </span>
+                  <span className="delete">Delete</span>
                 </TableCell>
               </TableRow>
             ))}
