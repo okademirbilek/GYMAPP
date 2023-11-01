@@ -508,11 +508,11 @@ img {
 }
 
 .text-back {
-  color: #351663;
+  color: #3d3174;
 }
 
 .bg-back {
-  background-color: #351663;
+  background-color: #3d3174;
 }
 
 .btn {
@@ -742,10 +742,10 @@ img {
   border: 0;
   padding: 0.75rem 1.5rem;
   border-radius: 20px;
-  background-color: #351663;
+  background-color: #3d3174;
 }
 .btn-back:hover {
-  background-color: #4b1f8d;
+  background-color: #504098;
 }
 
 .btn-outlined-back {
@@ -756,10 +756,10 @@ img {
   padding: 0.75rem 1.5rem;
   border-radius: 20px;
   background-color: #fff;
-  border: 1px solid #351663;
+  border: 1px solid #3d3174;
 }
 .btn-outlined-back:hover {
-  background-color: #351663;
+  background-color: #3d3174;
 }
 
 .btn-complement-back {
@@ -769,12 +769,12 @@ img {
   border: 0;
   padding: 0.75rem 1.5rem;
   border-radius: 20px;
-  background-color: #351663;
-  color: #98d43e;
+  background-color: #3d3174;
+  color: #b8c678;
 }
 .btn-complement-back:hover {
-  color: #351663;
-  background-color: #98d43e;
+  color: #3d3174;
+  background-color: #b8c678;
 }
 
 .navbar {
@@ -987,37 +987,7 @@ img {
   background-position: center;
   background-size: cover;
 }
-
-.glass-container > h1 {
-  color: #53ddff;
-}
-
-.link-div {
-  margin-top: 1em;
-}
-
-.link-div > a {
-  color: #53ddff;
-  font-weight: 600;
-}
-
-.link-div > a:hover {
-  color: #00ccff;
-}
-
-a {
-  text-decoration: none;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 500px;
-}
-
-.glass-container {
+.login-container .glass-container {
   padding: 2em;
   background: rgba(37, 35, 35, 0.5);
   -webkit-backdrop-filter: blur(6px);
@@ -1032,13 +1002,60 @@ a {
   justify-content: center;
   max-width: 441px;
 }
-
-.input-label {
-  margin-top: 0.4em;
-  /* font-size: var(--smallFontL); */
+.login-container .glass-container h1 {
+  color: #53ddff;
 }
-
-.form > input {
+.login-container .glass-container .link-div {
+  margin-top: 1em;
+}
+.login-container .glass-container .link-div a {
+  color: #53ddff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-container .glass-container .link-div a:hover {
+  color: #00ccff;
+}
+.login-container .glass-container .form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 500px;
+}
+.login-container .glass-container .form .input-with-icon {
+  display: flex;
+  background-color: white;
+  height: 50px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+  border-radius: 6px;
+  color: black;
+}
+.login-container .glass-container .form .input-with-icon .custom-input {
+  width: 90%;
+  border: 1px solid rgb(209, 213, 219);
+  text-indent: 10px;
+  border-radius: 6px 0px 0px 6px;
+  border-right: none;
+}
+.login-container .glass-container .form .input-with-icon .icon-comp {
+  width: 10%;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  cursor: pointer;
+  border: 1px solid rgb(209, 213, 219);
+  border-radius: 0 6px 6px 0;
+  border-left: none;
+  padding: 1px 0;
+  height: 50px;
+  background-color: white;
+}
+.login-container .glass-container .form input {
   border: 1px solid rgb(209, 213, 219);
   height: 50px;
   text-indent: 10px;
@@ -1048,13 +1065,10 @@ a {
   border-radius: 6px;
   color: black;
 }
-
-.form > input:focus {
+.login-container .glass-container .form input:focus {
   outline: none;
 }
-
-.form > button {
-  /* background-color: #c74e03; */
+.login-container .glass-container .form button {
   border: none;
   border-radius: 6px;
   height: 50px;
@@ -1063,14 +1077,15 @@ a {
   font-family: "Inter", sans-serif;
   cursor: pointer;
 }
-
-.form > button:hover {
+.login-container .glass-container .form button:hover {
   background-color: #53ddff;
 }
-
-.form > button:disabled {
+.login-container .glass-container .form button:disabled {
   background-color: #aaaaaa;
   cursor: not-allowed;
+}
+.login-container .glass-container .form .input-label {
+  margin-top: 0.4em;
 }
 
 /* The alert message box */
@@ -1092,43 +1107,75 @@ a {
   margin: 0;
 }
 
-.input-with-icon {
+@media (min-width: 768px) {
+  .login-error {
+    font-size: 22px;
+  }
+}
+.profile-container {
+  margin: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+}
+.profile-container form {
   display: flex;
-  background-color: white;
+  flex-direction: column;
+  gap: 5px;
+  width: 50%;
+  padding: 10px;
+}
+.profile-container form input {
+  border: 1px solid rgb(209, 213, 219);
   height: 50px;
+  text-indent: 10px;
   font-family: "Inter", sans-serif;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   font-weight: 400;
   border-radius: 6px;
   color: black;
 }
-
-.custom-input {
-  width: 90%;
-  border: 1px solid rgb(209, 213, 219);
-  text-indent: 10px;
-  border-radius: 6px 0px 0px 6px;
-  border-right: none;
+.profile-container form input:focus {
+  outline: none;
 }
-
-.icon-comp {
-  width: 10%;
-  display: flex;
-  margin: 0;
-  justify-content: center;
-  align-items: center;
+.profile-container form button {
+  border: none;
+  border-radius: 6px;
+  height: 50px;
+  margin-top: 22px;
   color: black;
+  font-family: "Inter", sans-serif;
   cursor: pointer;
-  border: 1px solid rgb(209, 213, 219);
-  border-radius: 0 6px 6px 0;
-  border-left: none;
+}
+.profile-container form button:hover {
+  background-color: #53ddff;
+}
+.profile-container form button:disabled {
+  background-color: #aaaaaa;
+  cursor: not-allowed;
 }
 
-@media (min-width: 768px) {
-  .login-error {
-    font-size: 22px;
-  }
+.user-detail-container {
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
 }
+.user-detail-container a {
+  margin: 20px;
+}
+.user-detail-container a:hover {
+  background-color: rgb(16, 15, 15);
+}
+.user-detail-container div {
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
 .p-0 {
   padding: 0;
 }

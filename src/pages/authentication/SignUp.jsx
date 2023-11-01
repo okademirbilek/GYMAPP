@@ -52,9 +52,9 @@ export default function SignUp() {
     <div className="login-container">
       <div className="glass-container">
         <h1>Sign up</h1>
-        <div className="caution">
+        {/* <div className="caution">
           <p>You can use a random email and password for signing up.</p>
-        </div>
+        </div> */}
         <form onSubmit={handleSubmit} className="form">
           <label className="input-label" htmlFor="sign-up-email">
             Email

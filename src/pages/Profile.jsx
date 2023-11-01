@@ -21,7 +21,6 @@ const Profile = () => {
     e.preventDefault()
     console.log("updated")
     updateUser(currentUser.uid, formData)
-    // updateUser(currentUser.uid, { ...currentUserData, profileInfo: formData })
   }
 
   function handleChange(e) {
@@ -32,15 +31,25 @@ const Profile = () => {
     }))
   }
 
+  function convertTime(timestamp) {
+    const date = new Date(timestamp.seconds * 1000).toDateString()
+    // console.log(date)
+    return date
+  }
+
   //handle if user refresh the page
   if (loading) {
     return <h2>🌀 Loading...</h2>
   }
 
   return (
-    <>
-      <label className="input-label">Picture</label>
-      <img src={formData.picture} width={150} alt="profile picture" />
+    <div className="profile-container">
+      <img
+        className="pt-1 pl-1"
+        src={formData.picture}
+        width={150}
+        alt="profile picture"
+      />
       <form onSubmit={handleSubmit} className="form">
         <label className="input-label" htmlFor="name">
           Name
@@ -143,7 +152,7 @@ const Profile = () => {
           {status === "submitting" ? "Saving..." : "Save"}
         </button>
       </form>
-    </>
+    </div>
   )
 }
 

@@ -46,7 +46,7 @@ const List = ({ data }) => {
 
   function convertTime(timestamp) {
     const date = new Date(timestamp.seconds * 1000).toDateString()
-    console.log(date)
+    // console.log(date)
     return date
   }
   return (
@@ -64,11 +64,6 @@ const List = ({ data }) => {
               <TableCell className="tableCell">Name</TableCell>
               <TableCell className="tableCell">Surname</TableCell>
               <TableCell className="tableCell">Time</TableCell>
-              {/* <TableCell className="tableCell">Surname</TableCell>
-              <TableCell className="tableCell">Age</TableCell>
-              <TableCell className="tableCell">Date</TableCell>
-              <TableCell className="tableCell">Status</TableCell>
-              <TableCell className="tableCell">Action</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -93,14 +88,6 @@ const List = ({ data }) => {
                 <TableCell className="tableCell">
                   {convertTime(row.profileInfo.timeStamp)}
                 </TableCell>
-
-                {/* <TableCell className="tableCell">{row.name}</TableCell>
-                <TableCell className="tableCell">{row.surname}</TableCell>
-                <TableCell className="tableCell">{row.age}</TableCell>
-                <TableCell className="tableCell">{row.date}</TableCell>
-                <TableCell className="tableCell">
-                  <span className={`status ${row.status}`}>{row.status}</span>
-                </TableCell> */}
                 <TableCell className="tableCell">
                   <Link to={`/dashboard/${row.uid}`}>
                     <span className="view">View</span>

@@ -13,6 +13,7 @@ import {
   query,
   where,
   updateDoc,
+  arrayUnion,
 } from "firebase/firestore"
 import {
   createUserWithEmailAndPassword,
@@ -154,11 +155,63 @@ function AuthProvider({ children }) {
     }
   }
 
-  // const addMeasurement = async (id,newData) => {
-  //   const userDoc = query(doc(db,"users",id,"") )
-  //   try{
-  //     await addDoc(userDoc,newData)
-  //   }catch(err){
+  const addNewMeasurement = async (id, updatedData) => {
+    const userCollection = doc(db, `users/${id}`)
+    const arrLength = userData.filter((item) => item.uid === id)[0].measurements
+      .length
+    try {
+      await updateDoc(userCollection, {
+        measurements: arrayUnion({
+          id: arrLength,
+          shoulder: 0,
+          chest: 0,
+          arm: 0,
+          waist: 0,
+          hip: 0,
+          leg: 0,
+          biceps: 0,
+          triceps: 0,
+          subscapular: 0,
+          iliaccrest: 0,
+          weight: 0,
+          fat: 0,
+        }),
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const updateMeasurement = async (id, updatedData) => {
+    const userDoc = doc(db, "users", id)
+    try {
+      await updateDoc(userDoc, { measurements: updatedData })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  // const addNewMeasurement = async (id) => {
+  //   const userCollection = doc(db, `users/${id}`)
+  //   try {
+  //     await updateDoc(userCollection, {
+  //       measurements: [
+  //         {
+  //           shoulder: 0,
+  //           chest: 0,
+  //           arm: 0,
+  //           waist: 0,
+  //           hip: 0,
+  //           leg: 0,
+  //           biceps: 0,
+  //           triceps: 0,
+  //           subscapular: 0,
+  //           iliaccrest: 0,
+  //           weight: 0,
+  //           fat: 0,
+  //         },
+  //       ],
+  //     })
+  //   } catch (err) {
   //     console.log(err)
   //   }
   // }
@@ -199,6 +252,8 @@ function AuthProvider({ children }) {
     updateUserName,
     updateUser,
     currentUserData,
+    addNewMeasurement,
+    updateMeasurement,
   }
   return (
     <AuthContext.Provider value={value}>

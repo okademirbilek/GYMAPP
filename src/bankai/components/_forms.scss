@@ -1,3 +1,5 @@
+@use "variables" as *;
+@use "breakpoints" as *;
 /******************************************* LOGIN PAGE ********************************* */
 .login-container {
   position: relative;
@@ -12,89 +14,128 @@
   background-repeat: none;
   background-position: center;
   background-size: cover;
-}
 
-.glass-container > h1 {
-  color: #53ddff;
-}
+  .glass-container {
+    padding: 2em;
+    background: rgba(37, 35, 35, 0.5);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(37, 35, 35, 0.125);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 27px;
+    align-items: center;
+    justify-content: center;
+    max-width: 441px;
+    h1 {
+      color: #53ddff;
+    }
 
-.link-div {
-  margin-top: 1em;
-}
-.link-div > a {
-  color: #53ddff;
-  font-weight: 600;
-}
-.link-div > a:hover {
-  color: #00ccff;
-}
+    .link-div {
+      margin-top: 1em;
 
-a {
-  text-decoration: none;
-}
+      a {
+        color: #53ddff;
+        font-weight: 600;
+        text-decoration: none;
+        &:hover {
+          color: #00ccff;
+        }
+      }
+    }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 500px;
-}
+    .form {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 500px;
 
-.glass-container {
-  padding: 2em;
-  background: rgba(37, 35, 35, 0.5);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(37, 35, 35, 0.125);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-inline: 27px;
-  align-items: center;
-  justify-content: center;
-  max-width: 441px;
-}
+      .input-with-icon {
+        display: flex;
+        background-color: white;
+        height: 50px;
+        font-family: "Inter", sans-serif;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+        font-weight: 400;
+        border-radius: 6px;
+        color: black;
 
-.input-label {
-  margin-top: 0.4em;
-  /* font-size: var(--smallFontL); */
-}
+        .custom-input {
+          width: 90%;
+          border: 1px solid rgba(209, 213, 219);
+          text-indent: 10px;
+          border-radius: 6px 0px 0px 6px;
+          border-right: none;
+        }
 
-.form > input {
-  border: 1px solid rgba(209, 213, 219);
-  height: 50px;
-  text-indent: 10px;
-  font-family: "Inter", sans-serif;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  font-weight: 400;
-  border-radius: 6px;
-  color: black;
-}
-.form > input:focus {
-  outline: none;
-}
+        .icon-comp {
+          width: 10%;
+          display: flex;
+          margin: 0;
+          justify-content: center;
+          align-items: center;
+          color: black;
+          cursor: pointer;
+          border: 1px solid rgba(209, 213, 219);
+          border-radius: 0 6px 6px 0;
+          border-left: none;
+          padding: 1px 0;
+          height: 50px;
+          background-color: white;
+        }
+      }
 
-.form > button {
-  /* background-color: #c74e03; */
+      input {
+        border: 1px solid rgba(209, 213, 219);
+        height: 50px;
+        text-indent: 10px;
+        font-family: "Inter", sans-serif;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+        font-weight: 400;
+        border-radius: 6px;
+        color: black;
 
-  border: none;
-  border-radius: 6px;
-  height: 50px;
-  margin-top: 22px;
-  color: black;
-  font-family: "Inter", sans-serif;
-  cursor: pointer;
-}
+        &:focus {
+          outline: none;
+        }
+      }
 
-.form > button:hover {
-  background-color: #53ddff;
-}
+      button {
+        border: none;
+        border-radius: 6px;
+        height: 50px;
+        margin-top: 22px;
+        color: black;
+        font-family: "Inter", sans-serif;
+        cursor: pointer;
+        &:hover {
+          background-color: #53ddff;
+        }
+        &:disabled {
+          background-color: #aaaaaa;
+          cursor: not-allowed;
+        }
+      }
 
-.form > button:disabled {
-  background-color: #aaaaaa;
-  cursor: not-allowed;
+      .input-label {
+        margin-top: 0.4em;
+      }
+    }
+
+    // .caution {
+    //   display: flex;
+    //   justify-content: center;
+    //   background-color: green;
+    //   border-radius: 6px;
+    //   p {
+    //     padding: 1px;
+    //     max-width: 95%;
+    //   }
+    // }
+  }
 }
 
 /* The alert message box */
@@ -116,40 +157,53 @@ a {
   margin: 0;
 }
 
-.input-with-icon {
-  display: flex;
-  background-color: white;
-  height: 50px;
-  font-family: "Inter", sans-serif;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  font-weight: 400;
-  border-radius: 6px;
-  color: black;
-}
-
-.custom-input {
-  width: 90%;
-  border: 1px solid rgba(209, 213, 219);
-  text-indent: 10px;
-  border-radius: 6px 0px 0px 6px;
-  border-right: none;
-}
-
-.icon-comp {
-  width: 10%;
-  display: flex;
-  margin: 0;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  cursor: pointer;
-  border: 1px solid rgba(209, 213, 219);
-  border-radius: 0 6px 6px 0;
-  border-left: none;
-}
-
 @media (min-width: 768px) {
   .login-error {
     font-size: 22px;
+  }
+}
+
+.profile-container {
+  margin: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: $base-box-shadow;
+  border-radius: 8px;
+  form {
+    display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    gap: 5px;
+    width: 50%;
+    padding: 10px;
+    input {
+      border: 1px solid rgba(209, 213, 219);
+      height: 50px;
+      text-indent: 10px;
+      font-family: "Inter", sans-serif;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+      font-weight: 400;
+      border-radius: 6px;
+      color: black;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      border: none;
+      border-radius: 6px;
+      height: 50px;
+      margin-top: 22px;
+      color: black;
+      font-family: "Inter", sans-serif;
+      cursor: pointer;
+      &:hover {
+        background-color: #53ddff;
+      }
+      &:disabled {
+        background-color: #aaaaaa;
+        cursor: not-allowed;
+      }
+    }
   }
 }
