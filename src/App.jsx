@@ -3,6 +3,8 @@ import "./css/index.css"
 import AuthRequired from "./components/AuthRequired"
 import { useAuth } from "./context/AuthContext"
 
+import { AdminProvider } from "./context/AdminContext"
+
 const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
 import {
@@ -34,8 +36,22 @@ function App() {
           <Route element={<AuthRequired />}>
             {currentUser?.uid === adminId && (
               <>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/dashboard/:id" element={<UserDetail />} />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <AdminProvider>
+                      <Dashboard />
+                    </AdminProvider>
+                  }
+                />
+                <Route
+                  path="/dashboard/:id"
+                  element={
+                    <AdminProvider>
+                      <UserDetail />
+                    </AdminProvider>
+                  }
+                />
               </>
             )}
 

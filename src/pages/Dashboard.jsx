@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import Table from "../components/Table"
-import { useAuth } from "../context/AuthContext"
+import { useAdminAuth } from "../context/AdminContext"
 
 const Dashboard = () => {
-  const { userData } = useAuth()
+  const { userData } = useAdminAuth()
   return (
     <div className="dashboard">
       <div className="listContainer">

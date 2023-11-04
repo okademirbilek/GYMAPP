@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { useAuth } from "../context/AuthContext"
+import { useAdminAuth } from "../context/AdminContext"
+import { serverTimestamp } from "firebase/firestore"
 
 const FormMeasurement = ({ data, measurementData, uid }) => {
   const [lockForm, setLockForm] = useState(true)
@@ -9,7 +10,7 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
   const [status, setStatus] = useState("idle")
   const [error, setError] = useState(null)
 
-  const { updateMeasurement } = useAuth()
+  const { updateMeasurement } = useAdminAuth()
 
   useEffect(() => {
     if (data) {
@@ -23,7 +24,7 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
     let updatedData = []
     measurementData.map((item) => {
       if (item.id === data.id) {
-        updatedData.push(formData)
+        updatedData.push({ ...formData, timeStamp: new Date() })
       } else {
         updatedData.push(item)
       }
@@ -39,6 +40,14 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
     }))
   }
 
+  function convertTime(timestamp) {
+    if (timestamp) {
+      const date = new Date(timestamp.seconds * 1000).toDateString()
+      // console.log(date)
+      return date
+    }
+  }
+
   //handle if user refresh the page
   if (loading) {
     return <h2>🌀 Loading...</h2>
@@ -46,7 +55,7 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
 
   return (
     <>
-      <div>FormMeasurement</div>
+      <div>FormMeasurement date:{convertTime(formData?.timeStamp)}</div>
       <form onSubmit={handleSubmit} className="form">
         <input
           name="arm"

@@ -35,7 +35,7 @@ function useAuth() {
 function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const currentID = currentUser?.uid
-  const [userData, setUserData] = useState([])
+  // const [userData, setUserData] = useState([])
   const [currentUserData, setCurrentUserData] = useState([])
 
   const [loading, setLoading] = useState(true)
@@ -67,6 +67,7 @@ function AuthProvider({ children }) {
     return updateProfile(auth.currentUser, userName)
   }
 
+  //set current user
   useEffect(() => {
     //when ever we call the createUserWithEmailAndPassword its gonna set
     //user for us
@@ -78,25 +79,6 @@ function AuthProvider({ children }) {
     //cleanup function
     //unsubscribe for us from the onAuthStateChanged method when unmount this component
     return unsubscribe
-  }, [])
-
-  //////////////////ADMIN////////////////////////////////
-
-  //its gonna check realtimedb if any user changes
-  //its for the adming panel should be private
-  useEffect(() => {
-    const unsubscribedb = onSnapshot(
-      collection(db, "users"),
-      function (snapshot) {
-        // Sync up our local notes array with the snapshot data
-        const userDataArr = snapshot.docs?.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }))
-        setUserData(userDataArr)
-      }
-    )
-    return unsubscribedb
   }, [])
 
   //add dummy data for the user when the user sign up
@@ -130,21 +112,6 @@ function AuthProvider({ children }) {
     }
   }
 
-  // {
-  //   shoulder: 0,
-  //   chest: 0,
-  //   arm: 0,
-  //   waist: 0,
-  //   hip: 0,
-  //   leg: 0,
-  //   biceps: 0,
-  //   triceps: 0,
-  //   subscapular: 0,
-  //   iliaccrest: 0,
-  //   weight: 0,
-  //   fat: 0,
-  // }
-
   //user can update his/her  own data
   const updateUser = async (id, updatedData) => {
     const userDoc = doc(db, "users", id)
@@ -154,69 +121,6 @@ function AuthProvider({ children }) {
       console.log(err)
     }
   }
-
-  const addNewMeasurement = async (id, updatedData) => {
-    const userCollection = doc(db, `users/${id}`)
-    const arrLength = userData.filter((item) => item.uid === id)[0].measurements
-      .length
-    try {
-      await updateDoc(userCollection, {
-        measurements: arrayUnion({
-          id: arrLength,
-          shoulder: 0,
-          chest: 0,
-          arm: 0,
-          waist: 0,
-          hip: 0,
-          leg: 0,
-          biceps: 0,
-          triceps: 0,
-          subscapular: 0,
-          iliaccrest: 0,
-          weight: 0,
-          fat: 0,
-        }),
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  const updateMeasurement = async (id, updatedData) => {
-    const userDoc = doc(db, "users", id)
-    try {
-      await updateDoc(userDoc, { measurements: updatedData })
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  // const addNewMeasurement = async (id) => {
-  //   const userCollection = doc(db, `users/${id}`)
-  //   try {
-  //     await updateDoc(userCollection, {
-  //       measurements: [
-  //         {
-  //           shoulder: 0,
-  //           chest: 0,
-  //           arm: 0,
-  //           waist: 0,
-  //           hip: 0,
-  //           leg: 0,
-  //           biceps: 0,
-  //           triceps: 0,
-  //           subscapular: 0,
-  //           iliaccrest: 0,
-  //           weight: 0,
-  //           fat: 0,
-  //         },
-  //       ],
-  //     })
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  ////////////////////////ADMIN////////////////////////////////
 
   useEffect(() => {
     const fetchData = async () => {
@@ -248,12 +152,12 @@ function AuthProvider({ children }) {
     updateEmailUser,
     updatePasswordUser,
     addDefaultData,
-    userData,
+    // userData,
     updateUserName,
     updateUser,
     currentUserData,
-    addNewMeasurement,
-    updateMeasurement,
+    // addNewMeasurement,
+    // updateMeasurement,
   }
   return (
     <AuthContext.Provider value={value}>
@@ -263,3 +167,60 @@ function AuthProvider({ children }) {
 }
 
 export { AuthProvider, AuthContext, useAuth }
+
+//////////////////ADMIN////////////////////////////////
+
+// //its gonna check realtimedb if any user changes
+// //its for the adming panel should be private
+// useEffect(() => {
+//   const unsubscribedb = onSnapshot(
+//     collection(db, "users"),
+//     function (snapshot) {
+//       // Sync up our local notes array with the snapshot data
+//       const userDataArr = snapshot.docs?.map((doc) => ({
+//         ...doc.data(),
+//         id: doc.id,
+//       }))
+//       setUserData(userDataArr)
+//     }
+//   )
+//   return unsubscribedb
+// }, [])
+
+// const addNewMeasurement = async (id, updatedData) => {
+//   const userCollection = doc(db, `users/${id}`)
+//   const arrLength = userData.filter((item) => item.uid === id)[0].measurements
+//     .length
+//   try {
+//     await updateDoc(userCollection, {
+//       measurements: arrayUnion({
+//         id: arrLength,
+//         shoulder: 0,
+//         chest: 0,
+//         arm: 0,
+//         waist: 0,
+//         hip: 0,
+//         leg: 0,
+//         biceps: 0,
+//         triceps: 0,
+//         subscapular: 0,
+//         iliaccrest: 0,
+//         weight: 0,
+//         fat: 0,
+//       }),
+//     })
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+
+// const updateMeasurement = async (id, updatedData) => {
+//   const userDoc = doc(db, "users", id)
+//   try {
+//     await updateDoc(userDoc, { measurements: updatedData })
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+
+////////////////////////ADMIN////////////////////////////////

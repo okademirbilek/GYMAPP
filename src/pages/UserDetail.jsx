@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { useAuth } from "../context/AuthContext"
+import { useAdminAuth } from "../context/AdminContext"
 import { useParams } from "react-router-dom"
 import FormMeasurement from "../components/FormMeasurement"
 
 const UserDetail = () => {
   const [measurementData, setMeasurementData] = useState(null)
   const params = useParams()
-  const { userData, addNewMeasurement } = useAuth()
+  const { userData, addNewMeasurement } = useAdminAuth()
 
   const data = userData.filter((user) => user.id === params.id)
-  // console.log(data[0])
   useEffect(() => {
     if (data) {
       const dataArr = data[0]?.measurements?.map((item, index) => (
