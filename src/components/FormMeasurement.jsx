@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { useAdminAuth } from "../context/AdminContext"
-import { serverTimestamp } from "firebase/firestore"
 
 const FormMeasurement = ({ data, measurementData, uid }) => {
   const [lockForm, setLockForm] = useState(true)

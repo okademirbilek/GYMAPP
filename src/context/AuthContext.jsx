@@ -113,14 +113,19 @@ function AuthProvider({ children }) {
   }
 
   //user can update his/her  own data
-  const updateUser = async (id, updatedData) => {
+  const updateUser = (id, updatedData) => {
     const userDoc = doc(db, "users", id)
-    try {
-      await updateDoc(userDoc, { profileInfo: updatedData })
-    } catch (err) {
-      console.log(err)
-    }
+
+    return updateDoc(userDoc, { profileInfo: updatedData })
   }
+  // const updateUser = async (id, updatedData) => {
+  //   const userDoc = doc(db, "users", id)
+  //   try {
+  //     await updateDoc(userDoc, { profileInfo: updatedData })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -129,8 +134,6 @@ function AuthProvider({ children }) {
         try {
           const querySnapshot = await getDocs(q)
           querySnapshot?.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            // console.log(doc.id, " => ", doc.data())
             setCurrentUserData(doc.data())
           })
         } catch (err) {

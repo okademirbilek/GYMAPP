@@ -7,48 +7,10 @@ import TableContainer from "@mui/material/TableContainer"
 import TableHead from "@mui/material/TableHead"
 import TableRow from "@mui/material/TableRow"
 import Paper from "@mui/material/Paper"
-// import DeleteIcon from "@mui/icons-material/Delete"
+
+import { convertTime } from "../utils/utils"
 
 const List = ({ data }) => {
-  // console.log(data)
-  // const [data, setData] = useState(data)
-
-  // const handleDelete = (id) => {
-  //   console.log("deleted")
-  //   setData(data.filter((item) => item.id !== id))
-  // }
-
-  //   const actionColumn = [
-  //     {
-  //       field: "action",
-  //       headerName: "Action",
-  //       width: 200,
-  //       renderCell: (params) => {
-  //         return (
-  //           <div className="cellAction">
-  //             <Link
-  //               to={`/dashboard/${params.row.id}`}
-  //               style={{ textDecoration: "none" }}
-  //             >
-  //               <div className="viewButton">View</div>
-  //             </Link>
-  //             <div
-  //               className="deleteButton"
-  //               onClick={() => handleDelete(params.row.id)}
-  //             >
-  //               Delete
-  //             </div>
-  //           </div>
-  //         )
-  //       },
-  //     },
-  //   ]
-
-  function convertTime(timestamp) {
-    const date = new Date(timestamp.seconds * 1000).toDateString()
-    // console.log(date)
-    return date
-  }
   return (
     <>
       <TableContainer

@@ -17,10 +17,19 @@ const Profile = () => {
     }
   }, [currentUserData])
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    console.log("updated")
-    updateUser(currentUser.uid, formData)
+    setError("")
+    setStatus("submitting")
+    await updateUser(currentUser.uid, formData)
+      .then((cb) => console.log("snackbar completed"))
+      .catch((error) => {
+        console.log(error.message)
+        setError(`error : ${error.message} `)
+      })
+      .finally(() => {
+        setStatus("idle")
+      })
   }
 
   function handleChange(e) {

@@ -972,6 +972,60 @@ img {
   background-color: rgba(189, 189, 3, 0.103);
 }
 
+.measurement-table-container {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+}
+.measurement-table-container h2 button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.measurement-table-container h2 button img {
+  width: 40px;
+  height: 40px;
+}
+.measurement-table-container .flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.measurement-table-container .flex-container .table-container {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+  align-items: center;
+  border: 2px solid rgb(231, 221, 221);
+}
+.measurement-table-container .flex-container .table-container .hip,
+.measurement-table-container .flex-container .table-container .waist {
+  width: 50px;
+}
+.measurement-table-container .flex-container .table-container .table-data {
+  display: flex;
+  padding: 5px;
+  border-radius: 6px;
+  margin-left: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.measurement-table-container .flex-container .table-container .table-data div {
+  padding: 5px;
+}
+.measurement-table-container .flex-container .table-container .table-data div:nth-child(1) {
+  width: 100px;
+}
+.measurement-table-container .flex-container .table-container .table-data div:nth-child(2) {
+  width: 40px;
+  text-align: center;
+}
+
 /******************************************* LOGIN PAGE ********************************* */
 .login-container {
   position: relative;

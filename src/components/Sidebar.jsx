@@ -60,64 +60,70 @@ const Sidebar = () => {
                 </li>
               </>
             )}
+            {currentUser?.uid !== adminId ? (
+              <>
+                <p className="title">Lists</p>
+                <li>
+                  <NavLink
+                    to="/"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <HomeIcon />
+                    <span>Home</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/exercises"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <FitnessCenterIcon />
 
-            <p className="title">Lists</p>
-            <li>
-              <NavLink
-                to="/"
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-              >
-                <HomeIcon />
-                <span>Home</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/exercises"
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-              >
-                <FitnessCenterIcon />
+                    <span>Exercises</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/meal"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <RestaurantIcon />
+                    <span>Meal</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/measurements"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <AccessibilityNewIcon />
+                    <span>Measurements</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/payment"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <PaymentsIcon />
+                    <span>Payment</span>
+                  </NavLink>
+                </li>
+                <p className="title">User</p>
+                <li>
+                  <NavLink
+                    to="/profile"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <PersonOutlineOutlinedIcon />
+                    <span>Profile</span>
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <p className="title">User</p>
+            )}
 
-                <span>Exercises</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/meal"
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-              >
-                <RestaurantIcon />
-                <span>Meal</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/measurements"
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-              >
-                <AccessibilityNewIcon />
-                <span>Measurements</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/payment"
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-              >
-                <PaymentsIcon />
-                <span>Payment</span>
-              </NavLink>
-            </li>
-            <p className="title">User</p>
-            <li>
-              <NavLink
-                to="/profile"
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-              >
-                <PersonOutlineOutlinedIcon />
-                <span>Profile</span>
-              </NavLink>
-            </li>
             <li>
               <ExitToAppOutlinedIcon />
               <button onClick={handleLogout}>Log Out</button>
