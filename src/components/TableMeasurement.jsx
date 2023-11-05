@@ -1,20 +1,38 @@
 import React from "react"
 import { convertTime } from "../utils/utils"
-import arm from "../assets/images/body/arm.png"
-import biceps from "../assets/images/body/biceps.png"
-import chest from "../assets/images/body/chest.png"
-import fat from "../assets/images/body/fat.png"
-import hip from "../assets/images/body/hip.png"
-import leg from "../assets/images/body/leg.png"
-import shoulder from "../assets/images/body/shoulder.png"
-import subs from "../assets/images/body/subs.png"
-import triceps from "../assets/images/body/triceps.png"
-import waist from "../assets/images/body/waist2.png"
-import weight from "../assets/images/body/kg.png"
+
+import {
+  arm,
+  biceps,
+  chest,
+  fat,
+  hip,
+  leg,
+  shoulder,
+  subs,
+  triceps,
+  waist,
+  weight,
+} from "../assets/images/body/imports"
 
 import arrow from "../assets/images/downarrow.png"
 
 import useToggle from "../customHooks/useToggle"
+
+import { motion } from "framer-motion"
+
+//framer motion animation variant
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+  },
+  exit: {
+    opacity: 0,
+    scale: 0,
+  },
+}
 
 const TableMeasurement = ({ data }) => {
   const [value, toggleValue] = useToggle(false)
@@ -27,7 +45,13 @@ const TableMeasurement = ({ data }) => {
         </button>
       </h2>
       {value && (
-        <div className="flex-container">
+        <motion.div
+          className="flex-container"
+          variants={container}
+          initial="hidden"
+          animate={value && "visible"}
+          exit={value === false && "exit"}
+        >
           <div className="table-container">
             <img src={arm} alt="arm" />
             <div className="table-data">
@@ -105,7 +129,7 @@ const TableMeasurement = ({ data }) => {
               <div>{data.weight}</div>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   )
