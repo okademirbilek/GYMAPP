@@ -8,10 +8,18 @@
   padding: 20px;
   border-radius: 5px;
 
-  a {
-    margin: 20px;
-    &:hover {
-      background-color: rgb(16, 15, 15);
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0 20px;
+    a {
+      padding: 8px;
+      border-radius: 5px;
+      &:hover {
+        background-color: #9f8cbb;
+      }
     }
   }
 

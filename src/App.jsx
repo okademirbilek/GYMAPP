@@ -20,6 +20,10 @@ import {
   Measurements,
   Payment,
   Profile,
+  AdminMeal,
+  AdminMeasurement,
+  AdminPayment,
+  AdminProfile,
 } from "./pages/index"
 
 function App() {
@@ -51,7 +55,21 @@ function App() {
                       <UserDetail />
                     </AdminProvider>
                   }
-                />
+                >
+                  <Route index element={<AdminProfile />} />
+                  <Route
+                    path="/dashboard/:id/adminPayment"
+                    element={<AdminPayment />}
+                  />
+                  <Route
+                    path="/dashboard/:id/adminMeasurement"
+                    element={<AdminMeasurement />}
+                  />
+                  <Route
+                    path="/dashboard/:id/adminMeal"
+                    element={<AdminMeal />}
+                  />
+                </Route>
               </>
             )}
 

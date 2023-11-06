@@ -38,14 +38,15 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="sidebar  flex-1">
+    <div className="sidebar">
       <nav>
         <div className="top display-f  align-center justify-center">
           <span className="logo">Sports & Health</span>
+          <span className="logo2">S & H</span>
         </div>
         <hr />
-        <div className="center  mt-2 ml-2">
-          <ul className="pl-2 display-f fd-c">
+        <div className="center">
+          <ul className="display-f fd-c">
             {currentUser?.uid === adminId && (
               <>
                 <p className="title">Admin</p>
@@ -125,13 +126,15 @@ const Sidebar = () => {
             )}
 
             <li>
-              <ExitToAppOutlinedIcon />
-              <button onClick={handleLogout}>Log Out</button>
+              <button onClick={handleLogout}>
+                <ExitToAppOutlinedIcon />
+                <p>Log Out</p>
+              </button>
             </li>
           </ul>
         </div>
-        <div className="bottom display-f fd-c ml-2 mt-1">
-          <p className="title">Mode</p>
+        <div className="bottom display-f fd-c mt-1">
+          <p>Mode</p>
           <div className="colorOption">
             <DarkModeOutlinedIcon />
             <p>Dark</p>

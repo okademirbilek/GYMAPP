@@ -63,13 +63,24 @@
   }
 }
 
+.measurement-header {
+  padding: 20px;
+  margin: 20px;
+  h2 {
+    max-width: 400px;
+  }
+}
+
 .measurement-table-container {
   margin: 20px;
   padding: 20px;
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: $base-box-shadow;
   border-radius: 8px;
-  h2 {
+
+  .date-container {
+    max-width: 500px;
+
     button {
       background-color: transparent;
       outline: none;
@@ -81,11 +92,18 @@
       }
     }
   }
+
   .flex-container {
-    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    @include md {
+      justify-content: flex-start;
+    }
     .table-container {
+      max-width: 225px;
       display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 10px;
       padding: 10px;
       -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
@@ -100,8 +118,6 @@
 
       .table-data {
         display: flex;
-        // gap: 10px;
-        // border: 2px solid rgb(231, 221, 221);
         padding: 5px;
         border-radius: 6px;
 

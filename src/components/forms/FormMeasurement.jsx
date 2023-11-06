@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { useAdminAuth } from "../context/AdminContext"
+import { useAdminAuth } from "../../context/AdminContext"
+import { convertTime } from "../../utils/utils"
 
 const FormMeasurement = ({ data, measurementData, uid }) => {
   const [lockForm, setLockForm] = useState(true)
@@ -39,13 +40,13 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
     }))
   }
 
-  function convertTime(timestamp) {
-    if (timestamp) {
-      const date = new Date(timestamp.seconds * 1000).toDateString()
-      // console.log(date)
-      return date
-    }
-  }
+  // function convertTime(timestamp) {
+  //   if (timestamp) {
+  //     const date = new Date(timestamp.seconds * 1000).toDateString()
+  //     // console.log(date)
+  //     return date
+  //   }
+  // }
 
   //handle if user refresh the page
   if (loading) {

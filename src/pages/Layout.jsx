@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div className="layout display-f bg-back">
       <Sidebar />
-      <div className="Container  flex-6">
+      <div className="container-site">
         <Navbar />
         <Outlet />
       </div>

@@ -1,50 +1,57 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import React from "react"
+import { Link, NavLink } from "react-router-dom"
 import { useAdminAuth } from "../context/AdminContext"
 import { useParams } from "react-router-dom"
-import FormMeasurement from "../components/FormMeasurement"
+import { Outlet } from "react-router-dom"
+import ReplyIcon from "@mui/icons-material/Reply"
 
 const UserDetail = () => {
-  const [measurementData, setMeasurementData] = useState(null)
   const params = useParams()
-  const { userData, addNewMeasurement } = useAdminAuth()
+  const { userData } = useAdminAuth()
 
   const data = userData.filter((user) => user.id === params.id)
-  useEffect(() => {
-    if (data) {
-      const dataArr = data[0]?.measurements?.map((item, index) => (
-        <FormMeasurement
-          key={index}
-          data={item}
-          uid={params.id}
-          measurementData={data[0].measurements}
-        />
-      ))
-      setMeasurementData(dataArr)
-    }
-  }, [userData])
+
+  //style for active page
+  const activeStyle = {
+    backgroundColor: "rgb(17, 17, 17)",
+  }
 
   return (
     <div className="user-detail-container p-2">
-      <Link to="/dashboard" className="bg-primary p-1 br-lg cursor-p">
-        Back to Users page
-      </Link>
-      <div className="profile">
-        <h2>Profile</h2>
-      </div>
-      <div className="payment">
-        <h2>Payment</h2>
-      </div>
-      <div className="measurement">
-        <h2>Measurement</h2>
-        {measurementData}
-        <button
-          onClick={() => addNewMeasurement(params.id)}
-          className="bg-primary p-1 br-sm"
+      <ul>
+        <Link to="/dashboard" className="bg-primary display-f">
+          Back to Users page
+          <ReplyIcon className="ml-1" />
+        </Link>
+        {/* en for higlight problem */}
+        <NavLink
+          to={`/dashboard/${params.id}`}
+          style={({ isActive }) => (isActive ? activeStyle : null)}
+          end
         >
-          +Add new Measurement
-        </button>
-      </div>
+          Profile
+        </NavLink>
+        <NavLink
+          to={`/dashboard/${params.id}/adminMeasurement`}
+          style={({ isActive }) => (isActive ? activeStyle : null)}
+        >
+          Measurement
+        </NavLink>
+        <NavLink
+          to={`/dashboard/${params.id}/adminPayment`}
+          style={({ isActive }) => (isActive ? activeStyle : null)}
+        >
+          Payment
+        </NavLink>
+        <NavLink
+          to={`/dashboard/${params.id}/adminMeal`}
+          style={({ isActive }) => (isActive ? activeStyle : null)}
+        >
+          Meal
+        </NavLink>
+      </ul>
+
+      <Outlet context={{ data, params }} />
     </div>
   )
 }

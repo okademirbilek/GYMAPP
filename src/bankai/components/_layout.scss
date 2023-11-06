@@ -1,0 +1,18 @@
+@use "variables" as *;
+@use "breakpoints" as *;
+
+.layout {
+  min-height: 100dvh;
+  .container-site {
+    flex: 12;
+    @include md {
+      flex: 6;
+    }
+    @include lg {
+      flex: 7;
+    }
+    @include xl {
+      flex: 6;
+    }
+  }
+}

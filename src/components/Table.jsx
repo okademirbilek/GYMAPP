@@ -26,6 +26,7 @@ const List = ({ data }) => {
               <TableCell className="tableCell">Name</TableCell>
               <TableCell className="tableCell">Surname</TableCell>
               <TableCell className="tableCell">Time</TableCell>
+              <TableCell className="tableCell">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

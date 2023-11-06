@@ -38,15 +38,15 @@ const TableMeasurement = ({ data }) => {
   const [value, toggleValue] = useToggle(false)
   return (
     <div className="measurement-table-container">
-      <h2 className="display-f align-center">
-        {data.timeStamp && convertTime(data.timeStamp)}{" "}
+      <div className="date-container display-f align-center">
+        <h2>{data.timeStamp && convertTime(data.timeStamp)}</h2>{" "}
         <button onClick={() => toggleValue((prev) => !prev)}>
           <img src={arrow} alt="down arrow" className="arrow ml-1" />
         </button>
-      </h2>
+      </div>
       {value && (
         <motion.div
-          className="flex-container"
+          className="flex-container display-f"
           variants={container}
           initial="hidden"
           animate={value && "visible"}

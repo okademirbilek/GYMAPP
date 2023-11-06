@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
+import { convertTime } from "../utils/utils"
 
 const Profile = () => {
   const { currentUserData, currentUser, updateUser } = useAuth()
@@ -40,11 +41,10 @@ const Profile = () => {
     }))
   }
 
-  function convertTime(timestamp) {
-    const date = new Date(timestamp.seconds * 1000).toDateString()
-    // console.log(date)
-    return date
-  }
+  // function convertTime(timestamp) {
+  //   const date = new Date(timestamp.seconds * 1000).toDateString()
+  //   return date
+  // }
 
   //handle if user refresh the page
   if (loading) {
@@ -102,9 +102,9 @@ const Profile = () => {
         <input
           name="timeStamp"
           onChange={handleChange}
-          type="number"
+          type="string"
           placeholder="Date"
-          value={formData.timeStamp.seconds}
+          value={convertTime(formData.timeStamp)}
           id="timestamp"
           disabled
         />
