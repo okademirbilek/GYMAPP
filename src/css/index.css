@@ -1087,7 +1087,8 @@ img {
   border: 2px solid rgb(231, 221, 221);
 }
 .measurement-table-container .flex-container .table-container .hip,
-.measurement-table-container .flex-container .table-container .waist {
+.measurement-table-container .flex-container .table-container .waist,
+.measurement-table-container .flex-container .table-container .pelvis {
   width: 50px;
 }
 .measurement-table-container .flex-container .table-container .table-data {
@@ -1249,20 +1250,27 @@ img {
     font-size: 22px;
   }
 }
+/*************************************** PROFILE FORM ***************************************************/
 .profile-container {
   margin: 20px;
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   border-radius: 8px;
 }
+.profile-container img {
+  border-radius: 50%;
+  width: 150px;
+  background-color: #00ccff;
+}
 .profile-container form {
-  display: flex;
-  flex-direction: column;
   gap: 5px;
-  width: 50%;
   padding: 10px;
 }
-.profile-container form input {
+.profile-container form label {
+  display: flex;
+  flex-direction: column;
+}
+.profile-container form label input {
   border: 1px solid rgb(209, 213, 219);
   height: 50px;
   text-indent: 10px;
@@ -1270,19 +1278,21 @@ img {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   font-weight: 400;
   border-radius: 6px;
+  width: clamp(200px, 50%, 500px);
   color: black;
 }
-.profile-container form input:focus {
+.profile-container form label input:focus {
   outline: none;
 }
 .profile-container form button {
   border: none;
   border-radius: 6px;
-  height: 50px;
+  height: 54px;
   margin-top: 22px;
   color: black;
-  font-family: "Inter", sans-serif;
   cursor: pointer;
+  width: 200px;
+  align-self: center;
 }
 .profile-container form button:hover {
   background-color: #53ddff;
@@ -1292,12 +1302,78 @@ img {
   cursor: not-allowed;
 }
 
+/***************************************MEASUREMENT FORM ***********************************************/
+.measurement .form-measurement {
+  margin: 10px 0;
+}
+@media (min-width: 720px) {
+  .measurement .form-measurement {
+    margin: 20px;
+  }
+}
+.measurement .form-measurement .date button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.measurement .form-measurement .date button img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.measurement .form-measurement form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.measurement .form-measurement form label {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 54px;
+  width: clamp(200px, 50%, 250px);
+  border: 2px solid whitesmoke;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+@media (min-width: 720px) {
+  .measurement .form-measurement form label {
+    gap: 10px;
+  }
+}
+.measurement .form-measurement form label .hip,
+.measurement .form-measurement form label .waist,
+.measurement .form-measurement form label .pelvis {
+  width: 50px;
+}
+.measurement .form-measurement form label input {
+  max-width: 40px;
+  text-align: center;
+  outline: none;
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 2px;
+}
+
 .user-detail-container {
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  margin: 20px;
-  padding: 20px;
+  min-height: 100dvh;
   border-radius: 5px;
+}
+@media (min-width: 720px) {
+  .user-detail-container {
+    min-height: auto;
+  }
+}
+@media (min-width: 720px) {
+  .user-detail-container {
+    margin: 20px;
+    padding: 20px;
+  }
 }
 .user-detail-container ul {
   display: flex;

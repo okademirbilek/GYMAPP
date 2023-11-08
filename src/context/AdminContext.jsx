@@ -80,13 +80,10 @@ const AdminProvider = ({ children }) => {
     }
   }
 
-  const updateMeasurement = async (id, updatedData) => {
+  const updateMeasurement = (id, updatedData) => {
     const userDoc = doc(db, "users", id)
-    try {
-      await updateDoc(userDoc, { measurements: updatedData })
-    } catch (err) {
-      console.log(err)
-    }
+
+    return updateDoc(userDoc, { measurements: updatedData })
   }
 
   ////////////////////////ADMIN////////////////////////////////

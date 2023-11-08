@@ -163,46 +163,119 @@
   }
 }
 
+/*************************************** PROFILE FORM ***************************************************/
 .profile-container {
   margin: 20px;
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: $base-box-shadow;
   border-radius: 8px;
+  img {
+    border-radius: 50%;
+    width: 150px;
+    background-color: #00ccff;
+  }
   form {
-    display: flex;
-    flex-direction: column;
     // flex-wrap: wrap;
     gap: 5px;
-    width: 50%;
+    // width: 50%;
     padding: 10px;
-    input {
-      border: 1px solid rgba(209, 213, 219);
-      height: 50px;
-      text-indent: 10px;
-      font-family: "Inter", sans-serif;
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-      font-weight: 400;
-      border-radius: 6px;
-      color: black;
-      &:focus {
-        outline: none;
+
+    label {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        border: 1px solid rgba(209, 213, 219);
+        height: 50px;
+        text-indent: 10px;
+        font-family: "Inter", sans-serif;
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+        font-weight: 400;
+        border-radius: 6px;
+        width: clamp(200px, 50%, 500px);
+
+        color: black;
+        &:focus {
+          outline: none;
+        }
       }
     }
 
     button {
       border: none;
       border-radius: 6px;
-      height: 50px;
+      height: 54px;
       margin-top: 22px;
       color: black;
-      font-family: "Inter", sans-serif;
+
       cursor: pointer;
+      width: 200px;
+      align-self: center;
+
       &:hover {
         background-color: #53ddff;
       }
       &:disabled {
         background-color: #aaaaaa;
         cursor: not-allowed;
+      }
+    }
+  }
+}
+
+/***************************************MEASUREMENT FORM ***********************************************/
+
+.measurement {
+  .form-measurement {
+    margin: 10px 0;
+    @include md {
+      margin: 20px;
+    }
+    .date {
+      button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        img {
+          width: 40px;
+          height: 40px;
+          object-fit: contain;
+        }
+      }
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      label {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        @include md {
+          gap: 10px;
+        }
+        height: 54px;
+        width: clamp(200px, 50%, 250px);
+        border: 2px solid whitesmoke;
+        border-radius: 5px;
+        padding: 0 10px;
+
+        .hip,
+        .waist,
+        .pelvis {
+          width: 50px;
+        }
+        input {
+          max-width: 40px;
+          text-align: center;
+          outline: none;
+          border: none;
+          color: black;
+          font-weight: bold;
+          padding: 5px;
+          border-radius: 2px;
+        }
       }
     }
   }

@@ -13,6 +13,7 @@ import {
   triceps,
   waist,
   weight,
+  pelvis,
 } from "../assets/images/body/imports"
 
 import arrow from "../assets/images/downarrow.png"
@@ -92,6 +93,13 @@ const TableMeasurement = ({ data }) => {
             <div className="table-data">
               <div>Leg</div>
               <div>{data.leg}</div>
+            </div>
+          </div>
+          <div className="table-container">
+            <img src={pelvis} alt="pelvis" />
+            <div className="table-data">
+              <div>Illia crest</div>
+              <div>{data.illiacrest}</div>
             </div>
           </div>
           <div className="table-container">

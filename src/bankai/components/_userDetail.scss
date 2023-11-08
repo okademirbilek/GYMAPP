@@ -4,9 +4,16 @@
 .user-detail-container {
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: $base-box-shadow;
-  margin: 20px;
-  padding: 20px;
+  min-height: 100dvh;
+  @include md {
+    min-height: auto;
+  }
   border-radius: 5px;
+
+  @include md {
+    margin: 20px;
+    padding: 20px;
+  }
 
   ul {
     display: flex;

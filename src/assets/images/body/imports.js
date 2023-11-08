@@ -10,6 +10,7 @@ import triceps from "./triceps.png"
 import waist from "./waist2.png"
 import waist2 from "./waist.png"
 import weight from "./kg.png"
+import pelvis from "./pelvis.png"
 
 export {
   arm,
@@ -24,4 +25,5 @@ export {
   waist,
   waist2,
   weight,
+  pelvis,
 }

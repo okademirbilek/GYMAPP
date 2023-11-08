@@ -41,11 +41,6 @@ const Profile = () => {
     }))
   }
 
-  // function convertTime(timestamp) {
-  //   const date = new Date(timestamp.seconds * 1000).toDateString()
-  //   return date
-  // }
-
   //handle if user refresh the page
   if (loading) {
     return <h2>🌀 Loading...</h2>
@@ -53,98 +48,99 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-      <img
-        className="pt-1 pl-1"
-        src={formData.picture}
-        width={150}
-        alt="profile picture"
-      />
+      <img className="pt-1 pl-1" src={formData.picture} alt="profile picture" />
       <form onSubmit={handleSubmit} className="form">
-        <label className="input-label" htmlFor="name">
+        <label className="input-label">
           Name
+          <input
+            name="name"
+            onChange={handleChange}
+            type="text"
+            placeholder="Name"
+            value={formData.name}
+            id="name"
+            disabled={lockForm}
+          />
         </label>
-        <input
-          name="name"
-          onChange={handleChange}
-          type="text"
-          placeholder="Name"
-          value={formData.name}
-          id="name"
-          disabled={lockForm}
-        />
-        <label className="input-label" htmlFor="surname">
-          Surname
-        </label>
-        <input
-          name="surname"
-          onChange={handleChange}
-          type="text"
-          placeholder="Surname"
-          value={formData.surname}
-          id="surname"
-          disabled={lockForm}
-        />
-        <label className="input-label" htmlFor="email">
-          Email
-        </label>
-        <input
-          name="email"
-          onChange={handleChange}
-          type="email"
-          placeholder="Email"
-          value={currentUser?.email}
-          id="email"
-          disabled
-        />
-        <label className="input-label" htmlFor="timestamp">
-          Profile creation date
-        </label>
-        <input
-          name="timeStamp"
-          onChange={handleChange}
-          type="string"
-          placeholder="Date"
-          value={convertTime(formData.timeStamp)}
-          id="timestamp"
-          disabled
-        />
-        <label className="input-label" htmlFor="gsm">
-          Gsm
-        </label>
-        <input
-          name="gsm"
-          onChange={handleChange}
-          type="tel"
-          placeholder="Gsm"
-          value={formData.gsm}
-          id="gsm"
-          disabled={lockForm}
-        />
-        <label className="input-label" htmlFor="birthday">
-          Birthday
-        </label>
-        <input
-          name="birthday"
-          onChange={handleChange}
-          type="date"
-          placeholder="Birthday"
-          value={formData.birthday}
-          id="birthday"
-          disabled={lockForm}
-        />
 
-        <label className="input-label" htmlFor="totalmonth">
-          Total month
+        <label className="input-label">
+          Surname
+          <input
+            name="surname"
+            onChange={handleChange}
+            type="text"
+            placeholder="Surname"
+            value={formData.surname}
+            id="surname"
+            disabled={lockForm}
+          />
         </label>
-        <input
-          name="totalMonth"
-          onChange={handleChange}
-          type="number"
-          placeholder="Total month"
-          value={formData.totalMonth}
-          id="totalmonth"
-          disabled={lockForm}
-        />
+
+        <label className="input-label">
+          Email
+          <input
+            name="email"
+            onChange={handleChange}
+            type="email"
+            placeholder="Email"
+            value={currentUser?.email}
+            id="email"
+            disabled
+          />
+        </label>
+
+        <label className="input-label">
+          Profile creation date
+          <input
+            name="timeStamp"
+            onChange={handleChange}
+            type="string"
+            placeholder="Date"
+            value={formData?.timeStamp && convertTime(formData?.timeStamp)}
+            id="timestamp"
+            disabled
+          />
+        </label>
+
+        <label className="input-label">
+          Gsm
+          <input
+            name="gsm"
+            onChange={handleChange}
+            type="tel"
+            placeholder="Gsm"
+            value={formData.gsm}
+            id="gsm"
+            disabled={lockForm}
+          />
+        </label>
+
+        <label className="input-label">
+          Birthday
+          <input
+            name="birthday"
+            onChange={handleChange}
+            type="date"
+            placeholder="Birthday"
+            value={formData.birthday}
+            id="birthday"
+            disabled={lockForm}
+          />
+        </label>
+
+        <label className="input-label">
+          Total month
+          <input
+            name="totalMonth"
+            onChange={handleChange}
+            type="number"
+            placeholder="Total month"
+            value={formData.totalMonth}
+            id="totalmonth"
+            disabled
+          />
+        </label>
+
         <button
           type="button"
           onClick={() => setLockForm((prevFrom) => !prevFrom)}
@@ -157,7 +153,7 @@ const Profile = () => {
             <h3 className="login-error">{error}</h3>
           </div>
         )}
-        <button disabled={status === "submitting"}>
+        <button className="ml-1" disabled={status === "submitting"}>
           {status === "submitting" ? "Saving..." : "Save"}
         </button>
       </form>
