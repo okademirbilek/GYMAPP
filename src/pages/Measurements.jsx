@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
-import TableMeasurement from "../components/TableMeasurement"
+import TableMeasurement from "../components/tables/TableMeasurement"
 import { waist2 } from "../assets/images/body/imports"
 
 const Measurements = () => {

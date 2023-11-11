@@ -1039,12 +1039,18 @@ img {
   background-color: rgba(189, 189, 3, 0.103);
 }
 
-.measurement-header {
+.measurement-header,
+.payment-header {
   padding: 20px;
   margin: 20px;
 }
-.measurement-header h2 {
+.measurement-header h2,
+.payment-header h2 {
   max-width: 400px;
+}
+.measurement-header img,
+.payment-header img {
+  width: 55px;
 }
 
 .measurement-table-container {
@@ -1111,6 +1117,79 @@ img {
 .measurement-table-container .flex-container .table-container .table-data div:nth-child(2) {
   width: 40px;
   text-align: center;
+}
+
+.payment-table-container {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.payment-table-container .table-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(88, 56, 182);
+  color: white;
+  font-size: 1.5rem;
+}
+.payment-table-container .date-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  padding: 20px 15px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+  align-items: center;
+  border: 2px solid rgb(231, 221, 221);
+  margin-left: 20px;
+}
+.payment-table-container .date-container h4 {
+  font-weight: normal;
+}
+.payment-table-container .table-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+  align-items: center;
+  border: 2px solid rgb(231, 221, 221);
+}
+.payment-table-container .table-container .table-data svg {
+  width: 20px;
+  margin-bottom: 2px;
+}
+.payment-table-container .table-container div {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+.payment-table-container .table-container div .confirmed,
+.payment-table-container .table-container div .not-confirmed {
+  display: flex;
+  border-radius: 3px;
+  margin-left: 5px;
+  width: 125px;
+}
+.payment-table-container .table-container div .confirmed {
+  background-color: rgb(59, 184, 59);
+}
+.payment-table-container .table-container div .not-confirmed {
+  background-color: rgb(183, 183, 42);
 }
 
 /******************************************* LOGIN PAGE ********************************* */
@@ -1387,6 +1466,48 @@ img {
   border: none;
   width: clamp(100px, 45%, 150px);
   height: 58px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/***************************************PAYMENT FORM ***********************************************/
+.payment .add-payment-btn {
+  outline: none;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #218838;
+}
+.payment .add-payment-btn:hover {
+  background-color: #2cb149;
+}
+.payment .form-payment form {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+}
+.payment .form-payment form label input {
+  margin-left: 10px;
+  max-width: 60px;
+  text-align: center;
+  outline: none;
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 2px;
+}
+.payment .form-payment form label #isConfirmed {
+  background-color: #2cb149;
+}
+.payment .form-payment form button {
+  outline: none;
+  border: none;
+  width: 50px;
+  height: 30px;
   border-radius: 5px;
   cursor: pointer;
 }

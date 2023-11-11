@@ -297,7 +297,11 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
                 <h3 className="login-error">{error}</h3>
               </div>
             )}
-            <button className="bg-primary" disabled={status === "submitting"}>
+            <button
+              type="sumbit"
+              className="bg-primary"
+              disabled={status === "submitting"}
+            >
               {status === "submitting" ? "Saving..." : "Save"}
             </button>
           </motion.form>

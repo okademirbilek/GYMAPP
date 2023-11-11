@@ -63,13 +63,19 @@
   }
 }
 
-.measurement-header {
+.measurement-header,
+.payment-header {
   padding: 20px;
   margin: 20px;
   h2 {
     max-width: 400px;
   }
+  img {
+    width: 55px;
+  }
 }
+
+//********************** measurement table ***********************///
 
 .measurement-table-container {
   margin: 20px;
@@ -141,4 +147,84 @@
   }
 }
 
-// Admin mui Table
+//********************** payment table ***********************///
+.payment-table-container {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: $base-box-shadow;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .table-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(88, 56, 182);
+    color: white;
+    font-size: $font-size-lg;
+  }
+  .date-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    padding: 20px 15px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: $base-box-shadow;
+    border-radius: 8px;
+    align-items: center;
+    border: 2px solid rgb(231, 221, 221);
+    h4 {
+      font-weight: normal;
+    }
+    margin-left: 20px;
+  }
+
+  .table-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    padding: 10px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: $base-box-shadow;
+    border-radius: 8px;
+    align-items: center;
+    border: 2px solid rgb(231, 221, 221);
+
+    .table-data {
+      svg {
+        width: 20px;
+        margin-bottom: 2px;
+      }
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      gap: 5px;
+      .confirmed,
+      .not-confirmed {
+        display: flex;
+
+        border-radius: 3px;
+        margin-left: 5px;
+        width: 125px;
+      }
+
+      .confirmed {
+        background-color: rgb(59, 184, 59);
+      }
+      .not-confirmed {
+        background-color: rgb(183, 183, 42);
+      }
+    }
+  }
+}

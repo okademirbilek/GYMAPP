@@ -26,6 +26,9 @@ import {
   updateProfile,
 } from "firebase/auth"
 
+//uuid for array data
+import { v4 as uuidv4 } from "uuid"
+
 const AdminContext = createContext()
 
 function useAdminAuth() {
@@ -52,6 +55,8 @@ const AdminProvider = ({ children }) => {
     )
     return unsubscribedb
   }, [])
+
+  //****************** Measurement ****************/
 
   const addNewMeasurement = async (id) => {
     const userCollection = doc(db, `users/${id}`)
@@ -86,12 +91,37 @@ const AdminProvider = ({ children }) => {
     return updateDoc(userDoc, { measurements: updatedData })
   }
 
-  ////////////////////////ADMIN////////////////////////////////
+  //******************* Payment ********************/
+
+  const addNewPayment = async (id) => {
+    const userCollection = doc(db, `users/${id}`)
+    // const arrLength = userData.filter((item) => item.uid === id)[0].payment
+    //   .length
+    try {
+      await updateDoc(userCollection, {
+        payment: arrayUnion({
+          id: uuidv4(),
+          price: "",
+          isConfirmed: false,
+        }),
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const updatePayment = (id, updatedData) => {
+    const userDoc = doc(db, "users", id)
+
+    return updateDoc(userDoc, { payment: updatedData })
+  }
 
   const value = {
     userData,
     addNewMeasurement,
     updateMeasurement,
+    addNewPayment,
+    updatePayment,
   }
   return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
 }

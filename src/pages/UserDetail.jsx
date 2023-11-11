@@ -9,6 +9,7 @@ const UserDetail = () => {
   const params = useParams()
   const { userData } = useAdminAuth()
 
+  //filterin correct data
   const data = userData.filter((user) => user.id === params.id)
 
   //style for active page
