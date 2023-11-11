@@ -28,7 +28,7 @@ const AdminMeasurement = () => {
       {measurementData}
       <button
         onClick={() => addNewMeasurement(params.id)}
-        className="bg-primary p-1 br-sm"
+        className="add-measurement-btn bg-primary p-1 br-sm"
       >
         +Add new Measurement
       </button>

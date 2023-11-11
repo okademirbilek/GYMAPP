@@ -155,7 +155,7 @@ const AdminProfile = () => {
             <h3 className="login-error">{error}</h3>
           </div>
         )}
-        <button className="ml-1" disabled={status === "submitting"}>
+        <button disabled={status === "submitting"}>
           {status === "submitting" ? "Saving..." : "Save"}
         </button>
       </form>

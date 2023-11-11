@@ -17,7 +17,7 @@ const UserDetail = () => {
   }
 
   return (
-    <div className="user-detail-container p-2">
+    <div className="user-detail-container">
       <ul>
         <Link to="/dashboard" className="bg-primary display-f">
           Back to Users page

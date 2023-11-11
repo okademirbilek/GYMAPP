@@ -23,6 +23,9 @@ import useToggle from "../../customHooks/useToggle"
 
 import { motion } from "framer-motion"
 
+import LockIcon from "@mui/icons-material/Lock"
+import LockOpenIcon from "@mui/icons-material/LockOpen"
+
 const container = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
@@ -94,7 +97,7 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
     <>
       <div className="form-measurement">
         <span className="date display-f align-center gp-1">
-          <h3>Date: {convertTime(formData?.timeStamp)}</h3>
+          <h3>{convertTime(formData?.timeStamp)}</h3>
           <button onClick={() => toggleValue((prev) => !prev)}>
             <img src={arrow} alt="down arrow" className="arrow " />
           </button>
@@ -274,7 +277,19 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
               onClick={() => setLockForm((prevFrom) => !prevFrom)}
               className="bg-primary"
             >
-              {lockForm ? "unlock" : "lock"}
+              {lockForm ? (
+                <>
+                  <p className="display-f align-center justify-center ">
+                    <LockIcon />
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="display-f align-center justify-center ">
+                    <LockOpenIcon />
+                  </p>
+                </>
+              )}
             </button>
 
             {error && (

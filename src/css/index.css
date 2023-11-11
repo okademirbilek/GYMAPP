@@ -7,8 +7,11 @@
 
 html,
 body {
-  overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -1303,51 +1306,73 @@ img {
 }
 
 /***************************************MEASUREMENT FORM ***********************************************/
-.measurement .form-measurement {
-  margin: 10px 0;
+.user-detail-container {
+  padding: 10px;
 }
 @media (min-width: 720px) {
-  .measurement .form-measurement {
-    margin: 20px;
+  .user-detail-container {
+    padding: 20px;
   }
 }
-.measurement .form-measurement .date button {
+.user-detail-container .measurement .add-measurement-btn {
+  outline: none;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #218838;
+}
+.user-detail-container .measurement .add-measurement-btn:hover {
+  background-color: #2cb149;
+}
+.user-detail-container .measurement .form-measurement {
+  margin: 10px 0;
+}
+.user-detail-container .measurement .form-measurement .date button {
   background-color: transparent;
   outline: none;
   border: none;
   cursor: pointer;
 }
-.measurement .form-measurement .date button img {
+.user-detail-container .measurement .form-measurement .date button img {
   width: 40px;
   height: 40px;
   object-fit: contain;
 }
-.measurement .form-measurement form {
+.user-detail-container .measurement .form-measurement form {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
 }
-.measurement .form-measurement form label {
+@media (min-width: 720px) {
+  .user-detail-container .measurement .form-measurement form {
+    justify-content: flex-start;
+  }
+}
+.user-detail-container .measurement .form-measurement form label {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 2px;
   height: 54px;
-  width: clamp(200px, 50%, 250px);
+  min-width: 240px;
+  max-width: 260px;
   border: 2px solid whitesmoke;
   border-radius: 5px;
   padding: 0 10px;
 }
 @media (min-width: 720px) {
-  .measurement .form-measurement form label {
+  .user-detail-container .measurement .form-measurement form label {
     gap: 10px;
+    justify-content: space-between;
   }
 }
-.measurement .form-measurement form label .hip,
-.measurement .form-measurement form label .waist,
-.measurement .form-measurement form label .pelvis {
+.user-detail-container .measurement .form-measurement form label .hip,
+.user-detail-container .measurement .form-measurement form label .waist,
+.user-detail-container .measurement .form-measurement form label .pelvis {
   width: 50px;
 }
-.measurement .form-measurement form label input {
+.user-detail-container .measurement .form-measurement form label input {
   max-width: 40px;
   text-align: center;
   outline: none;
@@ -1356,6 +1381,14 @@ img {
   font-weight: bold;
   padding: 5px;
   border-radius: 2px;
+}
+.user-detail-container .measurement .form-measurement form button {
+  outline: none;
+  border: none;
+  width: clamp(100px, 45%, 150px);
+  height: 58px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .user-detail-container {
