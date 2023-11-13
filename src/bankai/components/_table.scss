@@ -240,6 +240,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
+
   .table-index {
     display: flex;
     align-items: center;
@@ -283,6 +284,51 @@
     .table-data {
       display: flex;
       gap: 10px;
+      svg {
+        color: #2cb149;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 500px;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+    label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px;
+      padding: 10px;
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: $base-box-shadow;
+      border-radius: 8px;
+      align-items: center;
+      border: 2px solid rgb(231, 221, 221);
+      input {
+        background-color: green;
+        cursor: pointer;
+      }
+      .isConfirmed {
+        background-color: #2cb149;
+      }
+    }
+
+    button {
+      outline: none;
+      border: none;
+      width: 70px;
+      height: 49px;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        background-color: #2cb149;
+      }
     }
   }
 }

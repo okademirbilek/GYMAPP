@@ -66,7 +66,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
         <div className="table-data display-f ">
           Confirmed Trainer
           {formData.isConfirmedTrainer && (
-            <div className="display-f align-center">
+            <div className="display-f align-center ">
               <VerifiedUserIcon />
               Yes
             </div>

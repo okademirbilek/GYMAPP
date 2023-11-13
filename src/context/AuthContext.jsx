@@ -127,21 +127,35 @@ function AuthProvider({ children }) {
     return updateDoc(userDoc, { trainingDates: updatedData })
   }
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (currentID) {
+  //       const q = query(collection(db, "users"), where("uid", "==", currentID))
+  //       try {
+  //         const querySnapshot = await getDocs(q)
+  //         querySnapshot?.forEach((doc) => {
+  //           setCurrentUserData(doc.data())
+  //         })
+  //       } catch (err) {
+  //         console.log(err)
+  //       }
+  //     }
+  //   }
+  //   fetchData()
+  // }, [currentUser, currentID])
+
+  //check any realtime changes
   useEffect(() => {
-    const fetchData = async () => {
-      if (currentID) {
-        const q = query(collection(db, "users"), where("uid", "==", currentID))
-        try {
-          const querySnapshot = await getDocs(q)
-          querySnapshot?.forEach((doc) => {
-            setCurrentUserData(doc.data())
-          })
-        } catch (err) {
-          console.log(err)
-        }
-      }
+    if (currentID) {
+      const q = query(collection(db, "users"), where("uid", "==", currentID))
+      const unsubscribedb = onSnapshot(q, function (snapshot) {
+        // Sync up our local notes array with the snapshot data
+        const userDataArr = snapshot.docs?.map((doc) => doc.data())
+
+        setCurrentUserData(userDataArr[0])
+      })
+      return unsubscribedb
     }
-    fetchData()
   }, [currentUser, currentID])
 
   /************************************** Firebase Collection****************************************** */

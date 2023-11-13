@@ -1246,6 +1246,49 @@ img {
   display: flex;
   gap: 10px;
 }
+.member-tracking-table .table-container .table-data svg {
+  color: #2cb149;
+  margin-right: 5px;
+}
+.member-tracking-table form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 500px;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+}
+.member-tracking-table form label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+  align-items: center;
+  border: 2px solid rgb(231, 221, 221);
+}
+.member-tracking-table form label input {
+  background-color: green;
+  cursor: pointer;
+}
+.member-tracking-table form label .isConfirmed {
+  background-color: #2cb149;
+}
+.member-tracking-table form button {
+  outline: none;
+  border: none;
+  width: 70px;
+  height: 49px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.member-tracking-table form button:hover {
+  background-color: #2cb149;
+}
 
 /******************************************* LOGIN PAGE ********************************* */
 .login-container {
