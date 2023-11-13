@@ -37,6 +37,7 @@ function AuthProvider({ children }) {
   const currentID = currentUser?.uid
   // const [userData, setUserData] = useState([])
   const [currentUserData, setCurrentUserData] = useState([])
+  console.log(currentUserData)
 
   const [loading, setLoading] = useState(true)
 
@@ -106,6 +107,7 @@ function AuthProvider({ children }) {
         meals: [],
         exercises: [],
         payment: [],
+        trainingDates: [],
       })
     } catch (err) {
       console.log(err)
@@ -118,14 +120,12 @@ function AuthProvider({ children }) {
 
     return updateDoc(userDoc, { profileInfo: updatedData })
   }
-  // const updateUser = async (id, updatedData) => {
-  //   const userDoc = doc(db, "users", id)
-  //   try {
-  //     await updateDoc(userDoc, { profileInfo: updatedData })
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+
+  const updateTrainingDate = (id, updatedData) => {
+    const userDoc = doc(db, "users", id)
+
+    return updateDoc(userDoc, { trainingDates: updatedData })
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -155,12 +155,10 @@ function AuthProvider({ children }) {
     updateEmailUser,
     updatePasswordUser,
     addDefaultData,
-    // userData,
     updateUserName,
     updateUser,
     currentUserData,
-    // addNewMeasurement,
-    // updateMeasurement,
+    updateTrainingDate,
   }
   return (
     <AuthContext.Provider value={value}>

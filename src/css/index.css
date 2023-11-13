@@ -1192,6 +1192,61 @@ img {
   background-color: rgb(183, 183, 42);
 }
 
+.member-tracking-table {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.member-tracking-table .table-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(56, 182, 117);
+  color: white;
+  font-size: 1.5rem;
+}
+.member-tracking-table .date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+  align-items: center;
+  border: 2px solid rgb(231, 221, 221);
+  margin-left: 20px;
+}
+.member-tracking-table .date h4 {
+  font-weight: normal;
+}
+.member-tracking-table .table-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  padding: 10px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+  align-items: center;
+  border: 2px solid rgb(231, 221, 221);
+}
+.member-tracking-table .table-container .table-data {
+  display: flex;
+  gap: 10px;
+}
+
 /******************************************* LOGIN PAGE ********************************* */
 .login-container {
   position: relative;
@@ -1504,6 +1559,48 @@ img {
   background-color: #2cb149;
 }
 .payment .form-payment form button {
+  outline: none;
+  border: none;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/***************************************MEMBER TRACKING FORM ***********************************************/
+.member-tracking .add-training-dates-btn {
+  outline: none;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #218838;
+}
+.member-tracking .add-training-dates-btn:hover {
+  background-color: #2cb149;
+}
+.member-tracking .form-member-tracking form {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+}
+.member-tracking .form-member-tracking form label input {
+  margin-left: 10px;
+  max-width: 60px;
+  text-align: center;
+  outline: none;
+  border: none;
+  color: black;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 2px;
+}
+.member-tracking .form-member-tracking form label #isConfirmed {
+  background-color: #2cb149;
+}
+.member-tracking .form-member-tracking form button {
   outline: none;
   border: none;
   width: 50px;

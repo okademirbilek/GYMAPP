@@ -3,6 +3,7 @@ import { convertTime } from "../../utils/utils"
 import GppGoodIcon from "@mui/icons-material/GppGood"
 import HourglassTopIcon from "@mui/icons-material/HourglassTop"
 import CurrencyLiraIcon from "@mui/icons-material/CurrencyLira"
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"
 
 const TablePayment = ({ data, index }) => {
   return (
@@ -10,6 +11,7 @@ const TablePayment = ({ data, index }) => {
       <div className="table-index">{index + 1}</div>
       <div className="date-container display-f align-center">
         <h4>Date : {data.timeStamp && convertTime(data.timeStamp)}</h4>{" "}
+        <CalendarMonthIcon />{" "}
       </div>
 
       <div className="table-container">

@@ -10,6 +10,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined"
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined"
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined"
+import TodayIcon from "@mui/icons-material/Today"
 
 import { useAuth } from "../context/AuthContext"
 
@@ -108,6 +109,15 @@ const Sidebar = () => {
                   >
                     <PaymentsIcon />
                     <span>Payment</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/trainingDates"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <TodayIcon />
+                    <span>Training Dates</span>
                   </NavLink>
                 </li>
                 <p className="title">User</p>

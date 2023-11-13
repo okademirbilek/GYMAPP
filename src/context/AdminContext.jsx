@@ -116,12 +116,37 @@ const AdminProvider = ({ children }) => {
     return updateDoc(userDoc, { payment: updatedData })
   }
 
+  //******************* Member Tracking  ********************/
+
+  const addNewTrainingDate = async (id) => {
+    const userCollection = doc(db, `users/${id}`)
+    try {
+      await updateDoc(userCollection, {
+        trainingDates: arrayUnion({
+          id: uuidv4(),
+          isConfirmedTrainer: false,
+          isConfirmedMember: false,
+        }),
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const updateTrainingDate = (id, updatedData) => {
+    const userDoc = doc(db, "users", id)
+
+    return updateDoc(userDoc, { trainingDates: updatedData })
+  }
+
   const value = {
     userData,
     addNewMeasurement,
     updateMeasurement,
     addNewPayment,
     updatePayment,
+    addNewTrainingDate,
+    updateTrainingDate,
   }
   return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
 }

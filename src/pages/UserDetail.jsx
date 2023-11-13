@@ -50,6 +50,12 @@ const UserDetail = () => {
         >
           Meal
         </NavLink>
+        <NavLink
+          to={`/dashboard/${params.id}/adminMemberTracking`}
+          style={({ isActive }) => (isActive ? activeStyle : null)}
+        >
+          Member Tracking
+        </NavLink>
       </ul>
 
       <Outlet context={{ data, params }} />

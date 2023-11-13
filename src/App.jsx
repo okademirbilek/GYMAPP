@@ -24,7 +24,9 @@ import {
   AdminMeasurement,
   AdminPayment,
   AdminProfile,
+  AdminMemberTracking,
 } from "./pages/index"
+import TrainingDates from "./pages/TrainingDates"
 
 function App() {
   const { currentUser } = useAuth()
@@ -69,6 +71,10 @@ function App() {
                     path="/dashboard/:id/adminMeal"
                     element={<AdminMeal />}
                   />
+                  <Route
+                    path="/dashboard/:id/adminMemberTracking"
+                    element={<AdminMemberTracking />}
+                  />
                 </Route>
               </>
             )}
@@ -78,6 +84,7 @@ function App() {
             <Route path="/measurements" element={<Measurements />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/trainingDates" element={<TrainingDates />} />
           </Route>
         </Route>
       </Routes>
