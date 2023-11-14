@@ -62,6 +62,8 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
   async function handleSubmit(e) {
     e.preventDefault()
     let updatedData = []
+    setError("")
+    setStatus("submitting")
     measurementData.map((item) => {
       if (item.id === data.id) {
         updatedData.push({ ...formData, timeStamp: new Date() })
@@ -69,8 +71,7 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
         updatedData.push(item)
       }
     })
-    setError("")
-    setStatus("submitting")
+
     await updateMeasurement(uid, updatedData)
       .then(() => console.log("success"))
       .catch((error) => {

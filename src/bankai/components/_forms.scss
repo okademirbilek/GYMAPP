@@ -405,3 +405,45 @@
     }
   }
 }
+
+/*************************************** MEAL FORM ***********************************************/
+
+.meal {
+  .form-meal {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 90%;
+        textarea {
+          outline: none;
+          border: none;
+          color: black;
+          font-weight: bold;
+          resize: none;
+          border-radius: 2px;
+          height: 150px;
+        }
+      }
+
+      button {
+        outline: none;
+        border: none;
+        width: 150px;
+        height: 50px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+}

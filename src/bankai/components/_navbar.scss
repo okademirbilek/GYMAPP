@@ -2,15 +2,22 @@
 @use "breakpoints" as *;
 
 .navbar {
-  background: #330c6e;
-  background: -webkit-linear-gradient(
-    90deg,
-    #330c6e 0%,
-    #7546bc 50%,
-    #465779 100%
-  );
+  // background: #330c6e;
+  // background: -webkit-linear-gradient(
+  //   90deg,
+  //   #330c6e 0%,
+  //   #7546bc 50%,
+  //   #465779 100%
+  // );
+
+  // background: linear-gradient(90deg, #330c6e 0%, #7546bc 50%, #465779 100%);
+  // background: #99180d;
+  // background: -webkit-linear-gradient(270deg, #99180d 0%, #313131 100%);
+  // background: linear-gradient(270deg, #99180d 0%, #313131 100%);
+  background: #99180d;
+  background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
+  background: linear-gradient(270deg, #99180d 0%, #111111 100%);
   width: 100%;
-  background: linear-gradient(90deg, #330c6e 0%, #7546bc 50%, #465779 100%);
   height: 75px;
   .wrapper {
     padding: 0px 40px;

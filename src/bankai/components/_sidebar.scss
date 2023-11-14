@@ -11,9 +11,12 @@
     flex: 0.8;
     border-right: 0.5px solid rgb(207, 204, 204);
     min-height: 100vh;
-    background: #465779;
-    background: -webkit-linear-gradient(0deg, #465779 0%, #330c6e 100%);
-    background: linear-gradient(0deg, #465779 0%, #330c6e 100%);
+    // background: #465779;
+    // background: -webkit-linear-gradient(0deg, #465779 0%, #330c6e 100%);
+    // background: linear-gradient(0deg, #465779 0%, #330c6e 100%);
+    background: #99180d;
+    background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
+    background: linear-gradient(0deg, #99180d 0%, #111111 100%);
 
     ul {
       display: flex;

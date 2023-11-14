@@ -2,6 +2,9 @@
 @use "breakpoints" as *;
 
 .layout {
+  background: #99180d;
+  background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
+  background: linear-gradient(0deg, #99180d 0%, #111111 100%);
   min-height: 100dvh;
   .container-site {
     flex: 12;

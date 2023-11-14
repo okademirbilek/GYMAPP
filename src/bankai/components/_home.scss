@@ -1,2 +1,81 @@
 @use "variables" as *;
 @use "breakpoints" as *;
+
+.home {
+  display: grid;
+  grid-template-columns: auto / auto / auto / 1fr;
+  grid-template-areas:
+    " trainer"
+    " member"
+    "alert  ";
+
+  @include lg {
+    grid-template-areas:
+      " trainer  member member member member "
+      "alert  alert alert alert alert";
+  }
+  .trainer-data {
+    grid-area: trainer;
+    margin: 20px;
+    padding: 20px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: $base-box-shadow;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    @include md {
+      max-width: 300px;
+    }
+
+    img {
+      width: 300px;
+      border-radius: 5px;
+      max-width: 450px;
+    }
+    .social {
+      display: flex;
+      gap: 10px;
+      a {
+        cursor: pointer;
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+  .members {
+    grid-area: member;
+    margin: 20px;
+    padding: 20px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: $base-box-shadow;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+
+    //   img {
+    //     width: 300px;
+    //     height: 300px;
+    //     border-radius: 5px;
+    //   }
+    //   span {
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: space-between;
+    //     gap: 10px;
+    //     margin-top: 10px;
+    //   }
+  }
+  .alerts {
+    grid-area: alert;
+    margin: 20px;
+    padding: 20px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: $base-box-shadow;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+  }
+}

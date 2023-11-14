@@ -60,12 +60,12 @@ const AdminProvider = ({ children }) => {
 
   const addNewMeasurement = async (id) => {
     const userCollection = doc(db, `users/${id}`)
-    const arrLength = userData.filter((item) => item.uid === id)[0].measurements
-      .length
+    // const arrLength = userData.filter((item) => item.uid === id)[0].measurements
+    //   .length
     try {
       await updateDoc(userCollection, {
         measurements: arrayUnion({
-          id: arrLength,
+          id: uuidv4(),
           shoulder: 0,
           chest: 0,
           arm: 0,
@@ -139,6 +139,14 @@ const AdminProvider = ({ children }) => {
     return updateDoc(userDoc, { trainingDates: updatedData })
   }
 
+  //******************* Meals  ********************/
+
+  const updateMeal = (id, updatedData) => {
+    const userDoc = doc(db, "users", id)
+
+    return updateDoc(userDoc, { meals: updatedData })
+  }
+
   const value = {
     userData,
     addNewMeasurement,
@@ -147,6 +155,7 @@ const AdminProvider = ({ children }) => {
     updatePayment,
     addNewTrainingDate,
     updateTrainingDate,
+    updateMeal,
   }
   return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
 }

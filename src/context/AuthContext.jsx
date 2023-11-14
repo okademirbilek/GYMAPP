@@ -35,9 +35,7 @@ function useAuth() {
 function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const currentID = currentUser?.uid
-  // const [userData, setUserData] = useState([])
   const [currentUserData, setCurrentUserData] = useState([])
-  console.log(currentUserData)
 
   const [loading, setLoading] = useState(true)
 
@@ -104,7 +102,7 @@ function AuthProvider({ children }) {
           uid: id,
         },
         measurements: [],
-        meals: [],
+        meals: { breakfast: "", launch: "", dinner: "", snack: "" },
         exercises: [],
         payment: [],
         trainingDates: [],

@@ -17,7 +17,6 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
     if (data) {
       setFormData(data)
       setLoading(false)
-      console.log("helooo")
     }
   }, [data])
 

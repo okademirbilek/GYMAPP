@@ -332,3 +332,66 @@
     }
   }
 }
+
+//********************** Meals  table ***********************///
+.meal-table-container {
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: $base-box-shadow;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  .date-container {
+    padding: 20px;
+  }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -20px;
+    padding-bottom: 10px;
+    justify-content: center;
+    @include md {
+      justify-content: flex-start;
+    }
+
+    .table-container {
+      margin: 20px;
+      padding: 20px;
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: $base-box-shadow;
+      border-radius: 8px;
+      width: 200px;
+      &:nth-child(1) {
+        background-color: #2cb149;
+      }
+      &:nth-child(2) {
+        background-color: rgb(196, 70, 32);
+      }
+      &:nth-child(3) {
+        background-color: #6f2cb1;
+      }
+      &:nth-child(4) {
+        background-color: #4435cb;
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        img {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      .table-data {
+        margin-top: 15px;
+
+        ul {
+          li {
+            list-style-type: circle;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}
