@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
 import { convertTime } from "../utils/utils"
 
+import Loader from "../components/Loader"
+
 const Profile = () => {
   const { currentUserData, currentUser, updateUser } = useAuth()
   const [lockForm, setLockForm] = useState(true)
@@ -22,14 +24,16 @@ const Profile = () => {
     e.preventDefault()
     setError("")
     setStatus("submitting")
+    setLoading(true)
     await updateUser(currentUser.uid, formData)
-      .then((cb) => console.log("snackbar completed"))
+      .then(() => console.log("snackbar completed"))
       .catch((error) => {
         console.log(error.message)
         setError(`error : ${error.message} `)
       })
       .finally(() => {
         setStatus("idle")
+        setLoading(false)
       })
   }
 
@@ -43,7 +47,11 @@ const Profile = () => {
 
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return (
+      <span className="loader">
+        <Loader />
+      </span>
+    )
   }
 
   return (

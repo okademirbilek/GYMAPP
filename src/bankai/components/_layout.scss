@@ -6,7 +6,12 @@
   background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
   background: linear-gradient(0deg, #99180d 0%, #111111 100%);
   min-height: 100dvh;
+  margin-bottom: 8vh;
+  @include md {
+    margin-bottom: 0;
+  }
   .container-site {
+    position: relative;
     flex: 12;
     @include md {
       flex: 6;

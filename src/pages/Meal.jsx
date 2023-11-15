@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
 import { convertTime } from "../utils/utils"
 
+import Loader from "../components/Loader"
+
 import breakfast from "../assets/images/breakfast.png"
 import lunch from "../assets/images/lunch.png"
 import dinner from "../assets/images/dinner.png"
@@ -25,7 +27,11 @@ const Meal = () => {
 
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return (
+      <span className="loader">
+        <Loader />
+      </span>
+    )
   }
   return (
     <div>

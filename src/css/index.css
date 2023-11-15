@@ -801,14 +801,17 @@ img {
   border: none;
   outline: none;
   background-color: transparent;
+  max-width: 150px;
 }
 .navbar .wrapper .search input::placeholder {
   font-weight: bold;
   font-size: 1rem;
   color: rgb(205, 201, 201);
 }
-.navbar .wrapper .items {
-  display: none;
+@media (min-width: 720px) {
+  .navbar .wrapper .items {
+    display: none;
+  }
 }
 @media (min-width: 960px) {
   .navbar .wrapper .items .item {
@@ -823,6 +826,56 @@ img {
     height: 50px;
     border-radius: 50%;
   }
+}
+
+/******************** Bottom Navbar ****************************/
+.bottom-navbar {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0px;
+  background: #99180d;
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  border-top: 3px solid rgba(255, 255, 255, 0.25);
+  height: 8vh;
+}
+@media (min-width: 720px) {
+  .bottom-navbar {
+    display: none;
+  }
+}
+.bottom-navbar nav {
+  width: 100%;
+  height: 100%;
+}
+.bottom-navbar nav ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.bottom-navbar nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  align-self: center;
+  height: 60%;
+}
+.bottom-navbar nav ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  width: 60%;
+}
+.bottom-navbar nav ul li a svg {
+  width: 30px;
+  height: 30px;
 }
 
 .sidebar {
@@ -1855,8 +1908,15 @@ img {
   background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
   background: linear-gradient(0deg, #99180d 0%, #111111 100%);
   min-height: 100dvh;
+  margin-bottom: 8vh;
+}
+@media (min-width: 720px) {
+  .layout {
+    margin-bottom: 0;
+  }
 }
 .layout .container-site {
+  position: relative;
   flex: 12;
 }
 @media (min-width: 720px) {
@@ -1873,6 +1933,14 @@ img {
   .layout .container-site {
     flex: 6;
   }
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
 }
 
 .p-0 {

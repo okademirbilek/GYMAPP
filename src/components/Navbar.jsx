@@ -14,24 +14,24 @@ const navbar = () => {
             <SearchIcon />
           </div>
           <div className="items display-f gp-2">
-            <div className="item">
+            {/* <div className="item">
               <LanguageIcon />
               En
             </div>
             <div className="item">
               <ExitToAppIcon />
               Sign In
-            </div>
+            </div> */}
             <div className="item">
               <MenuIcon />
             </div>
-            <div className="item">
+            {/* <div className="item">
               <img
                 src="https://www.w3schools.com/howto/img_avatar.png"
                 alt="Avatar"
                 className="avatar"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

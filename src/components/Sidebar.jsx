@@ -17,8 +17,6 @@ import { useAuth } from "../context/AuthContext"
 const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
 const Sidebar = () => {
-  const [error, setError] = useState("")
-
   const { logout, currentUser } = useAuth()
 
   const navigate = useNavigate()

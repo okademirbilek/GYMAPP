@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { useAuth } from "../context/AuthContext"
 import FormMemberTracking from "../components/forms/FormMemberTracking"
 
+import Loader from "../components/Loader"
+
 const TrainingDates = () => {
   const [loading, setLoading] = useState(true)
   const { currentUserData } = useAuth()
@@ -14,7 +16,11 @@ const TrainingDates = () => {
 
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return (
+      <span className="loader">
+        <Loader />
+      </span>
+    )
   }
   return (
     <div>
