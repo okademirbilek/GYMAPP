@@ -14,10 +14,10 @@ import TodayIcon from "@mui/icons-material/Today"
 
 import { useAuth } from "../context/AuthContext"
 
-const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
+// const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
 const Sidebar = () => {
-  const { logout, currentUser } = useAuth()
+  const { logout, currentUserData } = useAuth()
 
   const navigate = useNavigate()
 
@@ -27,7 +27,7 @@ const Sidebar = () => {
   }
 
   async function handleLogout() {
-    setError(" ")
+    // setError(" ")
 
     await logout()
       .then(navigate("/login"))
@@ -46,7 +46,7 @@ const Sidebar = () => {
         <hr />
         <div className="center">
           <ul className="display-f fd-c">
-            {currentUser?.uid === adminId && (
+            {currentUserData.isAdmin && (
               <>
                 <p className="title">Admin</p>
                 <li>
@@ -60,7 +60,7 @@ const Sidebar = () => {
                 </li>
               </>
             )}
-            {currentUser?.uid !== adminId ? (
+            {!currentUserData.isAdmin ? (
               <>
                 <p className="title">Lists</p>
                 <li>

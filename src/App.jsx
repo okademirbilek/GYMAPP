@@ -5,7 +5,7 @@ import { useAuth } from "./context/AuthContext"
 
 import { AdminProvider } from "./context/AdminContext"
 
-const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
+// const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
 import BottomNavbar from "./components/BottomNavbar"
 
@@ -31,7 +31,7 @@ import {
 import TrainingDates from "./pages/TrainingDates"
 
 function App() {
-  const { currentUser } = useAuth()
+  const { currentUserData } = useAuth()
   return (
     <>
       <Routes>
@@ -42,7 +42,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           {/* you cannot see the pages without authentication */}
           <Route element={<AuthRequired />}>
-            {currentUser?.uid === adminId && (
+            {currentUserData?.isAdmin && (
               <>
                 <Route
                   path="/dashboard"

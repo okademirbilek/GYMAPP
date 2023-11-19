@@ -15,14 +15,14 @@ const activeStyle = {
   color: "rgb(17, 17, 17)",
 }
 
-const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
+// const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 const BottomNavbar = () => {
-  const { currentUser } = useAuth()
+  const { currentUserData } = useAuth()
   return (
     <div className="bottom-navbar">
       <nav>
         <ul className="display-f">
-          {currentUser?.uid === adminId && (
+          {currentUserData.isAdmin && (
             <>
               <li>
                 <NavLink
@@ -35,7 +35,7 @@ const BottomNavbar = () => {
             </>
           )}
 
-          {currentUser?.uid !== adminId && (
+          {!currentUserData.isAdmin && (
             <>
               <li>
                 <NavLink

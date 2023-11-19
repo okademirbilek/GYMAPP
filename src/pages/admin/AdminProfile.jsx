@@ -14,7 +14,7 @@ const AdminProfile = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if (data[0].profileInfo) {
+    if (data[0]?.profileInfo) {
       setFormData(data[0].profileInfo)
       setLoading(false)
     }
