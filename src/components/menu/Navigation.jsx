@@ -44,11 +44,8 @@ export const Navigation = ({isOpen,toggleOpen}) => {
     logout()
   }
   
-  return (
+  return  (
     <motion.ul style={{display: !isOpen && "none"}} variants={variants}>
-      {/* {itemIds.map(i => (
-        <MenuItem i={i} key={i} />
-      ))} */}
       <motion.li  variants={variantsLi}  whileTap={{ scale: 0.95 }}>
         <Link
           to="/profile"
