@@ -1,30 +1,30 @@
-import React, { useState } from "react"
-import { NavLink, useNavigate } from "react-router-dom"
-import HomeIcon from "@mui/icons-material/Home"
-import DashboardIcon from "@mui/icons-material/Dashboard"
-import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"
-import RestaurantIcon from "@mui/icons-material/Restaurant"
-import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew"
-import PaymentsIcon from "@mui/icons-material/Payments"
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined"
-import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined"
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined"
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined"
-import TodayIcon from "@mui/icons-material/Today"
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import TodayIcon from "@mui/icons-material/Today";
 
-import { useAuth } from "../context/AuthContext"
+import { useAuth } from "../context/AuthContext";
 
 // const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
 const Sidebar = () => {
-  const { logout, currentUserData } = useAuth()
+  const { logout, currentUserData } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //style for active page
   const activeStyle = {
     backgroundColor: "rgb(17, 17, 17)",
-  }
+  };
 
   async function handleLogout() {
     // setError(" ")
@@ -32,8 +32,8 @@ const Sidebar = () => {
     await logout()
       .then(navigate("/login"))
       .catch((error) => {
-        setError("Failed to log out")
-      })
+        setError("Failed to log out");
+      });
   }
 
   return (
@@ -46,7 +46,7 @@ const Sidebar = () => {
         <hr />
         <div className="center">
           <ul className="display-f fd-c">
-            {currentUserData.isAdmin && (
+            {currentUserData?.isAdmin && (
               <>
                 <p className="title">Admin</p>
                 <li>
@@ -60,7 +60,7 @@ const Sidebar = () => {
                 </li>
               </>
             )}
-            {!currentUserData.isAdmin ? (
+            {!currentUserData?.isAdmin ? (
               <>
                 <p className="title">Lists</p>
                 <li>
@@ -154,7 +154,7 @@ const Sidebar = () => {
         </div>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

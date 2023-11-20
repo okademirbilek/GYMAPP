@@ -99,7 +99,7 @@ function AuthProvider({ children }) {
             "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
           timeStamp: serverTimestamp(),
           gsm: "05XXXXXXXXX",
-          birthday: "00-00-0000",
+          birthday: "0000-00-00",
           totalMonth: 0,
           gender: {
             male: true,

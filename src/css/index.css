@@ -1697,15 +1697,16 @@ img {
 }
 /*************************************** PROFILE FORM ***************************************************/
 .profile-container {
+  padding: 20px;
   margin: 20px;
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   border-radius: 8px;
 }
 .profile-container img {
+  width: 200px;
   border-radius: 50%;
-  width: 150px;
-  background-color: #00ccff;
+  padding: 0 10px;
 }
 .profile-container form {
   gap: 5px;
@@ -1714,6 +1715,14 @@ img {
 .profile-container form label {
   display: flex;
   flex-direction: column;
+}
+.profile-container form label span {
+  display: flex;
+  align-items: center;
+}
+.profile-container form label span svg {
+  width: 30px;
+  height: 30px;
 }
 .profile-container form label input {
   border: 1px solid rgb(209, 213, 219);

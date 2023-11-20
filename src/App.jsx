@@ -1,13 +1,13 @@
-import { Routes, Route } from "react-router-dom"
-import "./css/index.css"
-import AuthRequired from "./components/AuthRequired"
-import { useAuth } from "./context/AuthContext"
+import { Routes, Route } from "react-router-dom";
+import "./css/index.css";
+import AuthRequired from "./components/AuthRequired";
+import { useAuth } from "./context/AuthContext";
 
-import { AdminProvider } from "./context/AdminContext"
+import { AdminProvider } from "./context/AdminContext";
 
 // const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
-import BottomNavbar from "./components/BottomNavbar"
+import BottomNavbar from "./components/BottomNavbar";
 
 import {
   SignUp,
@@ -27,11 +27,11 @@ import {
   AdminPayment,
   AdminProfile,
   AdminMemberTracking,
-} from "./pages/index"
-import TrainingDates from "./pages/TrainingDates"
+} from "./pages/index";
+import TrainingDates from "./pages/TrainingDates";
 
 function App() {
-  const { currentUserData } = useAuth()
+  const { currentUserData } = useAuth();
   return (
     <>
       <Routes>
@@ -92,7 +92,7 @@ function App() {
       </Routes>
       <BottomNavbar />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

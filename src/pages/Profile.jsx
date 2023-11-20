@@ -23,7 +23,7 @@ const Profile = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (currentUserData.profileInfo) {
+    if (currentUserData?.profileInfo) {
       setFormData(currentUserData.profileInfo);
       setLoading(false);
     }
@@ -125,7 +125,7 @@ const Profile = () => {
       )}
       <form onSubmit={handleSubmit} className="form">
         <label className="input-label">
-          <span className="display-f gp-1">
+          <span className="display-f gp-1 mb-1">
             Upload Image <DriveFolderUploadIcon />
           </span>
           <input
@@ -236,7 +236,6 @@ const Profile = () => {
         </button>
 
         <button
-          className="ml-1"
           disabled={status === "submitting" || (per !== null && per < 100)}
         >
           {status === "submitting" ? "Saving..." : "Save"}

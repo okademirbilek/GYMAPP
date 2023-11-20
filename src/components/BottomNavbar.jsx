@@ -1,28 +1,28 @@
-import React, { useState } from "react"
-import { NavLink, useNavigate } from "react-router-dom"
-import HomeIcon from "@mui/icons-material/Home"
-import DashboardIcon from "@mui/icons-material/Dashboard"
-import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"
-import RestaurantIcon from "@mui/icons-material/Restaurant"
-import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew"
-import PaymentsIcon from "@mui/icons-material/Payments"
-import TodayIcon from "@mui/icons-material/Today"
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import TodayIcon from "@mui/icons-material/Today";
 
-import { useAuth } from "../context/AuthContext"
+import { useAuth } from "../context/AuthContext";
 
 //style for active page
 const activeStyle = {
   color: "rgb(17, 17, 17)",
-}
+};
 
 // const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 const BottomNavbar = () => {
-  const { currentUserData } = useAuth()
+  const { currentUserData } = useAuth();
   return (
     <div className="bottom-navbar">
       <nav>
         <ul className="display-f">
-          {currentUserData.isAdmin && (
+          {currentUserData?.isAdmin && (
             <>
               <li>
                 <NavLink
@@ -35,7 +35,7 @@ const BottomNavbar = () => {
             </>
           )}
 
-          {!currentUserData.isAdmin && (
+          {!currentUserData?.isAdmin && (
             <>
               <li>
                 <NavLink
@@ -90,7 +90,7 @@ const BottomNavbar = () => {
         </ul>
       </nav>
     </div>
-  )
-}
+  );
+};
 
-export default BottomNavbar
+export default BottomNavbar;
