@@ -1,8 +1,6 @@
 @use "variables" as *;
 @use "breakpoints" as *;
 
-
-
 .navbar {
   background: #99180d;
   background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
@@ -32,7 +30,7 @@
     }
 
     .items {
-      .menu-nav{
+      .menu-nav {
         position: absolute;
         top: 0;
         left: 0;
@@ -44,10 +42,9 @@
           left: 0;
           bottom: 0;
           width: 300px;
-          background: rgb(241, 236, 236)
-          
+          background: rgb(241, 236, 236);
         }
-        
+
         button {
           outline: none;
           border: none;
@@ -71,7 +68,6 @@
         }
 
         ul {
-          
           gap: 10px;
           padding: 25px;
           position: absolute;
@@ -90,7 +86,7 @@
             padding: 5px;
             color: #99180d;
             font-weight: bold;
-            a{
+            a {
               display: flex;
               gap: 10px;
             }
@@ -104,18 +100,6 @@
               margin-right: 20px;
             }
 
-            
-            // .text-placeholder {
-            //   display: flex;
-            //   align-items: center;
-            //   padding-left: 10px;
-            //   color: #111111;
-            //   border-radius: 5px;
-            //   width: 200px;
-            //   height: 40px;
-            //   flex: 1;
-            // }
-            
             .refresh {
               padding: 10px;
               position: absolute;
@@ -131,9 +115,7 @@
               cursor: pointer;
             }
           }
-
         }
-
       }
       .item {
         display: flex;
@@ -149,7 +131,6 @@
         }
       }
     }
-
 
     .items {
       @include md {
@@ -228,5 +209,3 @@
     }
   }
 }
-
-
