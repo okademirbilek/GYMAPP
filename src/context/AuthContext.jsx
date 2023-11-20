@@ -1,6 +1,8 @@
-import React, { useContext, useState, useEffect, createContext } from "react"
+import React, { useContext, useState, useEffect, createContext } from "react";
 // import { enqueueSnackbar } from "notistack"
-import { auth, db } from "../../firebase"
+import { auth, db, storage } from "../../firebase";
+
+//firestore
 import {
   onSnapshot,
   addDoc,
@@ -14,7 +16,9 @@ import {
   where,
   updateDoc,
   arrayUnion,
-} from "firebase/firestore"
+} from "firebase/firestore";
+
+//auth
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -24,46 +28,48 @@ import {
   updateEmail,
   updatePassword,
   updateProfile,
-} from "firebase/auth"
+} from "firebase/auth";
 
-const AuthContext = createContext()
+// import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+const AuthContext = createContext();
 
 function useAuth() {
-  return useContext(AuthContext)
+  return useContext(AuthContext);
 }
 
 function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState()
-  const currentID = currentUser?.uid
-  const [currentUserData, setCurrentUserData] = useState([])
+  const [currentUser, setCurrentUser] = useState();
+  const currentID = currentUser?.uid;
+  const [currentUserData, setCurrentUserData] = useState([]);
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
+    return createUserWithEmailAndPassword(auth, email, password);
   }
 
   function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password)
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout() {
-    return signOut(auth)
+    return signOut(auth);
   }
 
   function resetPassword(email) {
-    return sendPasswordResetEmail(auth, email)
+    return sendPasswordResetEmail(auth, email);
   }
 
   function updateEmailUser(email) {
-    return updateEmail(auth.currentUser, email)
+    return updateEmail(auth.currentUser, email);
   }
   function updatePasswordUser(password) {
-    return updatePassword(auth.currentUser, password)
+    return updatePassword(auth.currentUser, password);
   }
 
   function updateUserName(userName) {
-    return updateProfile(auth.currentUser, userName)
+    return updateProfile(auth.currentUser, userName);
   }
 
   //set current user
@@ -71,25 +77,26 @@ function AuthProvider({ children }) {
     //when ever we call the createUserWithEmailAndPassword its gonna set
     //user for us
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user)
-      setLoading(false)
-    })
+      setCurrentUser(user);
+      setLoading(false);
+    });
 
     //cleanup function
     //unsubscribe for us from the onAuthStateChanged method when unmount this component
-    return unsubscribe
-  }, [])
+    return unsubscribe;
+  }, []);
 
   //add dummy data for the user when the user sign up
   async function addDefaultData(id) {
-    const userCollection = doc(db, `users/${id}`)
+    const userCollection = doc(db, `users/${id}`);
     try {
       await setDoc(userCollection, {
         uid: id,
         profileInfo: {
           name: "FirstName",
           surname: "LastName",
-          picture: "https://www.w3schools.com/howto/img_avatar.png",
+          picture:
+            "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
           timeStamp: serverTimestamp(),
           gsm: "05XXXXXXXXX",
           birthday: "00-00-0000",
@@ -106,55 +113,38 @@ function AuthProvider({ children }) {
         exercises: [],
         payment: [],
         trainingDates: [],
-      })
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 
   //user can update his/her  own data
   const updateUser = (id, updatedData) => {
-    const userDoc = doc(db, "users", id)
+    const userDoc = doc(db, "users", id);
 
-    return updateDoc(userDoc, { profileInfo: updatedData })
-  }
+    return updateDoc(userDoc, { profileInfo: updatedData });
+  };
 
   const updateTrainingDate = (id, updatedData) => {
-    const userDoc = doc(db, "users", id)
+    const userDoc = doc(db, "users", id);
 
-    return updateDoc(userDoc, { trainingDates: updatedData })
-  }
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (currentID) {
-  //       const q = query(collection(db, "users"), where("uid", "==", currentID))
-  //       try {
-  //         const querySnapshot = await getDocs(q)
-  //         querySnapshot?.forEach((doc) => {
-  //           setCurrentUserData(doc.data())
-  //         })
-  //       } catch (err) {
-  //         console.log(err)
-  //       }
-  //     }
-  //   }
-  //   fetchData()
-  // }, [currentUser, currentID])
+    return updateDoc(userDoc, { trainingDates: updatedData });
+  };
 
   //check any realtime changes
   useEffect(() => {
     if (currentID) {
-      const q = query(collection(db, "users"), where("uid", "==", currentID))
+      const q = query(collection(db, "users"), where("uid", "==", currentID));
       const unsubscribedb = onSnapshot(q, function (snapshot) {
         // Sync up our local notes array with the snapshot data
-        const userDataArr = snapshot.docs?.map((doc) => doc.data())
+        const userDataArr = snapshot.docs?.map((doc) => doc.data());
 
-        setCurrentUserData(userDataArr[0])
-      })
-      return unsubscribedb
+        setCurrentUserData(userDataArr[0]);
+      });
+      return unsubscribedb;
     }
-  }, [currentUser, currentID])
+  }, [currentUser, currentID]);
 
   /************************************** Firebase Collection****************************************** */
 
@@ -171,15 +161,15 @@ function AuthProvider({ children }) {
     updateUser,
     currentUserData,
     updateTrainingDate,
-  }
+  };
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}
     </AuthContext.Provider>
-  )
+  );
 }
 
-export { AuthProvider, AuthContext, useAuth }
+export { AuthProvider, AuthContext, useAuth };
 
 //////////////////ADMIN////////////////////////////////
 

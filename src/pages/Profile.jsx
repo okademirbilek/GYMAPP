@@ -1,48 +1,100 @@
-import React, { useState, useEffect } from "react"
-import { useAuth } from "../context/AuthContext"
-import { convertTime } from "../utils/utils"
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import { convertTime } from "../utils/utils";
 
-import Loader from "../components/Loader"
+import Loader from "../components/Loader";
+
+import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import { storage } from "../../firebase";
+
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const Profile = () => {
-  const { currentUserData, currentUser, updateUser } = useAuth()
-  const [lockForm, setLockForm] = useState(true)
-  const [formData, setFormData] = useState(null)
+  const { currentUserData, currentUser, updateUser } = useAuth();
+  const [lockForm, setLockForm] = useState(true);
+  const [formData, setFormData] = useState(null);
+  //state for image
+  const [file, setFile] = useState("");
+  //percentage for image upload
+  const [per, setPerc] = useState(null);
 
-  const [loading, setLoading] = useState(true)
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (currentUserData.profileInfo) {
-      setFormData(currentUserData.profileInfo)
-      setLoading(false)
+      setFormData(currentUserData.profileInfo);
+      setLoading(false);
     }
-  }, [currentUserData])
+  }, [currentUserData]);
+
+  //track of uploading image to storage
+  useEffect(() => {
+    const uploadFile = () => {
+      const name = "profile" + currentUser?.uid;
+      const storageRef = ref(storage, name);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log("Upload is " + progress + "% done");
+          setPerc(progress);
+          switch (snapshot.state) {
+            case "paused":
+              console.log("Upload is paused");
+              break;
+            case "running":
+              console.log("Upload is running");
+              break;
+            default:
+              break;
+          }
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setFormData((prev) => ({ ...prev, picture: downloadURL }));
+          });
+        }
+      );
+    };
+    //checking if the data type is image or not
+    if (file) {
+      file.type.startsWith("image/")
+        ? uploadFile()
+        : setError("Unaccepted data type");
+    }
+  }, [file]);
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    setError("")
-    setStatus("submitting")
-    setLoading(true)
+    e.preventDefault();
+    setError("");
+    setStatus("submitting");
+    setLoading(true);
     await updateUser(currentUser.uid, formData)
       .then(() => console.log("snackbar completed"))
       .catch((error) => {
-        console.log(error.message)
-        setError(`error : ${error.message} `)
+        console.log(error.message);
+        setError(`error : ${error.message} `);
       })
       .finally(() => {
-        setStatus("idle")
-        setLoading(false)
-      })
+        setStatus("idle");
+        setLoading(false);
+      });
   }
 
   function handleChange(e) {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
   }
 
   //handle if user refresh the page
@@ -51,13 +103,40 @@ const Profile = () => {
       <span className="loader">
         <Loader />
       </span>
-    )
+    );
   }
 
   return (
     <div className="profile-container">
-      <img className="pt-1 pl-1" src={formData.picture} alt="profile picture" />
+      <img
+        src={
+          formData.picture
+            ? formData.picture
+            : file
+            ? URL.createObjectURL(file)
+            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+        }
+        alt="profile"
+      />
+      {error && (
+        <div className="alert">
+          <h3 className="login-error">{error}</h3>
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="form">
+        <label className="input-label">
+          <span className="display-f gp-1">
+            Upload Image <DriveFolderUploadIcon />
+          </span>
+          <input
+            onChange={(e) => setFile(e.target.files[0])}
+            type="file"
+            name="file"
+            className="display-n"
+            accept="image/*"
+          />
+        </label>
+
         <label className="input-label">
           Name
           <input
@@ -156,17 +235,15 @@ const Profile = () => {
           {lockForm ? "unlock" : "lock"}
         </button>
 
-        {error && (
-          <div className="alert">
-            <h3 className="login-error">{error}</h3>
-          </div>
-        )}
-        <button className="ml-1" disabled={status === "submitting"}>
+        <button
+          className="ml-1"
+          disabled={status === "submitting" || (per !== null && per < 100)}
+        >
           {status === "submitting" ? "Saving..." : "Save"}
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

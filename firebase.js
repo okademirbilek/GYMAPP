@@ -1,6 +1,7 @@
-import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
-import { getFirestore } from "firebase/firestore"
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_REACT_APP_FIREBASE_API_KEY,
@@ -10,7 +11,7 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env
     .VITE_REACT_APP_FIREBASE_MESSAGING_SENDER_IDVITE_REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_REACT_APP_FIREBASE_APP_ID,
-}
+};
 
 // Your web app's Firebase configuration
 // const firebaseConfig = {
@@ -22,12 +23,15 @@ const firebaseConfig = {
 //   appId: "1:1000861413253:web:7dcac16ccb6afeb4a31eec"
 // };
 
-const app = initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
 
 //variable for authentication
-export const auth = getAuth(app)
+export const auth = getAuth(app);
 
 //database
-export const db = getFirestore(app)
+export const db = getFirestore(app);
 
-export default app
+//storage
+export const storage = getStorage(app);
+
+export default app;
