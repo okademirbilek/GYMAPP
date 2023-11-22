@@ -1246,16 +1246,19 @@ img {
 }
 
 .measurement-header,
-.payment-header {
+.payment-header,
+.images-header {
   padding: 20px;
   margin: 20px;
 }
 .measurement-header h2,
-.payment-header h2 {
+.payment-header h2,
+.images-header h2 {
   max-width: 400px;
 }
 .measurement-header img,
-.payment-header img {
+.payment-header img,
+.images-header img {
   width: 55px;
 }
 
@@ -1553,6 +1556,39 @@ img {
 .meal-table-container .wrapper .table-container .table-data ul li {
   list-style-type: circle;
   margin-left: 20px;
+}
+
+.images-table-container {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+}
+.images-table-container .date-container {
+  max-width: 500px;
+}
+.images-table-container .date-container button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.images-table-container .date-container button img {
+  width: 40px;
+  height: 40px;
+}
+.images-table-container .flex-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px 0;
+  gap: 10px;
+}
+.images-table-container .flex-images img {
+  width: 250px;
+  height: 350px;
+  border-radius: 5px;
 }
 
 /******************************************* LOGIN PAGE ********************************* */

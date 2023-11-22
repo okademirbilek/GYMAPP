@@ -11,6 +11,7 @@ import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import TodayIcon from "@mui/icons-material/Today";
+import PermMediaIcon from "@mui/icons-material/PermMedia";
 
 import { useAuth } from "../context/AuthContext";
 
@@ -126,6 +127,15 @@ const Sidebar = () => {
                   >
                     <PersonOutlineOutlinedIcon />
                     <span>Profile</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/images"
+                    style={({ isActive }) => (isActive ? activeStyle : null)}
+                  >
+                    <PermMediaIcon />
+                    <span>Images</span>
                   </NavLink>
                 </li>
               </>

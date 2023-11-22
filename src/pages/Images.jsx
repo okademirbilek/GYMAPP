@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import TablePayment from "../components/tables/TablePayment";
-import payment from "../assets/images/payment.png";
+import TableImages from "../components/tables/TableImages";
 
 import Loader from "../components/Loader";
 
-const Payment = () => {
+const Images = () => {
   const [loading, setLoading] = useState(true);
   const { currentUserData } = useAuth();
-
   useEffect(() => {
     if (currentUserData) {
       setLoading(false);
@@ -24,16 +22,15 @@ const Payment = () => {
     );
   }
   return (
-    <>
-      <div className="payment-header  display-f align-center gp-1">
-        <h2>Payment</h2>
-        <img src={payment} alt="payment card" />
+    <div>
+      <div className="images-header  display-f align-center gp-1">
+        <h2>Images</h2>
       </div>
-      {currentUserData?.payment?.map((data, index) => (
-        <TablePayment key={index} data={data} index={index} />
+      {currentUserData?.images?.map((data, index) => (
+        <TableImages key={data.timeStamp} data={data} index={index} />
       ))}
-    </>
+    </div>
   );
 };
 
-export default Payment;
+export default Images;

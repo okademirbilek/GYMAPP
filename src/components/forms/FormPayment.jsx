@@ -1,59 +1,59 @@
-import React, { useState, useEffect } from "react"
-import { useAdminAuth } from "../../context/AdminContext"
-import { convertTime } from "../../utils/utils"
-import useToggle from "../../customHooks/useToggle"
+import React, { useState, useEffect } from "react";
+import { useAdminAuth } from "../../context/AdminContext";
+import { convertTime } from "../../utils/utils";
+// import useToggle from "../../customHooks/useToggle";
 
 const FormPayment = ({ data, paymentData, uid }) => {
-  const [formData, setFormData] = useState(null)
-  const { updatePayment } = useAdminAuth()
+  const [formData, setFormData] = useState(null);
+  const { updatePayment } = useAdminAuth();
 
-  //toggle
-  const [value, toggleValue] = useToggle(false)
+  // //toggle
+  // const [value, toggleValue] = useToggle(false)
 
   //error
-  const [loading, setLoading] = useState(true)
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (data) {
-      setFormData(data)
-      setLoading(false)
+      setFormData(data);
+      setLoading(false);
     }
-  }, [data])
+  }, [data]);
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    let updatedData = []
+    e.preventDefault();
+    let updatedData = [];
     paymentData.map((item) => {
       if (item.id === data.id) {
-        updatedData.push({ ...formData, timeStamp: new Date() })
+        updatedData.push({ ...formData, timeStamp: new Date() });
       } else {
-        updatedData.push(item)
+        updatedData.push(item);
       }
-    })
-    setError("")
-    setStatus("submitting")
+    });
+    setError("");
+    setStatus("submitting");
     await updatePayment(uid, updatedData)
       .then(() => console.log("success"))
       .catch((error) => {
-        setError(error)
+        setError(error);
       })
       .finally(() => {
-        setStatus("idle")
-      })
+        setStatus("idle");
+      });
   }
 
   function handleChange(e) {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
-    }))
+    }));
   }
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return <h2>🌀 Loading...</h2>;
   }
 
   return (
@@ -99,7 +99,7 @@ const FormPayment = ({ data, paymentData, uid }) => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default FormPayment
+export default FormPayment;

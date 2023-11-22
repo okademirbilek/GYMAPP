@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect, createContext } from "react"
+import React, { useContext, useState, useEffect, createContext } from "react";
 // import { enqueueSnackbar } from "notistack"
-import { auth, db } from "../../firebase"
+import { auth, db } from "../../firebase";
 import {
   onSnapshot,
   addDoc,
@@ -14,7 +14,7 @@ import {
   where,
   updateDoc,
   arrayUnion,
-} from "firebase/firestore"
+} from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -24,19 +24,19 @@ import {
   updateEmail,
   updatePassword,
   updateProfile,
-} from "firebase/auth"
+} from "firebase/auth";
 
 //uuid for array data
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuidv4 } from "uuid";
 
-const AdminContext = createContext()
+const AdminContext = createContext();
 
 function useAdminAuth() {
-  return useContext(AdminContext)
+  return useContext(AdminContext);
 }
 
 const AdminProvider = ({ children }) => {
-  const [userData, setUserData] = useState([])
+  const [userData, setUserData] = useState([]);
   //////////////////ADMIN////////////////////////////////
 
   //its gonna check realtimedb if any user changes
@@ -49,17 +49,17 @@ const AdminProvider = ({ children }) => {
         const userDataArr = snapshot.docs?.map((doc) => ({
           ...doc.data(),
           id: doc.id,
-        }))
-        setUserData(userDataArr)
+        }));
+        setUserData(userDataArr);
       }
-    )
-    return unsubscribedb
-  }, [])
+    );
+    return unsubscribedb;
+  }, []);
 
   //****************** Measurement ****************/
 
   const addNewMeasurement = async (id) => {
-    const userCollection = doc(db, `users/${id}`)
+    const userCollection = doc(db, `users/${id}`);
     // const arrLength = userData.filter((item) => item.uid === id)[0].measurements
     //   .length
     try {
@@ -79,22 +79,22 @@ const AdminProvider = ({ children }) => {
           weight: 0,
           fat: 0,
         }),
-      })
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const updateMeasurement = (id, updatedData) => {
-    const userDoc = doc(db, "users", id)
+    const userDoc = doc(db, "users", id);
 
-    return updateDoc(userDoc, { measurements: updatedData })
-  }
+    return updateDoc(userDoc, { measurements: updatedData });
+  };
 
   //******************* Payment ********************/
 
   const addNewPayment = async (id) => {
-    const userCollection = doc(db, `users/${id}`)
+    const userCollection = doc(db, `users/${id}`);
     // const arrLength = userData.filter((item) => item.uid === id)[0].payment
     //   .length
     try {
@@ -104,22 +104,22 @@ const AdminProvider = ({ children }) => {
           price: "",
           isConfirmed: false,
         }),
-      })
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const updatePayment = (id, updatedData) => {
-    const userDoc = doc(db, "users", id)
+    const userDoc = doc(db, "users", id);
 
-    return updateDoc(userDoc, { payment: updatedData })
-  }
+    return updateDoc(userDoc, { payment: updatedData });
+  };
 
   //******************* Member Tracking  ********************/
 
   const addNewTrainingDate = async (id) => {
-    const userCollection = doc(db, `users/${id}`)
+    const userCollection = doc(db, `users/${id}`);
     try {
       await updateDoc(userCollection, {
         trainingDates: arrayUnion({
@@ -127,25 +127,49 @@ const AdminProvider = ({ children }) => {
           isConfirmedTrainer: false,
           isConfirmedMember: false,
         }),
-      })
+      });
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const updateTrainingDate = (id, updatedData) => {
-    const userDoc = doc(db, "users", id)
+    const userDoc = doc(db, "users", id);
 
-    return updateDoc(userDoc, { trainingDates: updatedData })
-  }
+    return updateDoc(userDoc, { trainingDates: updatedData });
+  };
 
   //******************* Meals  ********************/
 
   const updateMeal = (id, updatedData) => {
-    const userDoc = doc(db, "users", id)
+    const userDoc = doc(db, "users", id);
 
-    return updateDoc(userDoc, { meals: updatedData })
-  }
+    return updateDoc(userDoc, { meals: updatedData });
+  };
+
+  //******************* Before/After Images  ********************/
+
+  const addNewImages = async (id) => {
+    const userCollection = doc(db, `users/${id}`);
+    try {
+      await updateDoc(userCollection, {
+        images: arrayUnion({
+          id: uuidv4(),
+          img1: "",
+          img2: "",
+          img3: "",
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const updateImages = (id, updatedData) => {
+    const userDoc = doc(db, "users", id);
+
+    return updateDoc(userDoc, { images: updatedData });
+  };
 
   const value = {
     userData,
@@ -156,8 +180,12 @@ const AdminProvider = ({ children }) => {
     addNewTrainingDate,
     updateTrainingDate,
     updateMeal,
-  }
-  return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
-}
+    addNewImages,
+    updateImages,
+  };
+  return (
+    <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
+  );
+};
 
-export { AdminProvider, AdminContext, useAdminAuth }
+export { AdminProvider, AdminContext, useAdminAuth };

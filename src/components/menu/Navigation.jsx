@@ -7,6 +7,7 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import PermMediaIcon from "@mui/icons-material/PermMedia";
 
 import { Link } from "react-router-dom";
 
@@ -50,6 +51,13 @@ export const Navigation = ({ isOpen, toggleOpen }) => {
         <Link to="/profile" onClick={() => toggleOpen(false)}>
           <PersonOutlineOutlinedIcon />
           <span>Profile</span>
+        </Link>
+      </motion.li>
+
+      <motion.li variants={variantsLi} whileTap={{ scale: 0.95 }}>
+        <Link to="/images" onClick={() => toggleOpen(false)}>
+          <PermMediaIcon />
+          <span>Images</span>
         </Link>
       </motion.li>
 

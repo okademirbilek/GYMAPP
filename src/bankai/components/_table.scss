@@ -64,7 +64,8 @@
 }
 
 .measurement-header,
-.payment-header {
+.payment-header,
+.images-header {
   padding: 20px;
   margin: 20px;
   h2 {
@@ -392,6 +393,41 @@
           }
         }
       }
+    }
+  }
+}
+
+//********************** Images  table ***********************///
+.images-table-container {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: $base-box-shadow;
+  border-radius: 8px;
+  .date-container {
+    max-width: 500px;
+
+    button {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+  .flex-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0;
+    gap: 10px;
+    img {
+      width: 250px;
+      height: 350px;
+      border-radius: 5px;
     }
   }
 }

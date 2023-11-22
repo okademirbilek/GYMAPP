@@ -1,16 +1,14 @@
-import React from "react"
-import LanguageIcon from "@mui/icons-material/Language"
-import { useAuth } from "../context/AuthContext"
-import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined"
-import { Link } from "react-router-dom"
-
+import React from "react";
+import LanguageIcon from "@mui/icons-material/Language";
+import { useAuth } from "../context/AuthContext";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+import { Link } from "react-router-dom";
 
 ////menu
-import { Example } from "./menu/Example"
-
+import { Example } from "./menu/Example";
 
 const navbar = () => {
-  const { currentUser } = useAuth()
+  const { currentUser, currentUserData } = useAuth();
   return (
     <>
       <div className="navbar">
@@ -20,18 +18,19 @@ const navbar = () => {
               <LanguageIcon />
               En
             </div>
-            {!currentUser && 
-             (
-              <Link  to={"/login"} className="item">
+            {!currentUser && (
+              <Link to={"/login"} className="item">
                 <ExitToAppOutlinedIcon />
                 Sign In
-              </Link >
-             )
-               }
-            <Example/>
+              </Link>
+            )}
+            <Example />
             <div className="item">
               <img
-                src="https://www.w3schools.com/howto/img_avatar.png"
+                src={
+                  currentUserData?.profileInfo?.picture ||
+                  "https://www.w3schools.com/howto/img_avatar.png"
+                }
                 alt="Avatar"
                 className="avatar"
               />
@@ -41,7 +40,7 @@ const navbar = () => {
       </div>
       <hr />
     </>
-  )
-}
+  );
+};
 
-export default navbar
+export default navbar;
