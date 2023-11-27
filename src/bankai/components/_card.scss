@@ -1,3 +1,22 @@
 @use "sass:math";
 @use "variables" as *;
 @use "breakpoints" as *;
+
+.card-padding {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: $base-box-shadow;
+  border-radius: 8px;
+}
+
+.colorY {
+  background: #99180d;
+  background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
+  background: linear-gradient(0deg, #99180d 0%, #111111 100%);
+}
+.colorX {
+  background: #99180d;
+  background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
+  background: linear-gradient(270deg, #99180d 0%, #111111 100%);
+}

@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from "react"
-import { useAuth } from "../context/AuthContext"
-import { convertTime } from "../utils/utils"
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import { convertTime } from "../utils/utils";
 
-import Loader from "../components/Loader"
+import Loader from "../components/Loader";
 
-import breakfast from "../assets/images/breakfast.png"
-import lunch from "../assets/images/lunch.png"
-import dinner from "../assets/images/dinner.png"
-import snack from "../assets/images/apple.png"
+import breakfast from "../assets/images/breakfast.png";
+import lunch from "../assets/images/lunch.png";
+import dinner from "../assets/images/dinner.png";
+import snack from "../assets/images/apple.png";
 
 const Meal = () => {
-  const [mealData, setMealData] = useState(null)
+  const [mealData, setMealData] = useState(null);
 
-  const [loading, setLoading] = useState(true)
-  const { currentUserData } = useAuth()
+  const [loading, setLoading] = useState(true);
+  const { currentUserData } = useAuth();
   useEffect(() => {
     if (currentUserData) {
-      setLoading(false)
-      setMealData(currentUserData?.meals)
+      setLoading(false);
+      setMealData(currentUserData?.meals);
     }
-  }, [currentUserData])
+  }, [currentUserData]);
 
   function makeList(arr) {
-    return arr?.split(",").map((item, index) => <li key={index}>{item}</li>)
+    return arr?.split(",").map((item, index) => <li key={index}>{item}</li>);
   }
 
   //handle if user refresh the page
@@ -31,13 +31,13 @@ const Meal = () => {
       <span className="loader">
         <Loader />
       </span>
-    )
+    );
   }
   return (
     <div>
       <div className="measurement-header">
         <h2 className="mb-3">Meal</h2>
-        <div className="meal-table-container">
+        <div className="meal-table-container ">
           <div className="date-container ">
             <h3>
               Date : {mealData?.timeStamp && convertTime(mealData?.timeStamp)}
@@ -86,7 +86,7 @@ const Meal = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Meal
+export default Meal;

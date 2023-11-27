@@ -26,14 +26,16 @@ const navbar = () => {
             )}
             <Example />
             <div className="item">
-              <img
-                src={
-                  currentUserData?.profileInfo?.picture ||
-                  "https://www.w3schools.com/howto/img_avatar.png"
-                }
-                alt="Avatar"
-                className="avatar"
-              />
+              <Link to={"/profile"} className="item cursor-p">
+                <img
+                  src={
+                    currentUserData?.profileInfo?.picture ||
+                    "https://www.w3schools.com/howto/img_avatar.png"
+                  }
+                  alt="Avatar"
+                  className="avatar"
+                />
+              </Link>
             </div>
           </div>
         </div>

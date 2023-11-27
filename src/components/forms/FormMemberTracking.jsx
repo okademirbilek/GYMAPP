@@ -1,62 +1,62 @@
-import React, { useState, useEffect } from "react"
-import { convertTime } from "../../utils/utils"
-import { useAuth } from "../../context/AuthContext"
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser"
-import HowToRegIcon from "@mui/icons-material/HowToReg"
+import React, { useState, useEffect } from "react";
+import { convertTime } from "../../utils/utils";
+import { useAuth } from "../../context/AuthContext";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 const FormMemberTracking = ({ allData, data, uid, index }) => {
-  const [formData, setFormData] = useState(null)
-  const { updateTrainingDate } = useAuth()
+  const [formData, setFormData] = useState(null);
+  const { updateTrainingDate } = useAuth();
 
   //error
-  const [loading, setLoading] = useState(true)
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (data) {
-      setFormData(data)
-      setLoading(false)
+      setFormData(data);
+      setLoading(false);
     }
-  }, [data])
+  }, [data]);
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    setError("")
-    setStatus("submitting")
-    let updatedData = []
+    e.preventDefault();
+    setError("");
+    setStatus("submitting");
+    let updatedData = [];
     allData.map((item) => {
       if (item.id === data.id) {
-        updatedData.push(formData)
+        updatedData.push(formData);
       } else {
-        updatedData.push(item)
+        updatedData.push(item);
       }
-    })
+    });
 
     await updateTrainingDate(uid, updatedData)
       .then(() => console.log("success"))
       .catch((error) => {
-        setError(error)
+        setError(error);
       })
       .finally(() => {
-        setStatus("idle")
-      })
+        setStatus("idle");
+      });
   }
 
   function handleChange(e) {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
-    }))
+    }));
   }
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return <h2>🌀 Loading...</h2>;
   }
 
   return (
-    <div className="member-tracking-table">
+    <div className="member-tracking-table card-padding">
       <div className="table-index">{index + 1}</div>
       <span className="date display-f align-center gp-1">
         <h4>Date: {convertTime(data?.timeStamp)}</h4>
@@ -112,7 +112,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
         </form>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default FormMemberTracking
+export default FormMemberTracking;

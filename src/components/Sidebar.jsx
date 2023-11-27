@@ -38,7 +38,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="sidebar">
+    <div className="sidebar colorY">
       <nav>
         <div className="top display-f  align-center justify-center">
           <span className="logo">Sports & Health</span>

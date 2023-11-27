@@ -1,19 +1,19 @@
-import React from "react"
-import SlickSlider from "../components/slider/SlickSlider"
+import React from "react";
+import SlickSlider from "../components/slider/SlickSlider";
 
 //images
-import dmrblkprofile from "../assets/images/dmrblkprofile.png"
+import dmrblkprofile from "../assets/images/dmrblkprofile.png";
 
 //icons
-import YouTubeIcon from "@mui/icons-material/YouTube"
-import InstagramIcon from "@mui/icons-material/Instagram"
-import TwitterIcon from "@mui/icons-material/Twitter"
-import NotificationsIcon from "@mui/icons-material/Notifications"
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const home = () => {
   return (
     <div className="home">
-      <div className="trainer-data">
+      <div className="trainer-data card-padding">
         <h2>Meet your trainer</h2>
         <img src={dmrblkprofile} alt="profile photo" />
         <h3>Personal Trainer</h3>
@@ -30,15 +30,15 @@ const home = () => {
           </a>
         </span>
       </div>
-      {/* <div className="members">
+      {/* <div className="members card-padding display-f fd-c">
         <h2>Stronger! and healthier!</h2>
         <SlickSlider />
       </div> */}
-      <div className="alerts">
+      <div className="alerts card-padding">
         <NotificationsIcon /> <p>There is no announcement</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default home
+export default home;

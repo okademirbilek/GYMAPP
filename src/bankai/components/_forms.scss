@@ -125,17 +125,6 @@
         margin-top: 0.4em;
       }
     }
-
-    // .caution {
-    //   display: flex;
-    //   justify-content: center;
-    //   background-color: green;
-    //   border-radius: 6px;
-    //   p {
-    //     padding: 1px;
-    //     max-width: 95%;
-    //   }
-    // }
   }
 }
 
@@ -148,9 +137,10 @@
   background-color: #ea564b; /* Red */
   margin-top: 1em;
   margin-bottom: 0;
+  border-radius: 5px;
 }
 
-/* The close button */
+/*  close button */
 .login-error {
   font-weight: bold;
   font-size: 18px;
@@ -166,11 +156,6 @@
 
 /*************************************** PROFILE FORM ***************************************************/
 .profile-container {
-  padding: 20px;
-  margin: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: $base-box-shadow;
-  border-radius: 8px;
   img {
     width: 200px;
     border-radius: 50%;
@@ -179,7 +164,6 @@
   form {
     // flex-wrap: wrap;
     gap: 5px;
-    // width: 50%;
     padding: 10px;
 
     label {

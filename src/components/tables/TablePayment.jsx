@@ -1,13 +1,13 @@
-import React from "react"
-import { convertTime } from "../../utils/utils"
-import GppGoodIcon from "@mui/icons-material/GppGood"
-import HourglassTopIcon from "@mui/icons-material/HourglassTop"
-import CurrencyLiraIcon from "@mui/icons-material/CurrencyLira"
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth"
+import React from "react";
+import { convertTime } from "../../utils/utils";
+import GppGoodIcon from "@mui/icons-material/GppGood";
+import HourglassTopIcon from "@mui/icons-material/HourglassTop";
+import CurrencyLiraIcon from "@mui/icons-material/CurrencyLira";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 const TablePayment = ({ data, index }) => {
   return (
-    <div className="payment-table-container display-f">
+    <div className="payment-table-container display-f card-padding">
       <div className="table-index">{index + 1}</div>
       <div className="date-container display-f align-center">
         <h4>Date : {data.timeStamp && convertTime(data.timeStamp)}</h4>{" "}
@@ -41,7 +41,7 @@ const TablePayment = ({ data, index }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TablePayment
+export default TablePayment;

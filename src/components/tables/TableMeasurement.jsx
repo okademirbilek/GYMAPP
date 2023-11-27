@@ -1,5 +1,5 @@
-import React from "react"
-import { convertTime } from "../../utils/utils"
+import React from "react";
+import { convertTime } from "../../utils/utils";
 
 import {
   arm,
@@ -14,13 +14,13 @@ import {
   waist,
   weight,
   pelvis,
-} from "../../assets/images/body/imports"
+} from "../../assets/images/body/imports";
 
-import arrow from "../../assets/images/downarrow.png"
+import arrow from "../../assets/images/downarrow.png";
 
-import useToggle from "../../customHooks/useToggle"
+import useToggle from "../../customHooks/useToggle";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 //framer motion animation variant
 const container = {
@@ -33,12 +33,12 @@ const container = {
     opacity: 0,
     scale: 0,
   },
-}
+};
 
 const TableMeasurement = ({ data }) => {
-  const [value, toggleValue] = useToggle(false)
+  const [value, toggleValue] = useToggle(false);
   return (
-    <div className="measurement-table-container">
+    <div className="measurement-table-container card-padding">
       <div className="date-container display-f align-center">
         <h2>{data.timeStamp && convertTime(data.timeStamp)}</h2>{" "}
         <button onClick={() => toggleValue((prev) => !prev)}>
@@ -140,7 +140,7 @@ const TableMeasurement = ({ data }) => {
         </motion.div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default TableMeasurement
+export default TableMeasurement;

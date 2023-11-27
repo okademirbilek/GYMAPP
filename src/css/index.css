@@ -518,6 +518,26 @@ img {
   background-color: #3d3174;
 }
 
+.card-padding {
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+}
+
+.colorY {
+  background: #99180d;
+  background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
+  background: linear-gradient(0deg, #99180d 0%, #111111 100%);
+}
+
+.colorX {
+  background: #99180d;
+  background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
+  background: linear-gradient(270deg, #99180d 0%, #111111 100%);
+}
+
 .btn {
   text-decoration: none;
   cursor: pointer;
@@ -781,9 +801,6 @@ img {
 }
 
 .navbar {
-  background: #99180d;
-  background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
-  background: linear-gradient(270deg, #99180d 0%, #111111 100%);
   width: 100%;
   height: 75px;
 }
@@ -897,6 +914,7 @@ img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
 }
 @media (min-width: 720px) {
   .navbar .wrapper .items {
@@ -978,9 +996,6 @@ img {
     flex: 0.8;
     border-right: 0.5px solid rgb(207, 204, 204);
     min-height: 100vh;
-    background: #99180d;
-    background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
-    background: linear-gradient(0deg, #99180d 0%, #111111 100%);
   }
   .sidebar ul {
     display: flex;
@@ -1144,11 +1159,6 @@ img {
 }
 .home .trainer-data {
   grid-area: trainer;
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1176,21 +1186,9 @@ img {
 }
 .home .members {
   grid-area: member;
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
 }
 .home .alerts {
   grid-area: alert;
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  border-radius: 8px;
   display: flex;
   gap: 10px;
 }
@@ -1262,13 +1260,6 @@ img {
   width: 55px;
 }
 
-.measurement-table-container {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  border-radius: 8px;
-}
 .measurement-table-container .date-container {
   max-width: 500px;
 }
@@ -1329,11 +1320,6 @@ img {
 }
 
 .payment-table-container {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  border-radius: 8px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -1402,11 +1388,6 @@ img {
 }
 
 .member-tracking-table {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  border-radius: 8px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -1558,13 +1539,6 @@ img {
   margin-left: 20px;
 }
 
-.images-table-container {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  border-radius: 8px;
-}
 .images-table-container .date-container {
   max-width: 500px;
 }
@@ -1716,9 +1690,10 @@ img {
   background-color: #ea564b; /* Red */
   margin-top: 1em;
   margin-bottom: 0;
+  border-radius: 5px;
 }
 
-/* The close button */
+/*  close button */
 .login-error {
   font-weight: bold;
   font-size: 18px;
@@ -1732,13 +1707,6 @@ img {
   }
 }
 /*************************************** PROFILE FORM ***************************************************/
-.profile-container {
-  padding: 20px;
-  margin: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  border-radius: 8px;
-}
 .profile-container img {
   width: 200px;
   border-radius: 50%;
@@ -2039,9 +2007,6 @@ img {
 }
 
 .layout {
-  background: #99180d;
-  background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
-  background: linear-gradient(0deg, #99180d 0%, #111111 100%);
   min-height: 100dvh;
   margin-bottom: 5.8vh;
 }

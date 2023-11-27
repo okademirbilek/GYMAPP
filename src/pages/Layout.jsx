@@ -1,17 +1,17 @@
-import React from "react"
-import { Outlet } from "react-router-dom"
-import Sidebar from "../components/Sidebar"
-import Navbar from "../components/Navbar"
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 const Layout = () => {
   return (
-    <div className="layout display-f">
+    <div className="layout display-f colorY">
       <Sidebar />
       <div className="container-site">
         <Navbar />
         <Outlet />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

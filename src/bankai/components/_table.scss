@@ -79,12 +79,6 @@
 //********************** measurement table ***********************///
 
 .measurement-table-container {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: $base-box-shadow;
-  border-radius: 8px;
-
   .date-container {
     max-width: 500px;
 
@@ -150,11 +144,6 @@
 
 //********************** payment table ***********************///
 .payment-table-container {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: $base-box-shadow;
-  border-radius: 8px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -232,11 +221,6 @@
 
 //********************** Tracking Member  table ***********************///
 .member-tracking-table {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: $base-box-shadow;
-  border-radius: 8px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -399,11 +383,6 @@
 
 //********************** Images  table ***********************///
 .images-table-container {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: $base-box-shadow;
-  border-radius: 8px;
   .date-container {
     max-width: 500px;
 
