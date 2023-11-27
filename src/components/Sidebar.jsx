@@ -14,11 +14,15 @@ import TodayIcon from "@mui/icons-material/Today";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 
 import { useAuth } from "../context/AuthContext";
+import DarkMode from "../components/DarkMode/DarkMode";
+
+import { useTheme } from "../context/ThemeContext";
 
 // const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
 const Sidebar = () => {
   const { logout, currentUserData } = useAuth();
+  const { theme } = useTheme();
 
   const navigate = useNavigate();
 
@@ -38,7 +42,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="sidebar colorY">
+    <div className={`sidebar ${theme} background text`}>
       <nav>
         <div className="top display-f  align-center justify-center">
           <span className="logo">Sports & Health</span>
@@ -153,14 +157,15 @@ const Sidebar = () => {
         </div>
         <div className="bottom display-f fd-c mt-1">
           <p>Mode</p>
-          <div className="colorOption">
+          {/* <div className="colorOption">
             <DarkModeOutlinedIcon />
             <p>Dark</p>
           </div>
           <div className="colorOption">
             <LightModeOutlinedIcon />
             <p>Light</p>
-          </div>
+          </div> */}
+          <DarkMode />
         </div>
       </nav>
     </div>

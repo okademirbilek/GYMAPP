@@ -92,31 +92,31 @@
       justify-content: center;
       align-items: center;
       padding: 8px;
-      .colorOption {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 80%;
-        cursor: pointer;
-        margin-top: 5px;
-        padding: 8px;
-        border-radius: 6px;
+      // .colorOption {
+      //   display: flex;
+      //   align-items: center;
+      //   justify-content: center;
+      //   width: 80%;
+      //   cursor: pointer;
+      //   margin-top: 5px;
+      //   padding: 8px;
+      //   border-radius: 6px;
 
-        p {
-          display: none;
-        }
-        &:nth-child(2) {
-          &:hover {
-            background-color: rgb(17, 17, 17);
-          }
-        }
-        &:nth-child(3) {
-          &:hover {
-            background-color: rgb(220, 208, 208);
-            color: rgb(25, 24, 24);
-          }
-        }
-      }
+      //   p {
+      //     display: none;
+      //   }
+      //   &:nth-child(2) {
+      //     &:hover {
+      //       background-color: rgb(17, 17, 17);
+      //     }
+      //   }
+      //   &:nth-child(3) {
+      //     &:hover {
+      //       background-color: rgb(220, 208, 208);
+      //       color: rgb(25, 24, 24);
+      //     }
+      //   }
+      // }
     }
   }
 }

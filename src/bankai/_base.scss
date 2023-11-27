@@ -37,6 +37,32 @@ body {
   min-width: 320px;
 }
 
+//light - dark mode
+
+.light {
+  .text {
+    color: $dark-900;
+  }
+  .background {
+    background-color: $white-000;
+  }
+}
+.dark {
+  .text {
+    color: $white-000;
+  }
+  .background {
+    background: #99180d;
+    background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
+    background: linear-gradient(0deg, #99180d 0%, #111111 100%);
+  }
+  .backgroundX {
+    background: #99180d;
+    background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
+    background: linear-gradient(270deg, #99180d 0%, #111111 100%);
+  }
+}
+
 ul {
   padding: 0;
   list-style-type: none;

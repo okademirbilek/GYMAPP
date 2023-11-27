@@ -4,16 +4,23 @@ import { useAuth } from "../context/AuthContext";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import { Link } from "react-router-dom";
 
+import { useTheme } from "../context/ThemeContext";
+
 ////menu
 import { Example } from "./menu/Example";
+import DarkMode from "./DarkMode/DarkMode";
 
 const navbar = () => {
   const { currentUser, currentUserData } = useAuth();
+  const { theme } = useTheme();
   return (
     <>
-      <div className="navbar">
+      <div className={`navbar ${theme} backgroundX`}>
         <div className="wrapper display-f justify-flex-end align-center">
           <div className="items display-f gp-2">
+            <div className="item">
+              <DarkMode />
+            </div>
             <div className="item">
               <LanguageIcon />
               En

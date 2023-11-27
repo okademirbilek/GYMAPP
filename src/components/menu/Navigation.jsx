@@ -5,11 +5,12 @@ import { useAuth } from "../../context/AuthContext";
 //icons
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+// import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+// import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 
 import { Link } from "react-router-dom";
+import DarkMode from "../DarkMode/DarkMode";
 
 const variants = {
   open: {
@@ -70,23 +71,23 @@ export const Navigation = ({ isOpen, toggleOpen }) => {
         <p>Log Out</p>
       </motion.li>
 
-      <motion.li
-        variants={variantsLi}
-        whileTap={{ scale: 0.95 }}
-        className="colorOption"
-      >
-        <DarkModeOutlinedIcon />
-        <p>Dark</p>
-      </motion.li>
-
-      <motion.li
+      {/* <motion.li
         variants={variantsLi}
         whileTap={{ scale: 0.95 }}
         className="colorOption"
       >
         <LightModeOutlinedIcon />
         <p>Light</p>
-      </motion.li>
+      </motion.li> */}
+
+      {/* <motion.li
+        variants={variantsLi}
+        whileTap={{ scale: 0.95 }}
+        className="colorOption"
+      >
+        <LightModeOutlinedIcon />
+        <p>Light</p>
+      </motion.li> */}
     </motion.ul>
   );
 };
