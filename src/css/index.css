@@ -26,22 +26,27 @@ body {
   color: #1a1b1e;
 }
 .light .background {
-  background-color: #d5deef;
+  background-color: #ffffff;
+  transition: all 0.3s ease-out;
 }
 .light .card-color {
-  background: #b1c9ef;
+  transition: all 0.3s ease-out;
+  background: #e9ecef;
 }
 
 .dark .text {
   color: #ffffff;
 }
 .dark .background {
+  transition: all 0.3s ease-out;
   background-color: #1a1b1e;
 }
 .dark .card-color {
+  transition: all 0.3s ease-out;
   background: #25262b;
 }
 .dark .backgroundX {
+  transition: all 0.3s ease-out;
   background-color: #1a1b1e;
 }
 
@@ -962,9 +967,11 @@ img {
   height: 6vh;
 }
 .bottom-navbar .light {
+  transition: all 0.3s ease-out;
   background: #b1c9ef;
 }
 .bottom-navbar .dark {
+  transition: all 0.3s ease-out;
   background: #25262b;
 }
 @media (min-width: 720px) {

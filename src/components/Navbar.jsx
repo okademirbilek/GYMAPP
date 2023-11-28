@@ -15,7 +15,7 @@ const navbar = () => {
   const { theme } = useTheme();
   return (
     <>
-      <div className={`navbar ${theme} backgroundX`}>
+      <div className={`navbar ${theme} background`}>
         <div className="wrapper display-f justify-flex-end align-center">
           <div className="items display-f gp-2">
             <div className="item">

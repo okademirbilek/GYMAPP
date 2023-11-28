@@ -44,11 +44,13 @@ body {
     color: $dark-700;
   }
   .background {
-    background-color: $blue-100;
+    background-color: $white-000;
+    transition: all 0.3s ease-out;
   }
 
   .card-color {
-    background: $blue-200;
+    transition: all 0.3s ease-out;
+    background: $gray-200;
     // background: -webkit-linear-gradient(0deg, $red-700 0%, $dark-700 100%);
     // background: linear-gradient(0deg, $red-700 0%, $dark-700 100%);
   }
@@ -61,10 +63,13 @@ body {
     // background: #99180d;
     // background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
     // background: linear-gradient(0deg, #99180d 0%, #111111 100%);
+    transition: all 0.3s ease-out;
     background-color: $dark-700;
   }
   .card-color {
+    transition: all 0.3s ease-out;
     background: $dark-600;
+
     // background: -webkit-linear-gradient(0deg, #99180d 0%, $dark-700 100%);
     // background: linear-gradient(0deg, #99180d 0%, $dark-800 100%);
   }
@@ -72,6 +77,7 @@ body {
     // background: #99180d;
     // background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
     // background: linear-gradient(270deg, #99180d 0%, #111111 100%);
+    transition: all 0.3s ease-out;
     background-color: $dark-700;
   }
 }
