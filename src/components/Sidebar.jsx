@@ -28,7 +28,7 @@ const Sidebar = () => {
 
   //style for active page
   const activeStyle = {
-    backgroundColor: "rgb(17, 17, 17)",
+    backgroundColor: theme === "light" ? "#E5E5E5" : "rgb(17, 17, 17)",
   };
 
   async function handleLogout() {

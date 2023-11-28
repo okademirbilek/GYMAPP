@@ -168,7 +168,14 @@
   justify-content: center;
   position: fixed;
   bottom: 0px;
-  background: #99180d;
+
+  .light {
+    background: $blue-200;
+  }
+  .dark {
+    background: $dark-600;
+  }
+
   // border-top-right-radius: 10px;
   // border-top-left-radius: 10px;
 

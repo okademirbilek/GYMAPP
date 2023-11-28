@@ -10,6 +10,8 @@ import TodayIcon from "@mui/icons-material/Today";
 
 import { useAuth } from "../context/AuthContext";
 
+import { useTheme } from "../context/ThemeContext";
+
 //style for active page
 const activeStyle = {
   color: "rgb(17, 17, 17)",
@@ -18,9 +20,10 @@ const activeStyle = {
 // const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 const BottomNavbar = () => {
   const { currentUserData } = useAuth();
+  const { theme } = useTheme();
   return (
     <div className="bottom-navbar">
-      <nav>
+      <nav className={theme}>
         <ul className="display-f">
           {currentUserData?.isAdmin && (
             <>

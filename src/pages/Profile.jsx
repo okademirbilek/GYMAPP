@@ -80,7 +80,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="profile-container card-padding">
+    <div className="profile-container card-padding card-color">
       <img
         src={
           formData.picture

@@ -41,10 +41,16 @@ body {
 
 .light {
   .text {
-    color: $dark-900;
+    color: $dark-700;
   }
   .background {
-    background-color: $white-000;
+    background-color: $blue-100;
+  }
+
+  .card-color {
+    background: $blue-200;
+    // background: -webkit-linear-gradient(0deg, $red-700 0%, $dark-700 100%);
+    // background: linear-gradient(0deg, $red-700 0%, $dark-700 100%);
   }
 }
 .dark {
@@ -52,17 +58,24 @@ body {
     color: $white-000;
   }
   .background {
-    background: #99180d;
-    background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
-    background: linear-gradient(0deg, #99180d 0%, #111111 100%);
+    // background: #99180d;
+    // background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
+    // background: linear-gradient(0deg, #99180d 0%, #111111 100%);
+    background-color: $dark-700;
+  }
+  .card-color {
+    background: $dark-600;
+    // background: -webkit-linear-gradient(0deg, #99180d 0%, $dark-700 100%);
+    // background: linear-gradient(0deg, #99180d 0%, $dark-800 100%);
   }
   .backgroundX {
-    background: #99180d;
-    background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
-    background: linear-gradient(270deg, #99180d 0%, #111111 100%);
+    // background: #99180d;
+    // background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
+    // background: linear-gradient(270deg, #99180d 0%, #111111 100%);
+    background-color: $dark-700;
   }
 }
-
+//*****************
 ul {
   padding: 0;
   list-style-type: none;

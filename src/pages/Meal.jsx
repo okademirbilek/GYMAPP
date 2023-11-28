@@ -37,7 +37,7 @@ const Meal = () => {
     <div>
       <div className="measurement-header">
         <h2 className="mb-3">Meal</h2>
-        <div className="meal-table-container ">
+        <div className="meal-table-container card-color ">
           <div className="date-container ">
             <h3>
               Date : {mealData?.timeStamp && convertTime(mealData?.timeStamp)}

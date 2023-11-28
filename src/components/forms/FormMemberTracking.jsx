@@ -56,7 +56,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
   }
 
   return (
-    <div className="member-tracking-table card-padding">
+    <div className="member-tracking-table card-padding card-color">
       <div className="table-index">{index + 1}</div>
       <span className="date display-f align-center gp-1">
         <h4>Date: {convertTime(data?.timeStamp)}</h4>

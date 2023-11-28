@@ -38,7 +38,7 @@ const container = {
 const TableMeasurement = ({ data }) => {
   const [value, toggleValue] = useToggle(false);
   return (
-    <div className="measurement-table-container card-padding">
+    <div className="measurement-table-container card-padding card-color">
       <div className="date-container display-f align-center">
         <h2>{data.timeStamp && convertTime(data.timeStamp)}</h2>{" "}
         <button onClick={() => toggleValue((prev) => !prev)}>

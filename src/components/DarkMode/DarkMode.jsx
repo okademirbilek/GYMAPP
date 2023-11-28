@@ -16,11 +16,9 @@ const DarkMode = () => {
     <div className="dark_mode">
       <input
         className="dark_mode_input"
-        // onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         onChange={handleChange}
         type="checkbox"
         id="darkmode-toggle"
-        // name={theme}
         checked={theme === "dark" ? true : false}
       />
       <label className="dark_mode_label" htmlFor="darkmode-toggle">

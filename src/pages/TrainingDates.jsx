@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react"
-import { useAuth } from "../context/AuthContext"
-import FormMemberTracking from "../components/forms/FormMemberTracking"
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import FormMemberTracking from "../components/forms/FormMemberTracking";
 
-import Loader from "../components/Loader"
+import Loader from "../components/Loader";
 
 const TrainingDates = () => {
-  const [loading, setLoading] = useState(true)
-  const { currentUserData } = useAuth()
+  const [loading, setLoading] = useState(true);
+  const { currentUserData } = useAuth();
 
   useEffect(() => {
     if (currentUserData.trainingDates) {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [currentUserData])
+  }, [currentUserData]);
 
   //handle if user refresh the page
   if (loading) {
@@ -20,7 +20,7 @@ const TrainingDates = () => {
       <span className="loader">
         <Loader />
       </span>
-    )
+    );
   }
   return (
     <div>
@@ -38,7 +38,7 @@ const TrainingDates = () => {
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default TrainingDates
+export default TrainingDates;

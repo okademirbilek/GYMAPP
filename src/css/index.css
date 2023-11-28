@@ -23,24 +23,26 @@ body {
 }
 
 .light .text {
-  color: #101113;
+  color: #1a1b1e;
 }
 .light .background {
-  background-color: #ffffff;
+  background-color: #d5deef;
+}
+.light .card-color {
+  background: #b1c9ef;
 }
 
 .dark .text {
   color: #ffffff;
 }
 .dark .background {
-  background: #99180d;
-  background: -webkit-linear-gradient(0deg, #99180d 0%, #111111 100%);
-  background: linear-gradient(0deg, #99180d 0%, #111111 100%);
+  background-color: #1a1b1e;
+}
+.dark .card-color {
+  background: #25262b;
 }
 .dark .backgroundX {
-  background: #99180d;
-  background: -webkit-linear-gradient(270deg, #99180d 0%, #111111 100%);
-  background: linear-gradient(270deg, #99180d 0%, #111111 100%);
+  background-color: #1a1b1e;
 }
 
 ul {
@@ -954,11 +956,16 @@ img {
   justify-content: center;
   position: fixed;
   bottom: 0px;
-  background: #99180d;
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
   border-top: 2.5px solid rgb(207, 204, 204);
   height: 6vh;
+}
+.bottom-navbar .light {
+  background: #b1c9ef;
+}
+.bottom-navbar .dark {
+  background: #25262b;
 }
 @media (min-width: 720px) {
   .bottom-navbar {
@@ -1236,7 +1243,6 @@ img {
 .payment-header,
 .images-header {
   padding: 20px;
-  margin: 20px;
 }
 .measurement-header h2,
 .payment-header h2,
