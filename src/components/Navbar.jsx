@@ -16,11 +16,14 @@ const navbar = () => {
   return (
     <>
       <div className={`navbar ${theme} background`}>
-        <div className="wrapper display-f justify-flex-end align-center">
+        <div className="wrapper display-f justify-flex-end align-center ">
           <div className="items display-f gp-2">
-            <div className="item">
-              <DarkMode />
-            </div>
+            {currentUser && (
+              <div className="item">
+                <DarkMode />
+              </div>
+            )}
+
             <div className="item">
               <LanguageIcon />
               En
