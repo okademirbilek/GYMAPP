@@ -148,6 +148,15 @@
   align-items: center;
   flex-wrap: wrap;
 
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: $base-box-shadow;
+  border-radius: 8px;
+  @include md {
+    padding: 5px 20px;
+  }
+
   .table-index {
     display: flex;
     align-items: center;
@@ -171,6 +180,9 @@
     width: clamp(190px, auto, auto);
     @include md {
       width: auto;
+    }
+    @include lg {
+      margin: 10px 10px 10px 20px;
     }
     h4 {
       font-weight: normal;
@@ -210,7 +222,7 @@
         display: flex;
         border-radius: 3px;
         margin-left: 5px;
-        width: 125px;
+        width: 120px;
       }
 
       .confirmed {

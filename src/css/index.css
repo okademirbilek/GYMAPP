@@ -1327,6 +1327,16 @@ img {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
+}
+@media (min-width: 720px) {
+  .payment-table-container {
+    padding: 5px 20px;
+  }
 }
 .payment-table-container .table-index {
   display: flex;
@@ -1353,6 +1363,11 @@ img {
 @media (min-width: 720px) {
   .payment-table-container .date-container {
     width: auto;
+  }
+}
+@media (min-width: 960px) {
+  .payment-table-container .date-container {
+    margin: 10px 10px 10px 20px;
   }
 }
 .payment-table-container .date-container h4 {
@@ -1391,7 +1406,7 @@ img {
   display: flex;
   border-radius: 3px;
   margin-left: 5px;
-  width: 125px;
+  width: 120px;
 }
 .payment-table-container .table-container div .confirmed {
   background-color: rgb(59, 184, 59);

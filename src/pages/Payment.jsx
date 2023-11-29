@@ -27,7 +27,7 @@ const Payment = () => {
     <>
       <div className="payment-header  display-f align-center gp-1">
         <h2>Payment</h2>
-        <img src={payment} alt="payment card" />
+        {/* <img src={payment} alt="payment card" /> */}
       </div>
       {currentUserData?.payment?.map((data, index) => (
         <TablePayment key={index} data={data} index={index} />

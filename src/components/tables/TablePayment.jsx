@@ -7,7 +7,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 const TablePayment = ({ data, index }) => {
   return (
-    <div className="payment-table-container display-f card-padding  card-color">
+    <div className="payment-table-container display-f   card-color">
       <div className="table-index">{index + 1}</div>
       <div className="date-container display-f align-center">
         <h4>{data.timeStamp && convertTime(data.timeStamp)}</h4>{" "}
