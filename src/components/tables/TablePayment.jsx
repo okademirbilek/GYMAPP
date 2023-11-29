@@ -10,7 +10,7 @@ const TablePayment = ({ data, index }) => {
     <div className="payment-table-container display-f card-padding  card-color">
       <div className="table-index">{index + 1}</div>
       <div className="date-container display-f align-center">
-        <h4>Date : {data.timeStamp && convertTime(data.timeStamp)}</h4>{" "}
+        <h4>{data.timeStamp && convertTime(data.timeStamp)}</h4>{" "}
         <CalendarMonthIcon />{" "}
       </div>
 
