@@ -1,59 +1,59 @@
-import React, { useState, useEffect } from "react"
-import { useAdminAuth } from "../../context/AdminContext"
-import { convertTime } from "../../utils/utils"
+import React, { useState, useEffect } from "react";
+import { useAdminAuth } from "../../context/AdminContext";
+import { convertTime } from "../../utils/utils";
 
 const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
-  const [formData, setFormData] = useState(null)
-  const { updateTrainingDate } = useAdminAuth()
+  const [formData, setFormData] = useState(null);
+  const { updateTrainingDate } = useAdminAuth();
 
   //error
-  const [loading, setLoading] = useState(true)
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (data) {
-      setFormData(data)
-      setLoading(false)
+      setFormData(data);
+      setLoading(false);
     }
-  }, [data])
+  }, [data]);
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    setError("")
-    setStatus("submitting")
-    let updatedData = []
+    e.preventDefault();
+    setError("");
+    setStatus("submitting");
+    let updatedData = [];
     trackingData.map((item) => {
       if (item.id === data.id) {
-        updatedData.push({ ...formData, timeStamp: new Date() })
+        updatedData.push({ ...formData, timeStamp: new Date() });
       } else {
-        updatedData.push(item)
+        updatedData.push(item);
       }
-    })
+    });
 
     await updateTrainingDate(uid, updatedData)
       .then(() => console.log("success"))
       .catch((error) => {
-        setError(error)
+        setError(error);
       })
       .finally(() => {
-        setStatus("idle")
-      })
+        setStatus("idle");
+      });
   }
 
   function handleChange(e) {
-    const { name, value, type, checked } = e.target
+    const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
-    }))
+    }));
   }
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return <h2>🌀 Loading...</h2>;
   }
   return (
-    <div className="form-member-tracking">
+    <div className="form-member-tracking card-color">
       <span className="date display-f align-center gp-1">
         <h3>{convertTime(formData?.timeStamp)}</h3>
       </span>
@@ -94,7 +94,7 @@ const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default FormAdminMemberTracking
+export default FormAdminMemberTracking;

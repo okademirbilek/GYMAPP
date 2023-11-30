@@ -3,12 +3,6 @@
 
 .dashboard {
   .listContainer {
-    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-    box-shadow: $base-box-shadow;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 5px;
-
     .tableCell {
       font-size: 18px;
       min-width: 150px;
@@ -21,6 +15,10 @@
       }
       .view {
         background-color: rgb(46, 143, 199);
+        &:hover {
+          background-color: rgb(255, 255, 255);
+          color: $dark-600;
+        }
       }
       .delete {
         margin-left: 10px;
@@ -30,7 +28,6 @@
 
     .listTitle {
       font-weight: 500;
-      color: #c3c1c1;
       margin-bottom: 15px;
       padding: 0;
       font-size: $font-size-md;
@@ -49,15 +46,6 @@
       .status {
         padding: 5px;
         border-radius: 5px;
-
-        &.aproved {
-          color: green;
-          background-color: rgba(0, 128, 0, 0.151);
-        }
-        &.pending {
-          color: goldenrod;
-          background-color: rgba(189, 189, 3, 0.103);
-        }
       }
     }
   }
@@ -67,7 +55,6 @@
 .payment-header,
 .images-header {
   padding: 20px;
-  // margin: 20px;
   h2 {
     max-width: 400px;
   }

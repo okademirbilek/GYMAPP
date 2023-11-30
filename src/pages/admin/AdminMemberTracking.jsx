@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react"
-import { useAdminAuth } from "../../context/AdminContext"
-import { useOutletContext } from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import { useAdminAuth } from "../../context/AdminContext";
+import { useOutletContext } from "react-router-dom";
 
-import FormAdminMemberTracking from "../../components/forms/FormAdminMemberTracking"
+import FormAdminMemberTracking from "../../components/forms/FormAdminMemberTracking";
 
 const AdminMemberTracking = () => {
-  const [memberTrackingData, setMemberTrackingData] = useState(null)
-  const { data, params } = useOutletContext()
-  const { addNewTrainingDate } = useAdminAuth()
+  const [memberTrackingData, setMemberTrackingData] = useState(null);
+  const { data, params } = useOutletContext();
+  const { addNewTrainingDate } = useAdminAuth();
 
   useEffect(() => {
     if (data) {
@@ -18,12 +18,12 @@ const AdminMemberTracking = () => {
           uid={params.id}
           trackingData={data[0].trainingDates}
         />
-      ))
-      setMemberTrackingData(dataArr)
+      ));
+      setMemberTrackingData(dataArr);
     }
-  }, [data])
+  }, [data]);
   return (
-    <div className="member-tracking">
+    <div className="member-tracking ">
       <h2>Member Tracking</h2>
       {memberTrackingData}
       <button
@@ -33,7 +33,7 @@ const AdminMemberTracking = () => {
         +Add new Training Date
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default AdminMemberTracking
+export default AdminMemberTracking;

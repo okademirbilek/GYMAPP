@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react"
-import { useAdminAuth } from "../../context/AdminContext"
-import { useOutletContext } from "react-router-dom"
-import FormPayment from "../../components/forms/FormPayment"
+import React, { useEffect, useState } from "react";
+import { useAdminAuth } from "../../context/AdminContext";
+import { useOutletContext } from "react-router-dom";
+import FormPayment from "../../components/forms/FormPayment";
 
 const AdminPayment = () => {
-  const [paymentData, setPaymentData] = useState(null)
-  const { data, params } = useOutletContext()
-  const { addNewPayment } = useAdminAuth()
+  const [paymentData, setPaymentData] = useState(null);
+  const { data, params } = useOutletContext();
+  const { addNewPayment } = useAdminAuth();
 
   useEffect(() => {
     if (data) {
@@ -17,12 +17,12 @@ const AdminPayment = () => {
           uid={params.id}
           paymentData={data[0].payment}
         />
-      ))
-      setPaymentData(dataArr)
+      ));
+      setPaymentData(dataArr);
     }
-  }, [data])
+  }, [data]);
   return (
-    <div className="payment">
+    <div className="payment ">
       <h2>Payment</h2>
       {paymentData}
       <button
@@ -32,7 +32,7 @@ const AdminPayment = () => {
         +Add new Payment
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default AdminPayment
+export default AdminPayment;

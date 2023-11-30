@@ -107,7 +107,7 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
   }
 
   return (
-    <div className="profile-container">
+    <div className="form-images card-color">
       <span className="date display-f align-center gp-1">
         <h3>{convertTime(formData?.timeStamp)}</h3>
         <button onClick={() => toggleValue((prev) => !prev)}>
@@ -122,36 +122,39 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
 
       {value ? (
         <>
-          <img
-            src={
-              formData
-                ? formData.img1
-                : file
-                ? URL.createObjectURL(file[0])
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-            alt="profile"
-          />
-          <img
-            src={
-              formData
-                ? formData.img2
-                : file
-                ? URL.createObjectURL(file[1])
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-            alt="profile"
-          />
-          <img
-            src={
-              formData
-                ? formData.img3
-                : file
-                ? URL.createObjectURL(file[2])
-                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-            }
-            alt="profile"
-          />
+          <div className="flex-images">
+            <img
+              src={
+                formData
+                  ? formData.img1
+                  : file
+                  ? URL.createObjectURL(file[0])
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt="profile"
+            />
+            <img
+              src={
+                formData
+                  ? formData.img2
+                  : file
+                  ? URL.createObjectURL(file[1])
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt="profile"
+            />
+            <img
+              src={
+                formData
+                  ? formData.img3
+                  : file
+                  ? URL.createObjectURL(file[2])
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt="profile"
+            />
+          </div>
+
           <form onSubmit={handleSubmit} className="form">
             <label className="input-label">
               <span className="display-f gp-1 mb-1">

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
-import { useAdminAuth } from "../../context/AdminContext"
-import { convertTime } from "../../utils/utils"
+import React, { useState, useEffect } from "react";
+import { useAdminAuth } from "../../context/AdminContext";
+import { convertTime } from "../../utils/utils";
 
 import {
   arm,
@@ -15,16 +15,16 @@ import {
   waist,
   weight,
   pelvis,
-} from "../../assets/images/body/imports.js"
+} from "../../assets/images/body/imports.js";
 
-import arrow from "../../assets/images/downarrow.png"
+import arrow from "../../assets/images/downarrow.png";
 
-import useToggle from "../../customHooks/useToggle"
+import useToggle from "../../customHooks/useToggle";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
-import LockIcon from "@mui/icons-material/Lock"
-import LockOpenIcon from "@mui/icons-material/LockOpen"
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -36,67 +36,67 @@ const container = {
     opacity: 0,
     scale: 0,
   },
-}
+};
 
 const FormMeasurement = ({ data, measurementData, uid }) => {
-  const [lockForm, setLockForm] = useState(true)
-  const [formData, setFormData] = useState(null)
+  const [lockForm, setLockForm] = useState(true);
+  const [formData, setFormData] = useState(null);
 
   //toggle
-  const [value, toggleValue] = useToggle(false)
+  const [value, toggleValue] = useToggle(false);
 
   //error
-  const [loading, setLoading] = useState(true)
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
-  const { updateMeasurement } = useAdminAuth()
+  const { updateMeasurement } = useAdminAuth();
 
   useEffect(() => {
     if (data) {
-      setFormData(data)
-      setLoading(false)
+      setFormData(data);
+      setLoading(false);
     }
-  }, [data])
+  }, [data]);
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    let updatedData = []
-    setError("")
-    setStatus("submitting")
+    e.preventDefault();
+    let updatedData = [];
+    setError("");
+    setStatus("submitting");
     measurementData.map((item) => {
       if (item.id === data.id) {
-        updatedData.push({ ...formData, timeStamp: new Date() })
+        updatedData.push({ ...formData, timeStamp: new Date() });
       } else {
-        updatedData.push(item)
+        updatedData.push(item);
       }
-    })
+    });
 
     await updateMeasurement(uid, updatedData)
       .then(() => console.log("success"))
       .catch((error) => {
-        setError(error)
+        setError(error);
       })
       .finally(() => {
-        setStatus("idle")
-      })
+        setStatus("idle");
+      });
   }
 
   function handleChange(e) {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
   }
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return <h2>🌀 Loading...</h2>;
   }
 
   return (
     <>
-      <div className="form-measurement">
+      <div className="form-measurement card-color">
         <span className="date display-f align-center gp-1">
           <h3>{convertTime(formData?.timeStamp)}</h3>
           <button onClick={() => toggleValue((prev) => !prev)}>
@@ -309,7 +309,7 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default FormMeasurement
+export default FormMeasurement;

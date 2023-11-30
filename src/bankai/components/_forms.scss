@@ -440,3 +440,44 @@
     }
   }
 }
+
+/*************************************** ADMIN IMAGES FORM ***********************************************/
+.images {
+  button {
+    outline: none;
+    border: none;
+    background-color: #218838;
+  }
+  .form-images {
+    margin: 20px 0;
+    padding: 10px 20px;
+    .date {
+      button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        img {
+          width: 40px;
+          height: 40px;
+          object-fit: contain;
+        }
+      }
+    }
+
+    .flex-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      gap: 10px;
+      img {
+        width: 250px;
+        height: 350px;
+        border-radius: 5px;
+      }
+    }
+  }
+}

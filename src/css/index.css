@@ -1198,13 +1198,6 @@ img {
   gap: 10px;
 }
 
-.dashboard .listContainer {
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  margin: 20px;
-  padding: 20px;
-  border-radius: 5px;
-}
 .dashboard .listContainer .tableCell {
   font-size: 18px;
   min-width: 150px;
@@ -1218,13 +1211,16 @@ img {
 .dashboard .listContainer .tableCell .view {
   background-color: rgb(46, 143, 199);
 }
+.dashboard .listContainer .tableCell .view:hover {
+  background-color: rgb(255, 255, 255);
+  color: #25262b;
+}
 .dashboard .listContainer .tableCell .delete {
   margin-left: 10px;
   background-color: rgb(213, 73, 73);
 }
 .dashboard .listContainer .listTitle {
   font-weight: 500;
-  color: #c3c1c1;
   margin-bottom: 15px;
   padding: 0;
   font-size: 1.2rem;
@@ -1238,14 +1234,6 @@ img {
 .dashboard .listContainer .table .status {
   padding: 5px;
   border-radius: 5px;
-}
-.dashboard .listContainer .table .status.aproved {
-  color: green;
-  background-color: rgba(0, 128, 0, 0.151);
-}
-.dashboard .listContainer .table .status.pending {
-  color: goldenrod;
-  background-color: rgba(189, 189, 3, 0.103);
 }
 
 .measurement-header,
@@ -2004,6 +1992,42 @@ img {
   height: 50px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+/*************************************** ADMIN IMAGES FORM ***********************************************/
+.images button {
+  outline: none;
+  border: none;
+  background-color: #218838;
+}
+.images .form-images {
+  margin: 20px 0;
+  padding: 10px 20px;
+}
+.images .form-images .date button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.images .form-images .date button img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.images .form-images .flex-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  gap: 10px;
+}
+.images .form-images .flex-images img {
+  width: 250px;
+  height: 350px;
+  border-radius: 5px;
 }
 
 .user-detail-container {

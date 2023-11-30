@@ -1,55 +1,55 @@
-import React, { useState, useEffect } from "react"
-import { useAuth } from "../../context/AuthContext"
-import { convertTime } from "../../utils/utils"
-import { useOutletContext } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { convertTime } from "../../utils/utils";
+import { useOutletContext } from "react-router-dom";
 
 const AdminProfile = () => {
-  const { updateUser } = useAuth()
-  const { data, params } = useOutletContext()
-  const [lockForm, setLockForm] = useState(true)
-  const [formData, setFormData] = useState(null)
+  const { updateUser } = useAuth();
+  const { data, params } = useOutletContext();
+  const [lockForm, setLockForm] = useState(true);
+  const [formData, setFormData] = useState(null);
 
-  const [loading, setLoading] = useState(true)
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (data[0]?.profileInfo) {
-      setFormData(data[0].profileInfo)
-      setLoading(false)
+      setFormData(data[0].profileInfo);
+      setLoading(false);
     }
-  }, [data])
+  }, [data]);
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    setError("")
-    setStatus("submitting")
+    e.preventDefault();
+    setError("");
+    setStatus("submitting");
     await updateUser(params.id, formData)
       .then((cb) => console.log("snackbar completed"))
       .catch((error) => {
-        console.log(error.message)
-        setError(`error : ${error.message} `)
+        console.log(error.message);
+        setError(`error : ${error.message} `);
       })
       .finally(() => {
-        setStatus("idle")
-      })
+        setStatus("idle");
+      });
   }
 
   function handleChange(e) {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
   }
 
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return <h2>🌀 Loading...</h2>;
   }
 
   return (
-    <div className="profile-container">
+    <div className="profile-container card-color">
       <img className="pt-1 pl-1" src={formData.picture} alt="profile picture" />
       <form onSubmit={handleSubmit} className="form">
         <label className="input-label">
@@ -160,7 +160,7 @@ const AdminProfile = () => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default AdminProfile
+export default AdminProfile;

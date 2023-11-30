@@ -1,55 +1,55 @@
-import React, { useState, useEffect } from "react"
-import { useAdminAuth } from "../../context/AdminContext"
-import { convertTime } from "../../utils/utils"
-import LockIcon from "@mui/icons-material/Lock"
-import LockOpenIcon from "@mui/icons-material/LockOpen"
+import React, { useState, useEffect } from "react";
+import { useAdminAuth } from "../../context/AdminContext";
+import { convertTime } from "../../utils/utils";
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 
 const FormAdminMeal = ({ mealData, uid }) => {
   // console.log(mealData)
-  const [lockForm, setLockForm] = useState(true)
-  const [formData, setFormData] = useState(null)
+  const [lockForm, setLockForm] = useState(true);
+  const [formData, setFormData] = useState(null);
 
   //error
-  const [loading, setLoading] = useState(true)
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
-  const { updateMeal } = useAdminAuth()
+  const { updateMeal } = useAdminAuth();
 
   useEffect(() => {
     if (mealData) {
-      setFormData(mealData)
-      setLoading(false)
+      setFormData(mealData);
+      setLoading(false);
     }
-  }, [mealData])
+  }, [mealData]);
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    setError("")
-    setStatus("submitting")
+    e.preventDefault();
+    setError("");
+    setStatus("submitting");
     await updateMeal(uid, { ...formData, timeStamp: new Date() })
       .then(() => console.log("success"))
       .catch((error) => {
-        setError(error)
+        setError(error);
       })
       .finally(() => {
-        setStatus("idle")
-      })
+        setStatus("idle");
+      });
   }
 
   function handleChange(e) {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
   }
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>
+    return <h2>🌀 Loading...</h2>;
   }
   return (
-    <div className="form-meal">
+    <div className="form-meal card-color">
       <span className="date display-f align-center gp-1">
         <h3>{convertTime(formData?.timeStamp)}</h3>
       </span>
@@ -125,7 +125,7 @@ const FormAdminMeal = ({ mealData, uid }) => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default FormAdminMeal
+export default FormAdminMeal;

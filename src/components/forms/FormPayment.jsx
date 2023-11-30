@@ -57,7 +57,7 @@ const FormPayment = ({ data, paymentData, uid }) => {
   }
 
   return (
-    <div className="form-payment">
+    <div className="form-payment card-color">
       <span className="date display-f align-center gp-1">
         <h3>{convertTime(formData?.timeStamp)}</h3>
       </span>

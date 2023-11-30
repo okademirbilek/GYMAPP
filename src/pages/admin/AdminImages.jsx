@@ -26,7 +26,7 @@ const AdminImages = () => {
       {imagesData}
       <button
         onClick={() => addNewImages(params.id)}
-        className="add-images-btn p-1 br-sm bg-info"
+        className="add-images-btn p-1 br-sm "
       >
         +Add new images
       </button>

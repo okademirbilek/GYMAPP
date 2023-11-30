@@ -14,31 +14,17 @@ import { convertTime } from "../utils/utils";
 const List = ({ data }) => {
   return (
     <>
-      {/* <TableContainer
-        sx={{
-          maxHeight: 624,
-          minWidth: 700,
-          overflow: "auto",
-          tableLayout: "fixed",
-        }}
-        component={Paper}
-        className="table bg-error"
-      > */}
       <Box sx={{ overflow: "auto" }}>
         <Box sx={{ width: "100%", display: "table", tableLayout: "fixed" }}>
-          <Table
-            stickyHeader
-            className="table bg-primary"
-            aria-label="simple table"
-          >
+          <Table stickyHeader className={`table`} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell className="tableCell">Image</TableCell>
-                <TableCell className="tableCell">Tracking ID</TableCell>
+                <TableCell className="tableCell">Actions</TableCell>
                 <TableCell className="tableCell">Name</TableCell>
                 <TableCell className="tableCell">Surname</TableCell>
                 <TableCell className="tableCell">Time</TableCell>
-                <TableCell className="tableCell">Actions</TableCell>
+                <TableCell className="tableCell">Tracking ID</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -53,51 +39,28 @@ const List = ({ data }) => {
                       />
                     </div>
                   </TableCell>
-                  <TableCell className="tableCell">{row.uid}</TableCell>
-                  <TableCell className="tableCell">
-                    {row.profileInfo.name}
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    {row.profileInfo.surname}
-                  </TableCell>
-                  <TableCell className="tableCell">
-                    {convertTime(row.profileInfo.timeStamp)}
-                  </TableCell>
-                  <TableCell className="tableCell">
+                  <TableCell className="tableCell text">
                     <Link to={`/dashboard/${row.uid}`}>
                       <span className="view">View</span>
                     </Link>
-                    <span className="delete">Delete</span>
                   </TableCell>
+
+                  <TableCell className="tableCell text">
+                    {row.profileInfo.name}
+                  </TableCell>
+                  <TableCell className="tableCell text">
+                    {row.profileInfo.surname}
+                  </TableCell>
+                  <TableCell className="tableCell text">
+                    {convertTime(row.profileInfo.timeStamp)}
+                  </TableCell>
+                  <TableCell className="tableCell text">{row.uid}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </Box>
       </Box>
-
-      {/* </TableContainer> */}
-      {/* <div className="datatable">
-        <div style={{ height: 400, width: "100%" }}>
-          <div className="datatableTitle">
-            Add New User
-            <Link to="/users/new" className="link">
-              Add New
-            </Link>
-          </div>
-          <DataGrid
-            rows={userRows}
-            columns={userColumns.concat(actionColumn)}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 5 },
-              },
-            }}
-            pageSizeOptions={[5, 10]}
-            checkboxSelection
-          />
-        </div>
-      </div> */}
     </>
   );
 };
