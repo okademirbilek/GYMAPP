@@ -9,6 +9,8 @@ import { AdminProvider } from "./context/AdminContext";
 
 import BottomNavbar from "./components/BottomNavbar";
 
+import { SnackbarProvider } from "notistack";
+
 import {
   SignUp,
   Login,
@@ -37,7 +39,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            //context proviter for  snackbar
+            <SnackbarProvider>
+              <Layout />
+            </SnackbarProvider>
+          }
+        >
           <Route index element={<Home />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/login" element={<Login />} />

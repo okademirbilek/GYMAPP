@@ -5,9 +5,8 @@ import { convertTime } from "../utils/utils";
 import Loader from "../components/Loader";
 
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
-// import { storage } from "../../firebase";
 
-// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { callSnackBar } from "../utils/utils";
 
 const Profile = () => {
   const { currentUserData, currentUser, updateUser, uploadFile } = useAuth();
@@ -51,7 +50,7 @@ const Profile = () => {
     setStatus("submitting");
     setLoading(true);
     await updateUser(currentUser.uid, formData)
-      .then(() => console.log("snackbar completed"))
+      .then(() => callSnackBar())
       .catch((error) => {
         console.log(error.message);
         setError(`error : ${error.message} `);

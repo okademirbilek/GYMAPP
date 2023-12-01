@@ -24,3 +24,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 //react icons kit added maybe find another icons from mui
 //cloud storage upload onsnapshot
 //data type input accept file.type.startWith("image/")
+// Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass

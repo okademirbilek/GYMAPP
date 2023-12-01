@@ -11,24 +11,6 @@
     padding: 0px 15px;
     height: 100%;
 
-    .search {
-      border: 0.5px solid lightgray;
-      padding: 6px 15px;
-      border-radius: 2px;
-      input {
-        font-size: $base-font-size;
-        border: none;
-        outline: none;
-        background-color: transparent;
-        max-width: 150px;
-        &::placeholder {
-          font-weight: bold;
-          font-size: $base-font-size;
-          color: rgb(205, 201, 201);
-        }
-      }
-    }
-
     .items {
       .menu-nav {
         position: absolute;
@@ -134,11 +116,11 @@
       }
     }
 
-    .items {
-      @include md {
-        display: none;
-      }
-    }
+    // .items {
+    //   @include md {
+    //     display: none;
+    //   }
+    // }
 
     @include lg {
       .items {

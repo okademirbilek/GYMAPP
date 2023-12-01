@@ -8,13 +8,11 @@ import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+
 import TodayIcon from "@mui/icons-material/Today";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 
 import { useAuth } from "../context/AuthContext";
-import DarkMode from "../components/DarkMode/DarkMode";
 
 import { useTheme } from "../context/ThemeContext";
 
@@ -154,18 +152,6 @@ const Sidebar = () => {
               </button>
             </li>
           </ul>
-        </div>
-        <div className="bottom display-f fd-c mt-1">
-          <p>Mode</p>
-          {/* <div className="colorOption">
-            <DarkModeOutlinedIcon />
-            <p>Dark</p>
-          </div>
-          <div className="colorOption">
-            <LightModeOutlinedIcon />
-            <p>Light</p>
-          </div> */}
-          <DarkMode />
         </div>
       </nav>
     </div>

@@ -39,11 +39,11 @@ body {
 }
 .dark .background {
   transition: all 0.3s ease-out;
-  background-color: #1a1b1e;
+  background-color: #0e1012;
 }
 .dark .card-color {
   transition: all 0.3s ease-out;
-  background: #25262b;
+  background: #181c1f;
 }
 .dark .backgroundX {
   transition: all 0.3s ease-out;
@@ -824,23 +824,6 @@ img {
   padding: 0px 15px;
   height: 100%;
 }
-.navbar .wrapper .search {
-  border: 0.5px solid lightgray;
-  padding: 6px 15px;
-  border-radius: 2px;
-}
-.navbar .wrapper .search input {
-  font-size: 1rem;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  max-width: 150px;
-}
-.navbar .wrapper .search input::placeholder {
-  font-weight: bold;
-  font-size: 1rem;
-  color: rgb(205, 201, 201);
-}
 .navbar .wrapper .items .menu-nav {
   position: absolute;
   top: 0;
@@ -932,11 +915,6 @@ img {
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-}
-@media (min-width: 720px) {
-  .navbar .wrapper .items {
-    display: none;
-  }
 }
 @media (min-width: 960px) {
   .navbar .wrapper .items .item {

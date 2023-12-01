@@ -59,11 +59,13 @@ body {
   }
   .background {
     transition: all 0.3s ease-out;
-    background-color: $dark-700;
+    // background-color: $dark-700;
+    background-color: #0e1012;
   }
   .card-color {
     transition: all 0.3s ease-out;
-    background: $dark-600;
+    background: #181c1f;
+    // background: $dark-600;
   }
   .backgroundX {
     transition: all 0.3s ease-out;

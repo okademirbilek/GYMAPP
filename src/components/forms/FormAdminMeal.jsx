@@ -49,7 +49,7 @@ const FormAdminMeal = ({ mealData, uid }) => {
     return <h2>🌀 Loading...</h2>;
   }
   return (
-    <div className="form-meal card-color">
+    <div className="form-meal">
       <span className="date display-f align-center gp-1">
         <h3>{convertTime(formData?.timeStamp)}</h3>
       </span>
