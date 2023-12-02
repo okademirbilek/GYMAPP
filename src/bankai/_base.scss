@@ -60,12 +60,15 @@ body {
   .background {
     transition: all 0.3s ease-out;
     // background-color: $dark-700;
-    background-color: #0e1012;
+    background-color: $back1;
   }
   .card-color {
     transition: all 0.3s ease-out;
-    background: #181c1f;
+    background: $card1;
     // background: $dark-600;
+  }
+  .input-color {
+    background-color: $dark-500;
   }
   .backgroundX {
     transition: all 0.3s ease-out;

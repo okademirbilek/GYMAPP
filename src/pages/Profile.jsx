@@ -8,6 +8,11 @@ import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 import { callSnackBar } from "../utils/utils";
 
+import { useTheme } from "../context/ThemeContext";
+
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+
 const Profile = () => {
   const { currentUserData, currentUser, updateUser, uploadFile } = useAuth();
   const [lockForm, setLockForm] = useState(true);
@@ -20,6 +25,8 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
+
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (currentUserData?.profileInfo) {
@@ -80,6 +87,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container card-padding card-color">
+      <h2>Profile</h2>
       <img
         src={
           formData.picture
@@ -95,10 +103,10 @@ const Profile = () => {
           <h3 className="login-error">{error}</h3>
         </div>
       )}
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className={`form ${theme}`}>
         <label className="input-label">
           <span className="display-f gp-1 mb-1">
-            Upload Image <DriveFolderUploadIcon />
+            Upload image <DriveFolderUploadIcon />
           </span>
           <input
             onChange={(e) => setFile(e.target.files[0])}
@@ -199,19 +207,32 @@ const Profile = () => {
             disabled
           />
         </label>
+        <div className="button-container">
+          <button
+            type="button"
+            onClick={() => setLockForm((prevFrom) => !prevFrom)}
+          >
+            {lockForm ? (
+              <>
+                <p className="display-f align-center justify-center ">
+                  <LockIcon />
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="display-f align-center justify-center ">
+                  <LockOpenIcon />
+                </p>
+              </>
+            )}
+          </button>
 
-        <button
-          type="button"
-          onClick={() => setLockForm((prevFrom) => !prevFrom)}
-        >
-          {lockForm ? "unlock" : "lock"}
-        </button>
-
-        <button
-          disabled={status === "submitting" || (per !== null && per < 100)}
-        >
-          {status === "submitting" ? "Saving..." : "Save"}
-        </button>
+          <button
+            disabled={status === "submitting" || (per !== null && per < 100)}
+          >
+            {status === "submitting" ? "Saving..." : "Save"}
+          </button>
+        </div>
       </form>
     </div>
   );
