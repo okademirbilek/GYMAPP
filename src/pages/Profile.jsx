@@ -13,20 +13,21 @@ import { useTheme } from "../context/ThemeContext";
 import LockIcon from "@mui/icons-material/Lock";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 
+import useLoadPage from "../customHooks/useLoadPage";
+
 const Profile = () => {
   const { currentUserData, currentUser, updateUser, uploadFile } = useAuth();
   const [lockForm, setLockForm] = useState(true);
   const [formData, setFormData] = useState(null);
-  //state for image
+  //state for image input
   const [file, setFile] = useState("");
   //percentage for image upload
   const [per, setPerc] = useState(null);
-
-  const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState(null);
-
+  //darkmode - lightmode context
   const { theme } = useTheme();
+  //page loading states
+  const { loading, status, error, setLoading, setStatus, setError } =
+    useLoadPage();
 
   useEffect(() => {
     if (currentUserData?.profileInfo) {
@@ -96,7 +97,7 @@ const Profile = () => {
             ? URL.createObjectURL(file)
             : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
         }
-        alt="profile"
+        alt="user profile image"
       />
       {error && (
         <div className="alert">
