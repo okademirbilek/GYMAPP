@@ -1,14 +1,14 @@
 import React from "react";
 import LanguageIcon from "@mui/icons-material/Language";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import { Link } from "react-router-dom";
 
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 
 ////menu
-import { Example } from "./menu/Example";
-import DarkMode from "./DarkMode/DarkMode";
+import { Example } from "../menu/Example";
+import DarkMode from "../DarkMode/DarkMode";
 
 const navbar = () => {
   const { currentUser, currentUserData } = useAuth();

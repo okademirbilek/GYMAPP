@@ -12,9 +12,9 @@ import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import TodayIcon from "@mui/icons-material/Today";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 
 // const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 

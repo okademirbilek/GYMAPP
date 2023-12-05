@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Table from "../../components/Table";
+import React from "react";
+import Table from "../../components/tables/Table";
 import { useAdminAuth } from "../../context/AdminContext";
 import { useTheme } from "../../context/ThemeContext";
 

@@ -8,9 +8,9 @@ import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import TodayIcon from "@mui/icons-material/Today";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 
 //style for active page
 const activeStyle = {

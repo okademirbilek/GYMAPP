@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
-import { convertTime } from "../utils/utils";
+import { convertTime } from "../../utils/utils";
 
 const List = ({ data }) => {
   return (

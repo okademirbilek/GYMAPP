@@ -10,17 +10,19 @@ import { callSnackBar } from "../utils/utils";
 
 import { useTheme } from "../context/ThemeContext";
 
-import LockIcon from "@mui/icons-material/Lock";
-import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LockFormButton from "../components/buttons/LockFormButton";
 
 import useLoadPage from "../customHooks/useLoadPage";
 
+import useToggle from "../customHooks/useToggle";
+
 const Profile = () => {
   const { currentUserData, currentUser, updateUser, uploadFile } = useAuth();
-  const [lockForm, setLockForm] = useState(true);
   const [formData, setFormData] = useState(null);
+  //state for locking form
+  const [lockForm, setLockForm] = useToggle(true);
   //state for image input
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(null);
   //percentage for image upload
   const [per, setPerc] = useState(null);
   //darkmode - lightmode context
@@ -91,11 +93,11 @@ const Profile = () => {
       <h2>Profile</h2>
       <img
         src={
-          formData.picture
-            ? formData.picture
-            : file
-            ? URL.createObjectURL(file)
-            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+          file !== null
+            ? file
+              ? URL.createObjectURL(file)
+              : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+            : formData.picture
         }
         alt="user profile image"
       />
@@ -209,25 +211,7 @@ const Profile = () => {
           />
         </label>
         <div className="button-container">
-          <button
-            type="button"
-            onClick={() => setLockForm((prevFrom) => !prevFrom)}
-          >
-            {lockForm ? (
-              <>
-                <p className="display-f align-center justify-center ">
-                  <LockIcon />
-                </p>
-              </>
-            ) : (
-              <>
-                <p className="display-f align-center justify-center ">
-                  <LockOpenIcon />
-                </p>
-              </>
-            )}
-          </button>
-
+          <LockFormButton lockForm={lockForm} setLockForm={setLockForm} />
           <button
             disabled={status === "submitting" || (per !== null && per < 100)}
           >

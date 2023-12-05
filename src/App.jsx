@@ -7,7 +7,7 @@ import { AdminProvider } from "./context/AdminContext";
 
 // const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
-import BottomNavbar from "./components/BottomNavbar";
+import BottomNavbar from "./components/navigation/BottomNavbar";
 
 import { SnackbarProvider } from "notistack";
 
