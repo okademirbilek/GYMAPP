@@ -16,7 +16,7 @@ const UserDetail = () => {
 
   //style for active page
   const activeStyle = {
-    backgroundColor: theme === "light" ? "#E5E5E5" : "rgb(17, 17, 17)",
+    backgroundColor: theme === "light" ? "#E5E5E5" : "#373a40",
   };
 
   return (

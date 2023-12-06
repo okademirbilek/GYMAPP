@@ -3,15 +3,22 @@ import { useAuth } from "../../context/AuthContext";
 import { convertTime } from "../../utils/utils";
 import { useOutletContext } from "react-router-dom";
 
+import Loader from "../../components/Loader";
+import LockFormButton from "../../components/buttons/LockFormButton";
+
+import useLoadPage from "../../customHooks/useLoadPage";
+import useToggle from "../../customHooks/useToggle";
+
 const AdminProfile = () => {
   const { updateUser } = useAuth();
   const { data, params } = useOutletContext();
-  const [lockForm, setLockForm] = useState(true);
+  //state for locking form
+  const [lockForm, setLockForm] = useToggle(true);
   const [formData, setFormData] = useState(null);
 
-  const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState(null);
+  //page loading states
+  const { loading, status, error, setLoading, setStatus, setError } =
+    useLoadPage();
 
   useEffect(() => {
     if (data[0]?.profileInfo) {
@@ -45,12 +52,21 @@ const AdminProfile = () => {
 
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>;
+    return (
+      <span className="loader">
+        <Loader />
+      </span>
+    );
   }
 
   return (
-    <div className="profile-container card-color">
-      <img className="pt-1 pl-1" src={formData.picture} alt="profile picture" />
+    <div className="profile-container card-padding card-color">
+      <img src={formData.picture} alt="profile picture" />
+      {error && (
+        <div className="alert">
+          <h3 className="login-error">{error}</h3>
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="form">
         <label className="input-label">
           Name
@@ -143,21 +159,12 @@ const AdminProfile = () => {
           />
         </label>
 
-        <button
-          type="button"
-          onClick={() => setLockForm((prevFrom) => !prevFrom)}
-        >
-          {lockForm ? "unlock" : "lock"}
-        </button>
-
-        {error && (
-          <div className="alert">
-            <h3 className="login-error">{error}</h3>
-          </div>
-        )}
-        <button disabled={status === "submitting"}>
-          {status === "submitting" ? "Saving..." : "Save"}
-        </button>
+        <span className="button-container">
+          <LockFormButton lockForm={lockForm} setLockForm={setLockForm} />
+          <button disabled={status === "submitting"}>
+            {status === "submitting" ? "Saving..." : "Save"}
+          </button>
+        </span>
       </form>
     </div>
   );
