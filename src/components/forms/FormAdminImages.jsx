@@ -7,6 +7,10 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import useToggle from "../../customHooks/useToggle";
 import arrow from "../../assets/images/downarrow.png";
 
+import useLoadPage from "../../customHooks/useLoadPage";
+
+import Loader from "../../components/Loader";
+
 const FormAdminImages = ({ data, imagesData, uid }) => {
   const [formData, setFormData] = useState(null);
   const { updateImages } = useAdminAuth();
@@ -17,10 +21,9 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
   //percentage for image upload
   const [per, setPerc] = useState(null);
 
-  //error
-  const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState(null);
+  //page loading states
+  const { loading, status, error, setLoading, setStatus, setError } =
+    useLoadPage();
 
   //toggle
   const [value, toggleValue] = useToggle(false);
@@ -103,7 +106,11 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
 
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>;
+    return (
+      <span className="loader">
+        <Loader />
+      </span>
+    );
   }
 
   return (
@@ -125,31 +132,31 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
           <div className="flex-images">
             <img
               src={
-                formData
-                  ? formData.img1
-                  : file
-                  ? URL.createObjectURL(file[0])
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                file.length > 0
+                  ? file
+                    ? URL.createObjectURL(file[0])
+                    : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : formData?.img1
               }
               alt="profile"
             />
             <img
               src={
-                formData
-                  ? formData.img2
-                  : file
-                  ? URL.createObjectURL(file[1])
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                file.length > 0
+                  ? file
+                    ? URL.createObjectURL(file[1])
+                    : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : formData?.img2
               }
               alt="profile"
             />
             <img
               src={
-                formData
-                  ? formData.img3
-                  : file
-                  ? URL.createObjectURL(file[2])
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                file.length > 0
+                  ? file
+                    ? URL.createObjectURL(file[2])
+                    : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : formData?.img3
               }
               alt="profile"
             />

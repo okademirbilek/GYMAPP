@@ -23,7 +23,7 @@ const UserDetail = () => {
     <div className="user-detail-container">
       <ul>
         <Link to="/dashboard" className="bg-primary display-f">
-          Back to Users page
+          Back
           <ReplyIcon className="ml-1" />
         </Link>
         {/* end for higlight problem */}
