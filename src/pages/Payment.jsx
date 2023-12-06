@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import TablePayment from "../components/tables/TablePayment";
-import payment from "../assets/images/payment.png";
 
 import Loader from "../components/Loader";
 
@@ -27,7 +26,6 @@ const Payment = () => {
     <>
       <div className="payment-header  display-f align-center gp-1">
         <h2>Payment</h2>
-        {/* <img src={payment} alt="payment card" /> */}
       </div>
       {currentUserData?.payment?.map((data, index) => (
         <TablePayment key={index} data={data} index={index} />

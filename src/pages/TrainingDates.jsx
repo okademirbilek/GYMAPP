@@ -26,7 +26,6 @@ const TrainingDates = () => {
     <div>
       <div className="payment-header  display-f align-center gp-1">
         <h2>Training Dates</h2>
-        {/* <img src={payment} alt="payment card" /> */}
       </div>
       {currentUserData?.trainingDates?.map((data, index) => (
         <FormMemberTracking

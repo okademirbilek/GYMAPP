@@ -22,6 +22,8 @@ import useToggle from "../../customHooks/useToggle";
 
 import { motion } from "framer-motion";
 
+import { useTheme } from "../../context/ThemeContext";
+
 //framer motion animation variant
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -37,17 +39,18 @@ const container = {
 
 const TableMeasurement = ({ data }) => {
   const [value, toggleValue] = useToggle(false);
+  const { theme } = useTheme();
   return (
     <div className="measurement-table-container card-padding card-color">
       <div className="date-container display-f align-center">
-        <h2>{data.timeStamp && convertTime(data.timeStamp)}</h2>{" "}
+        <h3>{data.timeStamp && convertTime(data.timeStamp)}</h3>{" "}
         <button onClick={() => toggleValue((prev) => !prev)}>
           <img src={arrow} alt="down arrow" className="arrow ml-1" />
         </button>
       </div>
       {value && (
         <motion.div
-          className="flex-container display-f"
+          className={`flex-container display-f ${theme}`}
           variants={container}
           initial="hidden"
           animate={value && "visible"}

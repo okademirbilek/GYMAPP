@@ -10,7 +10,7 @@ const TableImages = ({ data }) => {
   return (
     <div className="images-table-container card-padding card-color">
       <div className="date-container display-f align-center">
-        <h2>{data.timeStamp && convertTime(data.timeStamp)}</h2>{" "}
+        <h3>{data.timeStamp && convertTime(data.timeStamp)}</h3>{" "}
         <button onClick={() => toggleValue((prev) => !prev)}>
           <img src={arrow} alt="down arrow" className="arrow ml-1" />
         </button>

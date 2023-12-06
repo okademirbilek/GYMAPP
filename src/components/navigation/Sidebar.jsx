@@ -26,7 +26,7 @@ const Sidebar = () => {
 
   //style for active page
   const activeStyle = {
-    backgroundColor: theme === "light" ? "#E5E5E5" : "rgb(17, 17, 17)",
+    backgroundColor: theme === "light" ? "#E5E5E5" : "#373a40",
   };
 
   async function handleLogout() {
@@ -145,8 +145,8 @@ const Sidebar = () => {
               <p className="title">User</p>
             )}
 
-            <li>
-              <button onClick={handleLogout}>
+            <li onClick={handleLogout}>
+              <button>
                 <ExitToAppOutlinedIcon />
                 <p>Log Out</p>
               </button>

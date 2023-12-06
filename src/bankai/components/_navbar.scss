@@ -19,6 +19,10 @@
         bottom: 0;
         z-index: 999;
         // width: 300px;
+        @include md {
+          display: none;
+        }
+
         .background {
           position: absolute;
           top: 0;
@@ -51,6 +55,9 @@
         }
 
         ul {
+          display: flex;
+          flex-direction: column;
+          margin-left: 10px;
           gap: 10px;
           padding: 25px;
           position: absolute;
@@ -67,7 +74,8 @@
             border-radius: 5px;
             height: 35px;
             padding: 5px;
-            color: #99180d;
+            // color: #99180d;
+            color: $dark-600;
             font-weight: bold;
             a {
               display: flex;

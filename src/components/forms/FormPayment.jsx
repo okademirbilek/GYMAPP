@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useAdminAuth } from "../../context/AdminContext";
 import { convertTime } from "../../utils/utils";
-// import useToggle from "../../customHooks/useToggle";
+import useLoadPage from "../../customHooks/useLoadPage";
+
+import Loader from "../../components/Loader";
 
 const FormPayment = ({ data, paymentData, uid }) => {
   const [formData, setFormData] = useState(null);
   const { updatePayment } = useAdminAuth();
 
-  // //toggle
-  // const [value, toggleValue] = useToggle(false)
-
-  //error
-  const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState(null);
+  const { loading, status, error, setLoading, setStatus, setError } =
+    useLoadPage();
 
   useEffect(() => {
     if (data) {
@@ -53,7 +50,11 @@ const FormPayment = ({ data, paymentData, uid }) => {
   }
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>;
+    return (
+      <span className="loader">
+        <Loader />
+      </span>
+    );
   }
 
   return (
@@ -68,7 +69,6 @@ const FormPayment = ({ data, paymentData, uid }) => {
             name="price"
             onChange={handleChange}
             type="number"
-            // placeholder="Price"
             value={formData.price}
             id="price"
           />{" "}

@@ -834,6 +834,11 @@ img {
   bottom: 0;
   z-index: 999;
 }
+@media (min-width: 720px) {
+  .navbar .wrapper .items .menu-nav {
+    display: none;
+  }
+}
 .navbar .wrapper .items .menu-nav .background {
   position: absolute;
   top: 0;
@@ -860,6 +865,9 @@ img {
   padding: 0;
 }
 .navbar .wrapper .items .menu-nav ul {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
   gap: 10px;
   padding: 25px;
   position: absolute;
@@ -877,7 +885,7 @@ img {
   border-radius: 5px;
   height: 35px;
   padding: 5px;
-  color: #99180d;
+  color: #25262b;
   font-weight: bold;
   cursor: pointer;
 }
@@ -1020,7 +1028,7 @@ img {
     cursor: pointer;
   }
   .sidebar li:hover {
-    background-color: #9f8cbb;
+    background-color: #cc3232;
   }
   .sidebar li a {
     border-radius: 5px;
@@ -1220,11 +1228,14 @@ img {
 .measurement-header,
 .payment-header,
 .images-header {
-  padding: 20px;
+  padding: 20px 20px 0;
 }
 .measurement-header h2,
+.measurement-header h3,
 .payment-header h2,
-.images-header h2 {
+.payment-header h3,
+.images-header h2,
+.images-header h3 {
   max-width: 400px;
 }
 .measurement-header img,
@@ -1494,6 +1505,7 @@ img {
   border-radius: 8px;
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 .meal-table-container .date-container {
   padding: 20px;
@@ -1567,10 +1579,17 @@ img {
   padding: 20px 0;
   gap: 10px;
 }
+@media (min-width: 960px) {
+  .images-table-container .flex-images {
+    gap: 3em;
+  }
+}
 .images-table-container .flex-images img {
   width: 250px;
   height: 350px;
   border-radius: 5px;
+  object-position: center;
+  object-fit: cover;
 }
 
 /******************************************* LOGIN PAGE ********************************* */

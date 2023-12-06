@@ -21,6 +21,7 @@ const Meal = () => {
     }
   }, [currentUserData]);
 
+  //list comes with comma seperated
   function makeList(arr) {
     return arr?.split(",").map((item, index) => <li key={index}>{item}</li>);
   }
@@ -36,12 +37,10 @@ const Meal = () => {
   return (
     <div>
       <div className="measurement-header">
-        <h2 className="mb-3">Meal</h2>
+        <h2>Meal</h2>
         <div className="meal-table-container card-color ">
           <div className="date-container ">
-            <h3>
-              Date : {mealData?.timeStamp && convertTime(mealData?.timeStamp)}
-            </h3>
+            <h3>{mealData?.timeStamp && convertTime(mealData?.timeStamp)}</h3>
           </div>
           <div className="wrapper">
             <div className="table-container">
