@@ -1,18 +1,35 @@
 import React from "react";
-import LanguageIcon from "@mui/icons-material/Language";
-import { useAuth } from "../../context/AuthContext";
-import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
 import { Link } from "react-router-dom";
 
+//authentication
+import { useAuth } from "../../context/AuthContext";
+
+//theme
 import { useTheme } from "../../context/ThemeContext";
 
-////menu
+//menu
 import { Example } from "../menu/Example";
 import DarkMode from "../DarkMode/DarkMode";
 
-const navbar = () => {
+//language
+import { useTranslation } from "react-i18next";
+
+//icons
+import LanguageIcon from "@mui/icons-material/Language";
+import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
+
+//language
+import { withTranslation } from "react-i18next";
+
+const navbar = ({ t }) => {
   const { currentUser, currentUserData } = useAuth();
   const { theme } = useTheme();
+  const { i18n } = useTranslation();
+
+  const handleClick = async (lang) => {
+    await i18n.changeLanguage(lang);
+  };
+
   return (
     <>
       <div className={`navbar ${theme} background`}>
@@ -24,14 +41,17 @@ const navbar = () => {
               </div>
             )}
 
-            <div className="item">
+            <div
+              className="item"
+              onClick={() => handleClick(i18n.language === "tr" ? "en" : "tr")}
+            >
               <LanguageIcon />
-              En
+              {i18n.language}
             </div>
             {!currentUser && (
               <Link to={"/login"} className="item">
                 <ExitToAppOutlinedIcon />
-                Sign In
+                {t("Sign In")}
               </Link>
             )}
             <Example />
@@ -55,4 +75,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default withTranslation()(navbar);

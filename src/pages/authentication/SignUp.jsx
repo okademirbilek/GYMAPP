@@ -1,63 +1,63 @@
-import React, { useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
-import Icon from "react-icons-kit"
-import { eyeOff } from "react-icons-kit/feather/eyeOff"
-import { eye } from "react-icons-kit/feather/eye"
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import Icon from "react-icons-kit";
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
-export default function SignUp() {
-  const [inputType, setInputType] = useState("password")
+//language
+import { withTranslation } from "react-i18next";
+
+function SignUp({ t }) {
+  const [inputType, setInputType] = useState("password");
   const [signUpFormData, setSignUpFormData] = useState({
     email: "",
     password: "",
     passwordConfirm: "",
-  })
+  });
   //signup function from useAuth context (email, password)
 
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
-  const { signup, addDefaultData, addDefaultData2, addDefaultData3 } = useAuth()
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
+  const { signup, addDefaultData } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     if (signUpFormData.password !== signUpFormData.passwordConfirm) {
-      return setError("Passwords do not match")
+      return setError("Passwords do not match");
     }
 
     await signup(signUpFormData.email, signUpFormData.password)
       .then((user) => {
-        navigate("/", { replace: true })
+        navigate("/", { replace: true });
         //dummy data for new user
-        addDefaultData(user.user.uid)
+        addDefaultData(user.user.uid);
       })
       .catch((error) => {
-        setError("Failed to create an account")
+        setError("Failed to create an account");
       })
       .finally(() => {
-        setStatus("idle")
-      })
+        setStatus("idle");
+      });
   }
 
   function handleChange(e) {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setSignUpFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
   }
 
   return (
     <div className="login-container">
       <div className="glass-container">
-        <h1>Sign up</h1>
-        {/* <div className="caution">
-          <p>You can use a random email and password for signing up.</p>
-        </div> */}
+        <h1>{t("Sign Up")}</h1>
         <form onSubmit={handleSubmit} className="form">
           <label className="input-label" htmlFor="sign-up-email">
-            Email
+            {t("Email")}
           </label>
           <input
             name="email"
@@ -69,15 +69,15 @@ export default function SignUp() {
             required
           />
           <label className="input-label" htmlFor="sign-up-password">
-            Password
+            {t("Password")}
           </label>
           <div className="input-with-icon">
             <input
               id="sign-up-password"
-              name="password"
+              name="Password"
               onChange={handleChange}
               type={inputType}
-              placeholder="Password"
+              placeholder={t("Password")}
               value={signUpFormData.password}
               minLength={6}
               maxLength={40}
@@ -103,14 +103,14 @@ export default function SignUp() {
             )}
           </div>
           <label className="input-label" htmlFor="sign-up-confirm">
-            Confirm password
+            {t("Confirm password")}
           </label>
           <input
             id="sign-up-confirm"
             name="passwordConfirm"
             onChange={handleChange}
             type={inputType}
-            placeholder="Confirm password "
+            placeholder={t("Confirm password")}
             value={signUpFormData.passwordConfirm}
             maxLength={40}
             required
@@ -121,17 +121,19 @@ export default function SignUp() {
             </div>
           )}
           <button disabled={status === "submitting"}>
-            {status === "submitting" ? "Signing up..." : "Sign up"}
+            {status === "submitting" ? t("Signing up...") : t("Sign Up")}
           </button>
         </form>
         <div className="link-div">
-          Already have an account?{" "}
+          {t("Already have an account?")}{" "}
           <Link className="form-link" to="/login">
             {" "}
-            Sign In{" "}
+            {t("Sign In")}{" "}
           </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }
+
+export default withTranslation()(SignUp);

@@ -1621,6 +1621,7 @@ img {
   align-items: center;
   justify-content: center;
   max-width: 441px;
+  min-width: 250px;
 }
 .login-container .glass-container h1 {
   color: #53ddff;

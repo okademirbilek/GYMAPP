@@ -5,9 +5,13 @@ import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 import CurrencyLiraIcon from "@mui/icons-material/CurrencyLira";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
+//language
+import { useTranslation } from "react-i18next";
+
 const TablePayment = ({ data, index }) => {
+  const { t } = useTranslation();
   return (
-    <div className="payment-table-container display-f   card-color">
+    <div className="payment-table-container display-f card-color">
       <div className="table-index">{index + 1}</div>
       <div className="date-container display-f align-center">
         <h4>{data.timeStamp && convertTime(data.timeStamp)}</h4>{" "}
@@ -16,7 +20,7 @@ const TablePayment = ({ data, index }) => {
 
       <div className="table-container">
         <div className="table-data display-f ">
-          Price :
+          {t("Price")} :
           <div>
             {data.price}
             <CurrencyLiraIcon />
@@ -25,17 +29,17 @@ const TablePayment = ({ data, index }) => {
       </div>
       <div className="table-container">
         <div className="table-data">
-          <div>Payment :</div>
+          <div>{t("Payment")} :</div>
           {data.isConfirmed ? (
             <div className="confirmed">
               <GppGoodIcon />
-              Confirmed
+              {t("Confirmed")}
             </div>
           ) : (
             <div className="not-confirmed">
               {" "}
               <HourglassTopIcon />
-              Pending
+              {t("Pending")}
             </div>
           )}
         </div>

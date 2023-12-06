@@ -4,7 +4,10 @@ import TablePayment from "../components/tables/TablePayment";
 
 import Loader from "../components/Loader";
 
-const Payment = () => {
+//language
+import { withTranslation } from "react-i18next";
+
+const Payment = ({ t }) => {
   const [loading, setLoading] = useState(true);
   const { currentUserData } = useAuth();
 
@@ -25,7 +28,7 @@ const Payment = () => {
   return (
     <>
       <div className="payment-header  display-f align-center gp-1">
-        <h2>Payment</h2>
+        <h2>{t("Payment")}</h2>
       </div>
       {currentUserData?.payment?.map((data, index) => (
         <TablePayment key={index} data={data} index={index} />
@@ -34,4 +37,4 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+export default withTranslation()(Payment);

@@ -4,7 +4,10 @@ import TableImages from "../components/tables/TableImages";
 
 import Loader from "../components/Loader";
 
-const Images = () => {
+//language
+import { withTranslation } from "react-i18next";
+
+const Images = ({ t }) => {
   const [loading, setLoading] = useState(true);
   const { currentUserData } = useAuth();
   useEffect(() => {
@@ -24,7 +27,7 @@ const Images = () => {
   return (
     <div>
       <div className="images-header  display-f align-center gp-1">
-        <h2>Images</h2>
+        <h2>{t("Images")}</h2>
       </div>
       {currentUserData?.images?.map((data, index) => (
         <TableImages key={data.timeStamp} data={data} index={index} />
@@ -33,4 +36,4 @@ const Images = () => {
   );
 };
 
-export default Images;
+export default withTranslation()(Images);

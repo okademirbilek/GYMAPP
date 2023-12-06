@@ -5,10 +5,14 @@ import { convertTime } from "../../utils/utils";
 import useLoadPage from "../../customHooks/useLoadPage";
 
 import Loader from "../../components/Loader";
+//language
+import { useTranslation } from "react-i18next";
 
 const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
   const [formData, setFormData] = useState(null);
   const { updateTrainingDate } = useAdminAuth();
+  //language
+  const { t } = useTranslation();
 
   //page loading states
   const { loading, status, error, setLoading, setStatus, setError } =
@@ -66,7 +70,7 @@ const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
       </span>
       <form onSubmit={handleSubmit}>
         <label>
-          Confirm Training Trainer
+          {t("Confirm Training Trainer")}
           <input
             name="isConfirmedTrainer"
             onChange={handleChange}
@@ -77,7 +81,7 @@ const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
           />
         </label>
         <label>
-          Confirm Training Trainer
+          {t("Confirm Training Member")}
           <input
             name="isConfirmedMember"
             onChange={handleChange}

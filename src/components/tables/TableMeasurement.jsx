@@ -24,6 +24,8 @@ import { motion } from "framer-motion";
 
 import { useTheme } from "../../context/ThemeContext";
 
+import { useTranslation } from "react-i18next";
+
 //framer motion animation variant
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -40,6 +42,8 @@ const container = {
 const TableMeasurement = ({ data }) => {
   const [value, toggleValue] = useToggle(false);
   const { theme } = useTheme();
+  //language
+  const { t } = useTranslation();
   return (
     <div className="measurement-table-container card-padding card-color">
       <div className="date-container display-f align-center">
@@ -59,84 +63,84 @@ const TableMeasurement = ({ data }) => {
           <div className="table-container">
             <img src={arm} alt="arm" />
             <div className="table-data">
-              <div>Arm</div>
+              <div>{t("Arm")}</div>
               <div>{data.arm}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={biceps} alt="biceps" />
             <div className="table-data">
-              <div>Biceps</div>
+              <div>{t("Biceps")}</div>
               <div>{data.biceps}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={chest} alt="chest" />
             <div className="table-data">
-              <div>Chest</div>
+              <div>{t("Chest")}</div>
               <div>{data.chest}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={fat} alt="fat" />
             <div className="table-data">
-              <div>Fat</div>
+              <div>{t("Fat")}</div>
               <div>{data.fat}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={hip} alt="hip" className="hip" />
             <div className="table-data">
-              <div>Hip</div>
+              <div>{t("Hip")}</div>
               <div>{data.hip}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={leg} alt="leg" />
             <div className="table-data">
-              <div>Leg</div>
+              <div>{t("Leg")}</div>
               <div>{data.leg}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={pelvis} alt="pelvis" />
             <div className="table-data">
-              <div>Illia crest</div>
+              <div>{t("Illia crest")}</div>
               <div>{data.illiacrest}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={shoulder} alt="shoulder" />
             <div className="table-data">
-              <div>Shoulder</div>
+              <div>{t("Shoulder")}</div>
               <div>{data.shoulder}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={subs} alt="subscapular" />
             <div className="table-data">
-              <div>Subscapular</div>
+              <div>{t("Subscapular")}</div>
               <div>{data.subscapular}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={triceps} alt="triceps" />
             <div className="table-data">
-              <div>Triceps</div>
+              <div>{t("Triceps")}</div>
               <div>{data.triceps}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={waist} alt="waist" className="waist" />
             <div className="table-data">
-              <div>Waist</div>
+              <div>{t("Waist")}</div>
               <div>{data.waist}</div>
             </div>
           </div>
           <div className="table-container">
             <img src={weight} alt="weight" />
             <div className="table-data">
-              <div>Weight</div>
+              <div>{t("Weight")}</div>
               <div>{data.weight}</div>
             </div>
           </div>

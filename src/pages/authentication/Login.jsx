@@ -1,60 +1,63 @@
-import React, { useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
-import Icon from "react-icons-kit"
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import Icon from "react-icons-kit";
 
-import { eyeOff } from "react-icons-kit/feather/eyeOff"
-import { eye } from "react-icons-kit/feather/eye"
+import { eyeOff } from "react-icons-kit/feather/eyeOff";
+import { eye } from "react-icons-kit/feather/eye";
 
-export default function Login() {
-  const [inputType, setInputType] = useState("password")
+//language
+import { withTranslation } from "react-i18next";
+
+function Login({ t }) {
+  const [inputType, setInputType] = useState("password");
   const [loginFormData, setLoginFormData] = useState({
     email: "",
     password: "",
-  })
-  const [status, setStatus] = useState("idle")
-  const [error, setError] = useState(null)
-  const { login } = useAuth()
+  });
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState(null);
+  const { login } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    setError("")
-    setStatus("submitting")
+    setError("");
+    setStatus("submitting");
     await login(loginFormData.email, loginFormData.password)
       .then((user) => {
-        navigate("/", { replace: true })
+        navigate("/", { replace: true });
       })
       .catch((error) => {
         const errorString = error.message
           .split("/")[1]
           .slice(0, -2)
           .split("-")
-          .join(" ")
-        setError(`Failed to log in : ${errorString} `)
+          .join(" ");
+        setError(`Failed to log in : ${errorString} `);
       })
       .finally(() => {
-        setStatus("idle")
-      })
+        setStatus("idle");
+      });
   }
 
   function handleChange(e) {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setLoginFormData((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
   }
 
   return (
     <div className="login-container">
       <div className="glass-container">
-        <h1>Sign in </h1>
+        <h1>{t("Sign In")} </h1>
         <form onSubmit={handleSubmit} className="form">
           <label className="input-label" htmlFor="login-email">
-            Email
+            {t("Email")}
           </label>
           <input
             id="login-email"
@@ -66,7 +69,7 @@ export default function Login() {
             required
           />
           <label className="input-label" htmlFor="login-password">
-            Password
+            {t("Password")}
           </label>
           <div className="input-with-icon">
             <input
@@ -105,21 +108,23 @@ export default function Login() {
             </div>
           )}
           <button disabled={status === "submitting"}>
-            {status === "submitting" ? "Logging in..." : "Log In"}
+            {status === "submitting" ? t("Logging in...") : t("Sign In")}
           </button>
         </form>
         <div className="link-div">
           <Link className="form-link" to="/forgot-password">
-            Forgot Password?
+            {t("Forgot Password?")}
           </Link>
         </div>
         <div className="link-div">
-          Don’t have an account?{" "}
+          {t("Don’t have an account?")}{" "}
           <Link className="form-link" to="/sign-up">
-            Sign Up
+            {t("Sign Up")}
           </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }
+
+export default withTranslation()(Login);

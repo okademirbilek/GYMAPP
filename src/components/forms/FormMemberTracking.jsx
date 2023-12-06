@@ -7,10 +7,14 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import useLoadPage from "../../customHooks/useLoadPage";
 
 import Loader from "../../components/Loader";
+//language
+import { useTranslation } from "react-i18next";
 
 const FormMemberTracking = ({ allData, data, uid, index }) => {
   const [formData, setFormData] = useState(null);
   const { updateTrainingDate } = useAuth();
+  //language
+  const { t } = useTranslation();
 
   //page loading states
   const { loading, status, error, setLoading, setStatus, setError } =
@@ -70,11 +74,11 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
       </span>
       <div className="table-container">
         <div className="table-data display-f ">
-          Trainer approved
+          {t("Trainer approved")}
           {formData.isConfirmedTrainer && (
             <div className="display-f align-center ">
               <VerifiedUserIcon />
-              Yes
+              {t("Yes")}
             </div>
           )}
         </div>
@@ -82,11 +86,11 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
       {data.isConfirmedMember ? (
         <div className="table-container">
           <div className="table-data display-f ">
-            Member approved
+            {t("Member approved")}
             <div>
               <div className="display-f align-center">
                 <HowToRegIcon />
-                Yes
+                {t("Yes")}
               </div>
             </div>
           </div>
@@ -94,7 +98,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
       ) : (
         <form onSubmit={handleSubmit}>
           <label>
-            Confirm Payment Trainer
+            {t("Confirm Payment Member")}
             <input
               name="isConfirmedMember"
               onChange={handleChange}

@@ -9,7 +9,10 @@ import lunch from "../assets/images/lunch.png";
 import dinner from "../assets/images/dinner.png";
 import snack from "../assets/images/apple.png";
 
-const Meal = () => {
+//language
+import { withTranslation } from "react-i18next";
+
+const Meal = ({ t }) => {
   const [mealData, setMealData] = useState(null);
 
   const [loading, setLoading] = useState(true);
@@ -46,7 +49,7 @@ const Meal = () => {
             <div className="table-container">
               <span>
                 <img src={breakfast} alt="breakfast" />
-                <h2>BreakFast</h2>
+                <h2>{t("Breakfast")}</h2>
               </span>
               <div className="table-data ">
                 <ul>{makeList(mealData?.breakfast)}</ul>
@@ -55,7 +58,7 @@ const Meal = () => {
             <div className="table-container">
               <span>
                 <img src={lunch} alt="lunch" />
-                <h2>Lunch</h2>
+                <h2>{t("Lunch")}</h2>
               </span>
               <div className="table-data">
                 <ul>{makeList(mealData?.lunch)}</ul>
@@ -64,7 +67,7 @@ const Meal = () => {
             <div className="table-container">
               <span>
                 <img src={dinner} alt="dinner" />
-                <h2>Dinner</h2>
+                <h2>{t("Dinner")}</h2>
               </span>
 
               <div className="table-data">
@@ -74,7 +77,7 @@ const Meal = () => {
             <div className="table-container">
               <span>
                 <img src={snack} alt="snack" />
-                <h2>Snack</h2>
+                <h2>{t("Snack")}</h2>
               </span>
 
               <div className="table-data">
@@ -88,4 +91,4 @@ const Meal = () => {
   );
 };
 
-export default Meal;
+export default withTranslation()(Meal);

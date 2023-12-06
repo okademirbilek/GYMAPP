@@ -16,11 +16,16 @@ import { useAuth } from "../../context/AuthContext";
 
 import { useTheme } from "../../context/ThemeContext";
 
+//language
+import { withTranslation } from "react-i18next";
+
 // const adminId = import.meta.env.VITE_REACT_APP_FIREBASE_ADMIN_ID
 
-const Sidebar = () => {
+const Sidebar = ({ t }) => {
   const { logout, currentUserData } = useAuth();
   const { theme } = useTheme();
+  //language
+  // const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -58,7 +63,7 @@ const Sidebar = () => {
                     style={({ isActive }) => (isActive ? activeStyle : null)}
                   >
                     <DashboardIcon />
-                    <span>Dashboard</span>
+                    <span>{t("Dashboard")}</span>
                   </NavLink>
                 </li>
               </>
@@ -72,7 +77,7 @@ const Sidebar = () => {
                     style={({ isActive }) => (isActive ? activeStyle : null)}
                   >
                     <HomeIcon />
-                    <span>Home</span>
+                    <span>{t("Home")}</span>
                   </NavLink>
                 </li>
                 <li>
@@ -82,7 +87,7 @@ const Sidebar = () => {
                   >
                     <FitnessCenterIcon />
 
-                    <span>Exercises</span>
+                    <span>{t("Exercises")}</span>
                   </NavLink>
                 </li>
                 <li>
@@ -91,7 +96,7 @@ const Sidebar = () => {
                     style={({ isActive }) => (isActive ? activeStyle : null)}
                   >
                     <RestaurantIcon />
-                    <span>Meal</span>
+                    <span>{t("Meal")}</span>
                   </NavLink>
                 </li>
                 <li>
@@ -100,7 +105,7 @@ const Sidebar = () => {
                     style={({ isActive }) => (isActive ? activeStyle : null)}
                   >
                     <AccessibilityNewIcon />
-                    <span>Measurements</span>
+                    <span>{t("Measurements")}</span>
                   </NavLink>
                 </li>
                 <li>
@@ -109,7 +114,7 @@ const Sidebar = () => {
                     style={({ isActive }) => (isActive ? activeStyle : null)}
                   >
                     <PaymentsIcon />
-                    <span>Payment</span>
+                    <span>{t("Payment")}</span>
                   </NavLink>
                 </li>
                 <li>
@@ -118,7 +123,7 @@ const Sidebar = () => {
                     style={({ isActive }) => (isActive ? activeStyle : null)}
                   >
                     <TodayIcon />
-                    <span>Training Dates</span>
+                    <span>{t("Training Dates")}</span>
                   </NavLink>
                 </li>
                 <p className="title">User</p>
@@ -128,7 +133,7 @@ const Sidebar = () => {
                     style={({ isActive }) => (isActive ? activeStyle : null)}
                   >
                     <PersonOutlineOutlinedIcon />
-                    <span>Profile</span>
+                    <span>{t("Profile")}</span>
                   </NavLink>
                 </li>
                 <li>
@@ -137,18 +142,18 @@ const Sidebar = () => {
                     style={({ isActive }) => (isActive ? activeStyle : null)}
                   >
                     <PermMediaIcon />
-                    <span>Images</span>
+                    <span>{t("Images")}</span>
                   </NavLink>
                 </li>
               </>
             ) : (
-              <p className="title">User</p>
+              <p className="title">{t("User")}</p>
             )}
 
             <li onClick={handleLogout}>
               <button>
                 <ExitToAppOutlinedIcon />
-                <p>Log Out</p>
+                <p>{t("Log Out")}</p>
               </button>
             </li>
           </ul>
@@ -158,4 +163,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default withTranslation()(Sidebar);

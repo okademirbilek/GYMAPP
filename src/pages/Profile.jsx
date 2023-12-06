@@ -16,7 +16,10 @@ import useLoadPage from "../customHooks/useLoadPage";
 
 import useToggle from "../customHooks/useToggle";
 
-const Profile = () => {
+//language
+import { withTranslation } from "react-i18next";
+
+const Profile = ({ t }) => {
   const { currentUserData, currentUser, updateUser, uploadFile } = useAuth();
   const [formData, setFormData] = useState(null);
   //state for locking form
@@ -90,7 +93,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container card-padding card-color">
-      <h2>Profile</h2>
+      <h2>{t("Profile")}</h2>
       <img
         src={
           file !== null
@@ -109,7 +112,7 @@ const Profile = () => {
       <form onSubmit={handleSubmit} className={`form ${theme}`}>
         <label className="input-label">
           <span className="display-f gp-1 mb-1">
-            Upload image <DriveFolderUploadIcon />
+            {t("Upload image")} <DriveFolderUploadIcon />
           </span>
           <input
             onChange={(e) => setFile(e.target.files[0])}
@@ -121,7 +124,7 @@ const Profile = () => {
         </label>
 
         <label className="input-label">
-          Name
+          {t("Name")}
           <input
             name="name"
             onChange={handleChange}
@@ -134,7 +137,7 @@ const Profile = () => {
         </label>
 
         <label className="input-label">
-          Surname
+          {t("Surname")}
           <input
             name="surname"
             onChange={handleChange}
@@ -147,7 +150,7 @@ const Profile = () => {
         </label>
 
         <label className="input-label">
-          Email
+          {t("Email")}
           <input
             name="email"
             onChange={handleChange}
@@ -160,7 +163,7 @@ const Profile = () => {
         </label>
 
         <label className="input-label">
-          Profile creation date
+          {t("Profile creation date")}
           <input
             name="timeStamp"
             onChange={handleChange}
@@ -173,7 +176,7 @@ const Profile = () => {
         </label>
 
         <label className="input-label">
-          Gsm
+          {t("Gsm")}
           <input
             name="gsm"
             onChange={handleChange}
@@ -186,7 +189,7 @@ const Profile = () => {
         </label>
 
         <label className="input-label">
-          Birthday
+          {t("Birthday")}
           <input
             name="birthday"
             onChange={handleChange}
@@ -199,7 +202,7 @@ const Profile = () => {
         </label>
 
         <label className="input-label">
-          Total month
+          {t("Total month")}
           <input
             name="totalMonth"
             onChange={handleChange}
@@ -223,4 +226,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withTranslation()(Profile);
