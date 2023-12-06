@@ -4,10 +4,14 @@ import { useOutletContext } from "react-router-dom";
 
 import FormAdminMemberTracking from "../../components/forms/FormAdminMemberTracking";
 
+import Loader from "../../components/Loader";
+
 const AdminMemberTracking = () => {
   const [memberTrackingData, setMemberTrackingData] = useState(null);
   const { data, params } = useOutletContext();
   const { addNewTrainingDate } = useAdminAuth();
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (data) {
@@ -20,8 +24,19 @@ const AdminMemberTracking = () => {
         />
       ));
       setMemberTrackingData(dataArr);
+      setLoading(false);
     }
   }, [data]);
+
+  //handle if user refresh the page
+  if (loading) {
+    return (
+      <span className="loader">
+        <Loader />
+      </span>
+    );
+  }
+
   return (
     <div className="member-tracking ">
       <h2>Member Tracking</h2>

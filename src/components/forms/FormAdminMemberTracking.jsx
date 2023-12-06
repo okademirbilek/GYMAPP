@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useAdminAuth } from "../../context/AdminContext";
 import { convertTime } from "../../utils/utils";
 
+import useLoadPage from "../../customHooks/useLoadPage";
+
+import Loader from "../../components/Loader";
+
 const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
   const [formData, setFormData] = useState(null);
   const { updateTrainingDate } = useAdminAuth();
 
-  //error
-  const [loading, setLoading] = useState(true);
-  const [status, setStatus] = useState("idle");
-  const [error, setError] = useState(null);
+  //page loading states
+  const { loading, status, error, setLoading, setStatus, setError } =
+    useLoadPage();
 
   useEffect(() => {
     if (data) {
@@ -50,7 +53,11 @@ const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
   }
   //handle if user refresh the page
   if (loading) {
-    return <h2>🌀 Loading...</h2>;
+    return (
+      <span className="loader">
+        <Loader />
+      </span>
+    );
   }
   return (
     <div className="form-member-tracking card-color">
