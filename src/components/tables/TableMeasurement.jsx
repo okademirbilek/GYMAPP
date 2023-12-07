@@ -52,7 +52,7 @@ const TableMeasurement = ({ data }) => {
           <img src={arrow} alt="down arrow" className="arrow ml-1" />
         </button>
       </div>
-      {value && (
+      {value ? (
         <motion.div
           className={`flex-container display-f ${theme}`}
           variants={container}
@@ -145,7 +145,7 @@ const TableMeasurement = ({ data }) => {
             </div>
           </div>
         </motion.div>
-      )}
+      ) : null}
     </div>
   );
 };

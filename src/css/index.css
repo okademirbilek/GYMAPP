@@ -1412,7 +1412,7 @@ img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: rgb(56, 182, 117);
+  background-color: rgb(23, 185, 102);
   color: white;
   font-size: 1.5rem;
 }
@@ -1516,6 +1516,7 @@ img {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .meal-table-container .date-container {
   padding: 20px;
@@ -1538,7 +1539,13 @@ img {
   -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   border-radius: 8px;
-  width: 200px;
+  width: 250px;
+  min-height: 200px;
+}
+@media (min-width: 720px) {
+  .meal-table-container .wrapper .table-container {
+    width: 225px;
+  }
 }
 .meal-table-container .wrapper .table-container:nth-child(1) {
   background-color: #2cb149;

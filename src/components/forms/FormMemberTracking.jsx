@@ -109,7 +109,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
         {value ? <ArrowCircleUpIcon /> : <ExpandCircleDownIcon />}
       </span>
 
-      {value && (
+      {value ? (
         <motion.div
           className="table-wrap"
           variants={container}
@@ -168,7 +168,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
             </form>
           )}
         </motion.div>
-      )}
+      ) : null}
     </motion.div>
   );
 };
