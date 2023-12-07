@@ -5,6 +5,7 @@ import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 
 import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
+import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 
 import useLoadPage from "../../customHooks/useLoadPage";
 
@@ -105,7 +106,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
         <h4>
           {t("Date")} : {convertTime(data?.timeStamp, i18n.language)}{" "}
         </h4>
-        <ExpandCircleDownIcon />
+        {value ? <ArrowCircleUpIcon /> : <ExpandCircleDownIcon />}
       </span>
 
       {value && (
