@@ -30,9 +30,15 @@ const Payment = ({ t }) => {
       <div className="payment-header  display-f align-center gp-1">
         <h2>{t("Payment")}</h2>
       </div>
-      {currentUserData?.payment?.map((data, index) => (
-        <TablePayment key={index} data={data} index={index} />
-      ))}
+      {currentUserData?.payment
+        ?.sort((a, b) => b.timeStamp.seconds - a.timeStamp.seconds)
+        .map((data, index) => (
+          <TablePayment
+            key={index}
+            data={data}
+            index={currentUserData?.payment.length - index - 1}
+          />
+        ))}
     </>
   );
 };

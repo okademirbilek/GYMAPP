@@ -29,9 +29,11 @@ const Measurements = ({ t }) => {
       <div className="measurement-header  display-f align-center">
         <h2>{t("Measurements")}</h2>
       </div>
-      {currentUserData?.measurements?.map((data) => (
-        <TableMeasurement key={data.timeStamp} data={data} />
-      ))}
+      {currentUserData?.measurements
+        ?.sort((a, b) => b.timeStamp.seconds - a.timeStamp.seconds)
+        .map((data) => (
+          <TableMeasurement key={data.timeStamp} data={data} />
+        ))}
     </>
   );
 };

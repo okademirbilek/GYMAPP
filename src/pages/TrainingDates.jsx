@@ -29,15 +29,17 @@ const TrainingDates = ({ t }) => {
       <div className="payment-header  display-f align-center gp-1">
         <h2>{t("Training Dates")}</h2>
       </div>
-      {currentUserData?.trainingDates?.map((data, index) => (
-        <FormMemberTracking
-          key={data.timeStamp}
-          data={data}
-          allData={currentUserData?.trainingDates}
-          index={index}
-          uid={currentUserData.uid}
-        />
-      ))}
+      {currentUserData?.trainingDates
+        ?.sort((a, b) => b.timeStamp.seconds - a.timeStamp.seconds)
+        .map((data, index) => (
+          <FormMemberTracking
+            key={data.timeStamp}
+            data={data}
+            allData={currentUserData?.trainingDates}
+            index={currentUserData?.payment.length - index - 1}
+            uid={currentUserData.uid}
+          />
+        ))}
     </div>
   );
 };

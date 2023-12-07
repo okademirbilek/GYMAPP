@@ -1401,6 +1401,10 @@ img {
   flex-wrap: wrap;
   gap: 10px;
 }
+.member-tracking-table span svg {
+  width: 25px;
+  height: 25px;
+}
 .member-tracking-table .table-index {
   display: flex;
   align-items: center;
@@ -1434,7 +1438,13 @@ img {
 .member-tracking-table .date h4 {
   font-weight: normal;
 }
-.member-tracking-table .table-container {
+.member-tracking-table .table-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.member-tracking-table .table-wrap .table-container {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1448,19 +1458,19 @@ img {
   flex: 1 0 240px;
 }
 @media (min-width: 720px) {
-  .member-tracking-table .table-container {
+  .member-tracking-table .table-wrap .table-container {
     flex: 0 0 auto;
   }
 }
-.member-tracking-table .table-container .table-data {
+.member-tracking-table .table-wrap .table-container .table-data {
   display: flex;
   gap: 10px;
 }
-.member-tracking-table .table-container .table-data svg {
+.member-tracking-table .table-wrap .table-container .table-data svg {
   color: #2cb149;
   margin-right: 5px;
 }
-.member-tracking-table form {
+.member-tracking-table .table-wrap form {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1469,7 +1479,7 @@ img {
   padding: 10px;
   gap: 10px;
 }
-.member-tracking-table form label {
+.member-tracking-table .table-wrap form label {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1480,14 +1490,14 @@ img {
   align-items: center;
   border: 2px solid rgb(231, 221, 221);
 }
-.member-tracking-table form label input {
+.member-tracking-table .table-wrap form label input {
   background-color: green;
   cursor: pointer;
 }
-.member-tracking-table form label .isConfirmed {
+.member-tracking-table .table-wrap form label .isConfirmed {
   background-color: #2cb149;
 }
-.member-tracking-table form button {
+.member-tracking-table .table-wrap form button {
   outline: none;
   border: none;
   width: 70px;
@@ -1495,7 +1505,7 @@ img {
   border-radius: 5px;
   cursor: pointer;
 }
-.member-tracking-table form button:hover {
+.member-tracking-table .table-wrap form button:hover {
   background-color: #2cb149;
 }
 
