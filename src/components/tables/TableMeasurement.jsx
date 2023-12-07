@@ -43,11 +43,11 @@ const TableMeasurement = ({ data }) => {
   const [value, toggleValue] = useToggle(false);
   const { theme } = useTheme();
   //language
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <div className="measurement-table-container card-padding card-color">
       <div className="date-container display-f align-center">
-        <h3>{data.timeStamp && convertTime(data.timeStamp)}</h3>{" "}
+        <h3>{data.timeStamp && convertTime(data.timeStamp, i18n.language)}</h3>{" "}
         <button onClick={() => toggleValue((prev) => !prev)}>
           <img src={arrow} alt="down arrow" className="arrow ml-1" />
         </button>
@@ -106,7 +106,7 @@ const TableMeasurement = ({ data }) => {
             <img src={pelvis} alt="pelvis" />
             <div className="table-data">
               <div>{t("Illia crest")}</div>
-              <div>{data.illiacrest}</div>
+              <div>{data.iliaccrest}</div>
             </div>
           </div>
           <div className="table-container">

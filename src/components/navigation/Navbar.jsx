@@ -43,7 +43,13 @@ const navbar = ({ t }) => {
 
             <div
               className="item"
-              onClick={() => handleClick(i18n.language === "tr" ? "en" : "tr")}
+              onClick={() =>
+                handleClick(
+                  i18n.language === "tr" || i18n.language === "tr-TR"
+                    ? "en"
+                    : "tr"
+                )
+              }
             >
               <LanguageIcon />
               {i18n.language}

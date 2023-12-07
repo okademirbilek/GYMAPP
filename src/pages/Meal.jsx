@@ -12,7 +12,7 @@ import snack from "../assets/images/apple.png";
 //language
 import { withTranslation } from "react-i18next";
 
-const Meal = ({ t }) => {
+const Meal = ({ t, i18n }) => {
   const [mealData, setMealData] = useState(null);
 
   const [loading, setLoading] = useState(true);
@@ -43,7 +43,10 @@ const Meal = ({ t }) => {
         <h2>Meal</h2>
         <div className="meal-table-container card-color ">
           <div className="date-container ">
-            <h3>{mealData?.timeStamp && convertTime(mealData?.timeStamp)}</h3>
+            <h3>
+              {mealData?.timeStamp &&
+                convertTime(mealData?.timeStamp, i18n.language)}
+            </h3>
           </div>
           <div className="wrapper">
             <div className="table-container">

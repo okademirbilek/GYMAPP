@@ -14,7 +14,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
   const [formData, setFormData] = useState(null);
   const { updateTrainingDate } = useAuth();
   //language
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   //page loading states
   const { loading, status, error, setLoading, setStatus, setError } =
@@ -70,7 +70,9 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
     <div className="member-tracking-table card-padding card-color">
       <div className="table-index">{index + 1}</div>
       <span className="date display-f align-center gp-1">
-        <h4>Date: {convertTime(data?.timeStamp)}</h4>
+        <h4>
+          {t("Date")} : {convertTime(data?.timeStamp, i18n.language)}
+        </h4>
       </span>
       <div className="table-container">
         <div className="table-data display-f ">
