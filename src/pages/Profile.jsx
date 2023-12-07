@@ -19,7 +19,7 @@ import useToggle from "../customHooks/useToggle";
 //language
 import { withTranslation } from "react-i18next";
 
-const Profile = ({ t }) => {
+const Profile = ({ t, i18n }) => {
   const { currentUserData, currentUser, updateUser, uploadFile } = useAuth();
   const [formData, setFormData] = useState(null);
   //state for locking form
@@ -42,11 +42,29 @@ const Profile = ({ t }) => {
   }, [currentUserData]);
 
   //track of uploading image to storage
-  useEffect(() => {
-    //checking if the data type is image or not
+  // useEffect(() => {
+  //   //checking if the data type is image or not
+  //   if (file) {
+  //     file.type.startsWith("image/")
+  //       ? uploadFile(
+  //           `${currentUser?.uid}/profileimg`,
+  //           file,
+  //           setFormData,
+  //           setPerc,
+  //           setError
+  //         )
+  //       : setError("Unaccepted data type");
+  //   }
+  // }, [file]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    setStatus("submitting");
+    setLoading(true);
     if (file) {
       file.type.startsWith("image/")
-        ? uploadFile(
+        ? await uploadFile(
             `${currentUser?.uid}/profileimg`,
             file,
             setFormData,
@@ -55,13 +73,7 @@ const Profile = ({ t }) => {
           )
         : setError("Unaccepted data type");
     }
-  }, [file]);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setError("");
-    setStatus("submitting");
-    setLoading(true);
     await updateUser(currentUser.uid, formData)
       .then(() => callSnackBar())
       .catch((error) => {
@@ -169,7 +181,10 @@ const Profile = ({ t }) => {
             onChange={handleChange}
             type="string"
             placeholder="Date"
-            value={formData?.timeStamp && convertTime(formData?.timeStamp)}
+            value={
+              formData?.timeStamp &&
+              convertTime(formData?.timeStamp, i18n.language)
+            }
             id="timestamp"
             disabled
           />
