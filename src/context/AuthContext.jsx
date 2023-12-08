@@ -155,42 +155,42 @@ function AuthProvider({ children }) {
   /************************************** Firebase Collection****************************************** */
   //upload the image data to firebase collection with ref and get the download url
 
-  const uploadFile = (name, file, setFormData, setPerc, setError) => {
-    // const name = "profile" + currentUser?.uid;
-    const storageRef = ref(storage, name);
-    // const storageRef = ref(storage, `${currentUser?.uid}/profileimg`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+  // const uploadFile = (name, file, setFormData, setPerc, setError) => {
+  //   // const name = "profile" + currentUser?.uid;
+  //   const storageRef = ref(storage, name);
+  //   // const storageRef = ref(storage, `${currentUser?.uid}/profileimg`);
+  //   const uploadTask = uploadBytesResumable(storageRef, file);
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
-        setPerc(progress);
-        switch (snapshot.state) {
-          case "paused":
-            console.log("Upload is paused");
-            break;
-          case "running":
-            console.log("Upload is running");
-            break;
-          default:
-            break;
-        }
-      },
-      (error) => {
-        console.log(error);
-        setError(error);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          // console.log(downloadURL);
-          setFormData((prev) => ({ ...prev, picture: downloadURL }));
-        });
-      }
-    );
-  };
+  //   uploadTask.on(
+  //     "state_changed",
+  //     (snapshot) => {
+  //       const progress =
+  //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //       console.log("Upload is " + progress + "% done");
+  //       setPerc(progress);
+  //       switch (snapshot.state) {
+  //         case "paused":
+  //           console.log("Upload is paused");
+  //           break;
+  //         case "running":
+  //           console.log("Upload is running");
+  //           break;
+  //         default:
+  //           break;
+  //       }
+  //     },
+  //     (error) => {
+  //       console.log(error);
+  //       setError(error);
+  //     },
+  //     () => {
+  //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+  //         // console.log(downloadURL);
+  //         setFormData((prev) => ({ ...prev, picture: downloadURL }));
+  //       });
+  //     }
+  //   );
+  // };
 
   const value = {
     currentUser,
@@ -205,7 +205,7 @@ function AuthProvider({ children }) {
     updateUser,
     currentUserData,
     updateTrainingDate,
-    uploadFile,
+    // uploadFile,
   };
   return (
     <AuthContext.Provider value={value}>

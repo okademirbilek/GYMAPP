@@ -29,6 +29,8 @@ function SignUp({ t }) {
       return setError("Passwords do not match");
     }
 
+    setStatus("submitting");
+
     await signup(signUpFormData.email, signUpFormData.password)
       .then((user) => {
         navigate("/", { replace: true });
@@ -74,7 +76,7 @@ function SignUp({ t }) {
           <div className="input-with-icon">
             <input
               id="sign-up-password"
-              name="Password"
+              name="password"
               onChange={handleChange}
               type={inputType}
               placeholder={t("Password")}

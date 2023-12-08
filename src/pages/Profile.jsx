@@ -16,12 +16,16 @@ import useLoadPage from "../customHooks/useLoadPage";
 
 import useToggle from "../customHooks/useToggle";
 
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage } from "../../firebase";
+
 //language
 import { withTranslation } from "react-i18next";
 
 const Profile = ({ t, i18n }) => {
   const { currentUserData, currentUser, updateUser, uploadFile } = useAuth();
   const [formData, setFormData] = useState(null);
+
   //state for locking form
   const [lockForm, setLockForm] = useToggle(true);
   //state for image input
@@ -63,27 +67,75 @@ const Profile = ({ t, i18n }) => {
     setStatus("submitting");
     setLoading(true);
     if (file) {
-      file.type.startsWith("image/")
-        ? await uploadFile(
-            `${currentUser?.uid}/profileimg`,
-            file,
-            setFormData,
-            setPerc,
-            setError
-          )
-        : setError("Unaccepted data type");
+      if (file.type.startsWith("image/")) {
+        // const name = "profile" + currentUser?.uid;
+        const storageRef = ref(storage, `${currentUser?.uid}/profileimg`);
+        // const storageRef = ref(storage, `${currentUser?.uid}/profileimg`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+            setPerc(progress);
+            switch (snapshot.state) {
+              case "paused":
+                console.log("Upload is paused");
+                break;
+              case "running":
+                console.log("Upload is running");
+                break;
+              default:
+                break;
+            }
+          },
+          (error) => {
+            console.log(error);
+            setError(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              console.log(downloadURL);
+              // setFormData((prev) => ({ ...prev, picture: downloadURL }));
+              // console.log(formData);
+              updateUser(currentUser.uid, { ...formData, picture: downloadURL })
+                .then(() => {
+                  // console.log("zz", formData);
+                  console.log("data gitti");
+                  return callSnackBar();
+                })
+                .catch((error) => {
+                  console.log(error.message);
+                  setError(`error : ${error.message} `);
+                })
+                .finally(() => {
+                  setStatus("idle");
+                  setLoading(false);
+                  setFile(null);
+                });
+            });
+          }
+        );
+      } else {
+        setError("Unaccepted data type");
+      }
+    } else {
+      await updateUser(currentUser.uid, formData)
+        .then(() => {
+          console.log("data gitti2");
+          return callSnackBar();
+        })
+        .catch((error) => {
+          console.log(error.message);
+          setError(`error : ${error.message} `);
+        })
+        .finally(() => {
+          setStatus("idle");
+          setLoading(false);
+        });
     }
-
-    await updateUser(currentUser.uid, formData)
-      .then(() => callSnackBar())
-      .catch((error) => {
-        console.log(error.message);
-        setError(`error : ${error.message} `);
-      })
-      .finally(() => {
-        setStatus("idle");
-        setLoading(false);
-      });
+    // console.log(formData);
   }
 
   function handleChange(e) {
