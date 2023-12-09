@@ -57,5 +57,9 @@
   "Signing up...": "Signing up...",
   "Confirm password": "Confirm password",
   "Already have an account?": "Already have an account?",
-  "Date": "Date"
+  "Date": "Date",
+  "Unaccepted data type": "Unaccepted data type",
+  "Data type must be image": "Data type must be image",
+  "Passwords do not match": "Passwords do not match",
+  "Failed to create an account : Email already in use": "Failed to create an account : Email already in use"
 }

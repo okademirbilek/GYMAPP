@@ -57,5 +57,9 @@
   "Signing up...": "Kayıt olunuyor",
   "Confirm password": "Şifreyi onayla",
   "Already have an account?": "Hesabın var mı ?",
-  "Date": "Tarih"
+  "Date": "Tarih",
+  "Unaccepted data type": "Kabul edilmeyen veri türü",
+  "Data type must be image": "Veri tipi resim olmalıdır",
+  "Passwords do not match": "Eşleşmeyen parola",
+  "Failed to create an account : Email already in use": "Hesap oluşturulamadı : Email zaten kullanılıyor"
 }

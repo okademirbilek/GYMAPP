@@ -25,11 +25,12 @@ import { withTranslation } from "react-i18next";
 const Profile = ({ t, i18n }) => {
   const { currentUserData, currentUser, updateUser, uploadFile } = useAuth();
   const [formData, setFormData] = useState(null);
-
   //state for locking form
   const [lockForm, setLockForm] = useToggle(true);
   //state for image input
   const [file, setFile] = useState(null);
+  //state for file error
+  const [fileError, setFileError] = useState(false);
   //percentage for image upload
   const [per, setPerc] = useState(null);
   //darkmode - lightmode context
@@ -45,21 +46,17 @@ const Profile = ({ t, i18n }) => {
     }
   }, [currentUserData]);
 
-  //track of uploading image to storage
-  // useEffect(() => {
-  //   //checking if the data type is image or not
-  //   if (file) {
-  //     file.type.startsWith("image/")
-  //       ? uploadFile(
-  //           `${currentUser?.uid}/profileimg`,
-  //           file,
-  //           setFormData,
-  //           setPerc,
-  //           setError
-  //         )
-  //       : setError("Unaccepted data type");
-  //   }
-  // }, [file]);
+  useEffect(() => {
+    if (file) {
+      if (file.type.startsWith("image/")) {
+        setFileError(false);
+      } else {
+        const err = t("Unaccepted data type");
+        setError(err);
+        setFileError(true);
+      }
+    }
+  }, [file]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -67,10 +64,9 @@ const Profile = ({ t, i18n }) => {
     setStatus("submitting");
     setLoading(true);
     if (file) {
-      if (file.type.startsWith("image/")) {
-        // const name = "profile" + currentUser?.uid;
+      if (fileError === false) {
+        console.log("imageye girdi");
         const storageRef = ref(storage, `${currentUser?.uid}/profileimg`);
-        // const storageRef = ref(storage, `${currentUser?.uid}/profileimg`);
         const uploadTask = uploadBytesResumable(storageRef, file);
         uploadTask.on(
           "state_changed",
@@ -118,12 +114,14 @@ const Profile = ({ t, i18n }) => {
           }
         );
       } else {
-        setError("Unaccepted data type");
+        const err = t("Data type must be image");
+        setError(err);
+        setStatus("idle");
+        setLoading(false);
       }
     } else {
       await updateUser(currentUser.uid, formData)
         .then(() => {
-          console.log("data gitti2");
           return callSnackBar();
         })
         .catch((error) => {

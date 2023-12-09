@@ -26,7 +26,8 @@ function SignUp({ t }) {
   async function handleSubmit(e) {
     e.preventDefault();
     if (signUpFormData.password !== signUpFormData.passwordConfirm) {
-      return setError("Passwords do not match");
+      const err = t("Passwords do not match");
+      return setError(err);
     }
 
     setStatus("submitting");
@@ -38,7 +39,8 @@ function SignUp({ t }) {
         addDefaultData(user.user.uid);
       })
       .catch((error) => {
-        setError("Failed to create an account");
+        const err = t("Failed to create an account : Email already in use");
+        setError(err);
       })
       .finally(() => {
         setStatus("idle");
