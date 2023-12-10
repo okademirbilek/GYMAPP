@@ -38,7 +38,7 @@ const container = {
   },
 };
 
-const FormMeasurement = ({ data, measurementData, uid }) => {
+const FormMeasurement = ({ data, measurementData, uid, index }) => {
   const [lockForm, setLockForm] = useState(true);
   const [formData, setFormData] = useState(null);
 
@@ -50,7 +50,7 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
 
-  const { updateMeasurement } = useAdminAuth();
+  const { updateMeasurement, deleteMeasurement } = useAdminAuth();
 
   useEffect(() => {
     if (data) {
@@ -304,6 +304,14 @@ const FormMeasurement = ({ data, measurementData, uid }) => {
               disabled={status === "submitting"}
             >
               {status === "submitting" ? "Saving..." : "Save"}
+            </button>
+
+            <button
+              type="button"
+              className="bg-error"
+              onClick={() => deleteMeasurement(uid, data.id)}
+            >
+              Delete
             </button>
           </motion.form>
         )}

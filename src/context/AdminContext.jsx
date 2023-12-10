@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
 // import { enqueueSnackbar } from "notistack"
-import { auth, db } from "../../firebase";
+import { db } from "../../firebase";
 import {
   onSnapshot,
   addDoc,
@@ -14,17 +14,8 @@ import {
   where,
   updateDoc,
   arrayUnion,
+  deleteField,
 } from "firebase/firestore";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  sendPasswordResetEmail,
-  updateEmail,
-  updatePassword,
-  updateProfile,
-} from "firebase/auth";
 
 //uuid for array data
 import { v4 as uuidv4 } from "uuid";
@@ -37,6 +28,7 @@ function useAdminAuth() {
 
 const AdminProvider = ({ children }) => {
   const [userData, setUserData] = useState([]);
+
   //////////////////ADMIN////////////////////////////////
 
   //its gonna check realtimedb if any user changes
@@ -89,6 +81,18 @@ const AdminProvider = ({ children }) => {
     const userDoc = doc(db, "users", id);
 
     return updateDoc(userDoc, { measurements: updatedData });
+  };
+
+  const deleteMeasurement = async (id, dataId) => {
+    const userDoc = doc(db, "users", id);
+    const currentUserData = userData.filter((user) => user.uid === id);
+    const updatedDoc = currentUserData[0].measurements.filter(
+      (data) => data.id !== dataId
+    );
+    // const updatedDoc = currentUserData[0].measurements.toSpliced(index, 1);
+    await updateDoc(userDoc, { measurements: updatedDoc }).catch((error) => {
+      console.log(error);
+    });
   };
 
   //******************* Payment ********************/
@@ -182,6 +186,7 @@ const AdminProvider = ({ children }) => {
     updateMeal,
     addNewImages,
     updateImages,
+    deleteMeasurement,
   };
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>
