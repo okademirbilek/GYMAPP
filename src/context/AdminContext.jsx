@@ -120,6 +120,17 @@ const AdminProvider = ({ children }) => {
     return updateDoc(userDoc, { payment: updatedData });
   };
 
+  const deletePayment = async (id, dataId) => {
+    const userDoc = doc(db, "users", id);
+    const currentUserData = userData.filter((user) => user.uid === id);
+    const updatedDoc = currentUserData[0].payment.filter(
+      (data) => data.id !== dataId
+    );
+    await updateDoc(userDoc, { payment: updatedDoc }).catch((error) => {
+      console.log(error);
+    });
+  };
+
   //******************* Member Tracking  ********************/
 
   const addNewTrainingDate = async (id) => {
@@ -141,6 +152,17 @@ const AdminProvider = ({ children }) => {
     const userDoc = doc(db, "users", id);
 
     return updateDoc(userDoc, { trainingDates: updatedData });
+  };
+
+  const deleteTrainingDate = async (id, dataId) => {
+    const userDoc = doc(db, "users", id);
+    const currentUserData = userData.filter((user) => user.uid === id);
+    const updatedDoc = currentUserData[0].trainingDates.filter(
+      (data) => data.id !== dataId
+    );
+    await updateDoc(userDoc, { trainingDates: updatedDoc }).catch((error) => {
+      console.log(error);
+    });
   };
 
   //******************* Meals  ********************/
@@ -187,6 +209,8 @@ const AdminProvider = ({ children }) => {
     addNewImages,
     updateImages,
     deleteMeasurement,
+    deletePayment,
+    deleteTrainingDate,
   };
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>

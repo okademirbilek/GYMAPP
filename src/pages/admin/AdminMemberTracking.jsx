@@ -18,6 +18,7 @@ const AdminMemberTracking = () => {
       const dataArr = data[0]?.trainingDates?.map((item, index) => (
         <FormAdminMemberTracking
           key={index}
+          index={index}
           data={item}
           uid={params.id}
           trackingData={data[0].trainingDates}

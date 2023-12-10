@@ -8,9 +8,9 @@ import Loader from "../../components/Loader";
 //language
 import { useTranslation } from "react-i18next";
 
-const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
+const FormAdminMemberTracking = ({ data, trackingData, uid, index }) => {
   const [formData, setFormData] = useState(null);
-  const { updateTrainingDate } = useAdminAuth();
+  const { updateTrainingDate, deleteTrainingDate } = useAdminAuth();
   //language
   const { t } = useTranslation();
 
@@ -102,6 +102,13 @@ const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
           disabled={status === "submitting"}
         >
           {status === "submitting" ? "Saving..." : "Save"}
+        </button>
+        <button
+          type="button"
+          className="bg-error"
+          onClick={() => deleteTrainingDate(uid, data.id)}
+        >
+          Delete
         </button>
       </form>
     </div>

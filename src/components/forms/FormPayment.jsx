@@ -5,9 +5,9 @@ import useLoadPage from "../../customHooks/useLoadPage";
 
 import Loader from "../../components/Loader";
 
-const FormPayment = ({ data, paymentData, uid }) => {
+const FormPayment = ({ data, paymentData, uid, index }) => {
   const [formData, setFormData] = useState(null);
-  const { updatePayment } = useAdminAuth();
+  const { updatePayment, deletePayment } = useAdminAuth();
 
   const { loading, status, error, setLoading, setStatus, setError } =
     useLoadPage();
@@ -96,6 +96,13 @@ const FormPayment = ({ data, paymentData, uid }) => {
           disabled={status === "submitting"}
         >
           {status === "submitting" ? "Saving..." : "Save"}
+        </button>
+        <button
+          type="button"
+          className="bg-error"
+          onClick={() => deletePayment(uid, data.id)}
+        >
+          Delete
         </button>
       </form>
     </div>
