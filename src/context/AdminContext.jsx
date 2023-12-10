@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from "react";
 // import { enqueueSnackbar } from "notistack"
-import { db } from "../../firebase";
+import { db, storage } from "../../firebase";
+import { ref, deleteObject } from "firebase/storage";
 import {
   onSnapshot,
   addDoc,
@@ -184,6 +185,7 @@ const AdminProvider = ({ children }) => {
           img1: "",
           img2: "",
           img3: "",
+          date: null,
         }),
       });
     } catch (err) {
@@ -195,6 +197,32 @@ const AdminProvider = ({ children }) => {
     const userDoc = doc(db, "users", id);
 
     return updateDoc(userDoc, { images: updatedData });
+  };
+
+  const deleteImages = async (id, dataId, date) => {
+    //---------------Delete from firestore -------------
+    const userDoc = doc(db, "users", id);
+    const currentUserData = userData.filter((user) => user.uid === id);
+    const updatedDoc = currentUserData[0].images.filter(
+      (data) => data.id !== dataId
+    );
+    await updateDoc(userDoc, { images: updatedDoc }).catch((error) => {
+      console.log(error);
+    });
+
+    //---------------Detele from storage ----------------
+
+    // Create a reference to the file to delete
+    const storageRef = ref(storage, `${id}/${date}`);
+
+    // Delete the file
+    deleteObject(storageRef)
+      .then(() => {
+        // File deleted successfully
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
+      });
   };
 
   const value = {
@@ -211,6 +239,7 @@ const AdminProvider = ({ children }) => {
     deleteMeasurement,
     deletePayment,
     deleteTrainingDate,
+    deleteImages,
   };
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>

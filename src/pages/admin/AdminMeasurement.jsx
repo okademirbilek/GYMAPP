@@ -14,7 +14,6 @@ const AdminMeasurement = () => {
       const dataArr = data[0]?.measurements?.map((item, index) => (
         <FormMeasurement
           key={index}
-          index={index}
           data={item}
           uid={params.id}
           measurementData={data[0].measurements}

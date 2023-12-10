@@ -13,7 +13,6 @@ const AdminPayment = () => {
       const dataArr = data[0]?.payment?.map((item, index) => (
         <FormPayment
           key={index}
-          index={index}
           data={item}
           uid={params.id}
           paymentData={data[0].payment}

@@ -13,7 +13,8 @@ import Loader from "../../components/Loader";
 
 const FormAdminImages = ({ data, imagesData, uid }) => {
   const [formData, setFormData] = useState(null);
-  const { updateImages } = useAdminAuth();
+  const { updateImages, deleteImages } = useAdminAuth();
+  const [dateStorage, setDateStorage] = useState(null);
 
   //state for image
   const [file, setFile] = useState([]);
@@ -42,7 +43,11 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
     let updatedData = [];
     imagesData.map((item) => {
       if (item.id === data.id) {
-        updatedData.push({ ...formData, timeStamp: new Date() });
+        updatedData.push({
+          ...formData,
+          timeStamp: new Date(),
+          date: dateStorage,
+        });
       } else {
         updatedData.push(item);
       }
@@ -66,6 +71,7 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
   //track of uploading image to storage
   function uploadFile() {
     const date = new Date().getTime();
+    setDateStorage(date);
     file.forEach((image, index) => {
       const storageRef = ref(storage, `${uid}/${date}/img${index + 1}`);
       const uploadTask = uploadBytesResumable(storageRef, image);
@@ -187,6 +193,13 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
               disabled={status === "submitting" || (per !== null && per < 100)}
             >
               {status === "submitting" ? "Saving..." : "Save"}
+            </button>
+            <button
+              type="button"
+              className="bg-error"
+              onClick={() => deleteImages(uid, data.id, data.date)}
+            >
+              Delete
             </button>
           </form>
         </>

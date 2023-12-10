@@ -38,7 +38,7 @@ const container = {
   },
 };
 
-const FormMeasurement = ({ data, measurementData, uid, index }) => {
+const FormMeasurement = ({ data, measurementData, uid }) => {
   const [lockForm, setLockForm] = useState(true);
   const [formData, setFormData] = useState(null);
 

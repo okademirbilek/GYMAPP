@@ -8,7 +8,7 @@ import Loader from "../../components/Loader";
 //language
 import { useTranslation } from "react-i18next";
 
-const FormAdminMemberTracking = ({ data, trackingData, uid, index }) => {
+const FormAdminMemberTracking = ({ data, trackingData, uid }) => {
   const [formData, setFormData] = useState(null);
   const { updateTrainingDate, deleteTrainingDate } = useAdminAuth();
   //language
