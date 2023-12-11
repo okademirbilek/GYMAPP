@@ -213,16 +213,17 @@ const AdminProvider = ({ children }) => {
     //---------------Detele from storage ----------------
 
     // Create a reference to the file to delete
-    const storageRef = ref(storage, `${id}/${date}`);
-
     // Delete the file
-    deleteObject(storageRef)
-      .then(() => {
-        // File deleted successfully
-      })
-      .catch((error) => {
-        // Uh-oh, an error occurred!
-      });
+    for (let i = 0; i < 3; i++) {
+      const storageRef = ref(storage, `${id}/${date}/img${i + 1}`);
+      deleteObject(storageRef)
+        .then(() => {
+          console.log("deleted");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   const value = {

@@ -65,12 +65,37 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
 
   function handleChange(e) {
     const selectedImages = e.target.files;
-    setFile([...file, ...selectedImages]);
+    if (selectedImages.length === 3) {
+      let count = 0;
+      for (let i = 0; i < 3; i++) {
+        if (selectedImages[i].type.startsWith("image/")) {
+          count += 1;
+        }
+      }
+      //check if any of the files contain other then image file
+      count === 3
+        ? setFile([...selectedImages])
+        : setError("uneccepted data type");
+    } else {
+      setError("Please select 3 images");
+    }
   }
 
   //track of uploading image to storage
   function uploadFile() {
-    const date = new Date().getTime();
+    //checking if admin already save the date
+    let date;
+    if (data.date) {
+      date = data.date;
+    } else {
+      //check if admin upload the image but didnt save
+      if (dateStorage) {
+        date = dateStorage;
+      } else {
+        date = new Date().getTime();
+      }
+    }
+
     setDateStorage(date);
     file.forEach((image, index) => {
       const storageRef = ref(storage, `${uid}/${date}/img${index + 1}`);
@@ -142,7 +167,7 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
                   ? file
                     ? URL.createObjectURL(file[0])
                     : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                  : formData?.img1
+                  : formData.img1
               }
               alt="profile"
             />
@@ -152,7 +177,7 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
                   ? file
                     ? URL.createObjectURL(file[1])
                     : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                  : formData?.img2
+                  : formData.img2
               }
               alt="profile"
             />
@@ -162,7 +187,7 @@ const FormAdminImages = ({ data, imagesData, uid }) => {
                   ? file
                     ? URL.createObjectURL(file[2])
                     : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                  : formData?.img3
+                  : formData.img3
               }
               alt="profile"
             />

@@ -65,7 +65,6 @@ const Profile = ({ t, i18n }) => {
     setLoading(true);
     if (file) {
       if (fileError === false) {
-        console.log("imageye girdi");
         const storageRef = ref(storage, `${currentUser?.uid}/profileimg`);
         const uploadTask = uploadBytesResumable(storageRef, file);
         uploadTask.on(
