@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./css/index.css";
 import AuthRequired from "./components/AuthRequired";
-import { useAuth } from "./context/AuthContext";
 
 import { AdminProvider } from "./context/AdminContext";
 
@@ -10,6 +9,7 @@ import { AdminProvider } from "./context/AdminContext";
 import BottomNavbar from "./components/navigation/BottomNavbar";
 
 import { SnackbarProvider } from "notistack";
+import AdminRequired from "./components/AdminRequired";
 
 import {
   SignUp,
@@ -35,7 +35,6 @@ import {
 } from "./pages/index";
 
 function App() {
-  const { currentUserData } = useAuth();
   return (
     <>
       <Routes>
@@ -54,48 +53,46 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           {/* you cannot see the pages without authentication */}
           <Route element={<AuthRequired />}>
-            {currentUserData?.isAdmin && (
-              <>
+            <Route element={<AdminRequired />}>
+              <Route
+                path="/dashboard"
+                element={
+                  <AdminProvider>
+                    <Dashboard />
+                  </AdminProvider>
+                }
+              />
+              <Route
+                path="/dashboard/:id"
+                element={
+                  <AdminProvider>
+                    <UserDetail />
+                  </AdminProvider>
+                }
+              >
+                <Route index element={<AdminProfile />} />
                 <Route
-                  path="/dashboard"
-                  element={
-                    <AdminProvider>
-                      <Dashboard />
-                    </AdminProvider>
-                  }
+                  path="/dashboard/:id/adminPayment"
+                  element={<AdminPayment />}
                 />
                 <Route
-                  path="/dashboard/:id"
-                  element={
-                    <AdminProvider>
-                      <UserDetail />
-                    </AdminProvider>
-                  }
-                >
-                  <Route index element={<AdminProfile />} />
-                  <Route
-                    path="/dashboard/:id/adminPayment"
-                    element={<AdminPayment />}
-                  />
-                  <Route
-                    path="/dashboard/:id/adminMeasurement"
-                    element={<AdminMeasurement />}
-                  />
-                  <Route
-                    path="/dashboard/:id/adminMeal"
-                    element={<AdminMeal />}
-                  />
-                  <Route
-                    path="/dashboard/:id/adminMemberTracking"
-                    element={<AdminMemberTracking />}
-                  />
-                  <Route
-                    path="/dashboard/:id/adminImages"
-                    element={<AdminImages />}
-                  />
-                </Route>
-              </>
-            )}
+                  path="/dashboard/:id/adminMeasurement"
+                  element={<AdminMeasurement />}
+                />
+                <Route
+                  path="/dashboard/:id/adminMeal"
+                  element={<AdminMeal />}
+                />
+                <Route
+                  path="/dashboard/:id/adminMemberTracking"
+                  element={<AdminMemberTracking />}
+                />
+                <Route
+                  path="/dashboard/:id/adminImages"
+                  element={<AdminImages />}
+                />
+              </Route>
+            </Route>
 
             <Route path="/exercises" element={<Exercises />} />
             <Route path="/meal" element={<Meal />} />
