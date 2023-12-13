@@ -29,14 +29,18 @@ body {
 
 .light .text {
   color: #1a1b1e;
+  font-weight: bold;
 }
 .light .background {
-  background-color: #ffffff;
+  background-color: #99180d;
   transition: all 0.3s ease-out;
+}
+.light .card-border {
+  border: 2px solid rgb(14, 13, 13);
 }
 .light .card-color {
   transition: all 0.3s ease-out;
-  background: #e9ecef;
+  background: #ffffff;
 }
 
 .dark .text {
@@ -49,6 +53,13 @@ body {
 .dark .card-color {
   transition: all 0.3s ease-out;
   background: #181c1f;
+}
+.dark .card-border {
+  border: 2px solid rgb(255, 255, 255);
+}
+.dark .table-container .m-icon {
+  -webkit-filter: invert(100%); /* Safari/Chrome */
+  filter: invert(100%);
 }
 .dark .input-color {
   background-color: #2c2e33;
@@ -964,7 +975,7 @@ img {
 }
 .bottom-navbar .light {
   transition: all 0.3s ease-out;
-  background: #b1c9ef;
+  background: #99180d;
 }
 .bottom-navbar .dark {
   transition: all 0.3s ease-out;
@@ -1279,11 +1290,8 @@ img {
   align-items: center;
   margin: 10px;
   padding: 10px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   border-radius: 8px;
   align-items: center;
-  border: 2px solid rgb(231, 221, 221);
 }
 .measurement-table-container .flex-container .table-container .hip,
 .measurement-table-container .flex-container .table-container .waist,
@@ -1340,10 +1348,7 @@ img {
   gap: 10px;
   margin: 10px;
   padding: 15px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   border-radius: 8px;
-  border: 2px solid rgb(231, 221, 221);
   width: clamp(190px, auto, auto);
 }
 @media (min-width: 720px) {
@@ -1365,11 +1370,8 @@ img {
   gap: 10px;
   margin: 10px;
   padding: 5px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   border-radius: 8px;
   align-items: center;
-  border: 2px solid rgb(231, 221, 221);
   width: clamp(281px, auto, 300px);
 }
 @media (min-width: 720px) {
@@ -1428,11 +1430,8 @@ img {
   gap: 10px;
   margin: 10px;
   padding: 10px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   border-radius: 8px;
   align-items: center;
-  border: 2px solid rgb(231, 221, 221);
   flex: 1 0 160px;
   margin-left: 20px;
 }
@@ -1456,11 +1455,8 @@ img {
   gap: 10px;
   margin: 10px;
   padding: 10px;
-  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   border-radius: 8px;
   align-items: center;
-  border: 2px solid rgb(231, 221, 221);
   flex: 1 0 240px;
 }
 @media (min-width: 720px) {

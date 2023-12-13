@@ -100,7 +100,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
     <motion.div className="member-tracking-table card-padding card-color">
       <div className="table-index">{index + 1}</div>
       <span
-        className="date display-f align-center gp-1 cursor-p"
+        className="date display-f align-center gp-1 cursor-p card-border"
         onClick={() => toggleValue((prev) => !prev)}
       >
         <h4>
@@ -111,13 +111,13 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
 
       {value ? (
         <motion.div
-          className="table-wrap"
+          className="table-wrap "
           variants={container}
           initial="hidden"
           animate={value && "visible"}
           exit={value === false && "exit"}
         >
-          <div className="table-container">
+          <div className="table-container card-border">
             <div className="table-data display-f ">
               {t("Trainer approved")}
               {formData.isConfirmedTrainer && (
@@ -129,7 +129,7 @@ const FormMemberTracking = ({ allData, data, uid, index }) => {
             </div>
           </div>
           {data.isConfirmedMember ? (
-            <div className="table-container">
+            <div className="table-container card-border">
               <div className="table-data display-f ">
                 {t("Member approved")}
                 <div>

@@ -60,85 +60,85 @@ const TableMeasurement = ({ data }) => {
           animate={value && "visible"}
           exit={value === false && "exit"}
         >
-          <div className="table-container">
-            <img src={arm} alt="arm" />
+          <div className="table-container card-border">
+            <img src={arm} alt="arm" className="m-icon" />
             <div className="table-data">
               <div>{t("Arm")}</div>
               <div>{data.arm}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={biceps} alt="biceps" />
+          <div className="table-container card-border">
+            <img src={biceps} alt="biceps" className="m-icon" />
             <div className="table-data">
               <div>{t("Biceps")}</div>
               <div>{data.biceps}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={chest} alt="chest" />
+          <div className="table-container card-border">
+            <img src={chest} alt="chest" className="m-icon" />
             <div className="table-data">
               <div>{t("Chest")}</div>
               <div>{data.chest}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={fat} alt="fat" />
+          <div className="table-container card-border">
+            <img src={fat} alt="fat" className="m-icon" />
             <div className="table-data">
               <div>{t("Fat")}</div>
               <div>{data.fat}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={hip} alt="hip" className="hip" />
+          <div className="table-container card-border">
+            <img src={hip} alt="hip" className="hip m-icon" />
             <div className="table-data">
               <div>{t("Hip")}</div>
               <div>{data.hip}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={leg} alt="leg" />
+          <div className="table-container card-border">
+            <img src={leg} alt="leg" className="m-icon" />
             <div className="table-data">
               <div>{t("Leg")}</div>
               <div>{data.leg}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={pelvis} alt="pelvis" />
+          <div className="table-container card-border">
+            <img src={pelvis} alt="pelvis" className="m-icon" />
             <div className="table-data">
               <div>{t("Illia crest")}</div>
               <div>{data.iliaccrest}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={shoulder} alt="shoulder" />
+          <div className="table-container card-border">
+            <img src={shoulder} alt="shoulder" className="m-icon" />
             <div className="table-data">
               <div>{t("Shoulder")}</div>
               <div>{data.shoulder}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={subs} alt="subscapular" />
+          <div className="table-container card-border">
+            <img src={subs} alt="subscapular" className="m-icon" />
             <div className="table-data">
               <div>{t("Subscapular")}</div>
               <div>{data.subscapular}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={triceps} alt="triceps" />
+          <div className="table-container card-border">
+            <img src={triceps} alt="triceps" className="m-icon" />
             <div className="table-data">
               <div>{t("Triceps")}</div>
               <div>{data.triceps}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={waist} alt="waist" className="waist" />
+          <div className="table-container card-border">
+            <img src={waist} alt="waist" className="waist m-icon" />
             <div className="table-data">
               <div>{t("Waist")}</div>
               <div>{data.waist}</div>
             </div>
           </div>
-          <div className="table-container">
-            <img src={weight} alt="weight" />
+          <div className="table-container card-border">
+            <img src={weight} alt="weight" className="m-icon" />
             <div className="table-data">
               <div>{t("Weight")}</div>
               <div>{data.weight}</div>
