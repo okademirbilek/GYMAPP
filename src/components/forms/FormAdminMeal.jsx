@@ -64,11 +64,11 @@ const FormAdminMeal = ({ mealData, uid }) => {
           />
         </label>
         <label>
-          Launch
+          Lunch
           <textarea
             name="launch"
             onChange={handleChange}
-            value={formData.lunch}
+            value={formData.launch}
             disabled={lockForm}
           />
         </label>
