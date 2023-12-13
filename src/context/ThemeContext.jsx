@@ -8,7 +8,7 @@ function useTheme() {
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(
-    () => JSON.parse(localStorage.getItem("theme")) || "light"
+    () => JSON.parse(localStorage.getItem("theme")) || "dark"
   );
   useEffect(() => {
     localStorage.setItem("theme", JSON.stringify(theme));
