@@ -64,7 +64,7 @@ const Meal = ({ t, i18n }) => {
                 <h2>{t("Lunch")}</h2>
               </span>
               <div className="table-data">
-                <ul>{makeList(mealData?.lunch)}</ul>
+                <ul>{makeList(mealData?.launch)}</ul>
               </div>
             </div>
             <div className="table-container">
