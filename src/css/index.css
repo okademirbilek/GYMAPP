@@ -1161,9 +1161,10 @@ img {
 }
 .home {
   display: grid;
-  grid-template-columns: repeat(1, auto);
+  grid-template-columns: repeat(1, 100%);
   grid-template-areas: " trainer" " member" "alert  ";
-  padding: 20px;
+  padding: 20px 10px;
+  overflow-x: hidden;
 }
 @media (min-width: 960px) {
   .home {
