@@ -3,12 +3,12 @@
 
 .home {
   display: grid;
-  grid-template-columns: auto / auto / auto / 1fr;
+  grid-template-columns: repeat(1, auto);
   grid-template-areas:
     " trainer"
     " member"
     "alert  ";
-
+  padding: 20px;
   @include lg {
     grid-template-areas:
       " trainer  member member member member "
@@ -19,6 +19,11 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 20px 0;
+    padding: 20px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: $base-box-shadow;
+    border-radius: 8px;
     @include md {
       max-width: 300px;
     }
@@ -45,6 +50,11 @@
   }
 
   .alerts {
+    margin: 20px 0;
+    padding: 20px;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: $base-box-shadow;
+    border-radius: 8px;
     grid-area: alert;
     display: flex;
     gap: 10px;

@@ -160,7 +160,6 @@
   position: fixed;
   bottom: 0px;
   z-index: 999;
-
   .light {
     transition: all 0.3s ease-out;
     background: #99180d;
@@ -169,14 +168,10 @@
     transition: all 0.3s ease-out;
     background: $dark-600;
   }
-
-  // border-top-right-radius: 10px;
-  // border-top-left-radius: 10px;
-
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
   border-top: 2.5px solid rgb(207, 204, 204);
-  height: 6vh;
+  height: 7vh;
   @include md {
     display: none;
   }

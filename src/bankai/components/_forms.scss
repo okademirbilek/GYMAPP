@@ -161,6 +161,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 20px 0;
   @include md {
     display: block;
   }
@@ -171,7 +173,6 @@
     width: 196px;
     height: 196px;
     border-radius: 50%;
-    // border: 2px solid #141615;
     box-shadow: 2px 4px 10px 1px rgba(219, 54, 54, 0.47);
     margin: 10px 0;
     object-position: center;

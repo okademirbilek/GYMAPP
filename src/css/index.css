@@ -8,6 +8,7 @@
 html,
 body {
   scroll-behavior: smooth;
+  min-height: 100dvh;
 }
 
 body::-webkit-scrollbar {
@@ -23,7 +24,6 @@ body {
   font-family: Poppins;
   color: whitesmoke;
   position: relative;
-  min-height: 100dvh;
   min-width: 320px;
 }
 
@@ -971,7 +971,7 @@ img {
   -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
   border-top: 2.5px solid rgb(207, 204, 204);
-  height: 6vh;
+  height: 7vh;
 }
 .bottom-navbar .light {
   transition: all 0.3s ease-out;
@@ -1160,8 +1160,9 @@ img {
 }
 .home {
   display: grid;
-  grid-template-columns: auto/auto/auto/1fr;
+  grid-template-columns: repeat(1, auto);
   grid-template-areas: " trainer" " member" "alert  ";
+  padding: 20px;
 }
 @media (min-width: 960px) {
   .home {
@@ -1173,6 +1174,11 @@ img {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 20px 0;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
 }
 @media (min-width: 720px) {
   .home .trainer-data {
@@ -1199,6 +1205,11 @@ img {
   grid-area: member;
 }
 .home .alerts {
+  margin: 20px 0;
+  padding: 20px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+  border-radius: 8px;
   grid-area: alert;
   display: flex;
   gap: 10px;
@@ -1245,7 +1256,14 @@ img {
 .measurement-header,
 .payment-header,
 .images-header {
-  padding: 20px 20px 0;
+  padding: 10px;
+}
+@media (min-width: 720px) {
+  .measurement-header,
+  .payment-header,
+  .images-header {
+    padding: 20px;
+  }
 }
 .measurement-header h2,
 .measurement-header h3,
@@ -1759,6 +1777,8 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 20px 0;
 }
 @media (min-width: 720px) {
   .profile-container {
@@ -2141,11 +2161,11 @@ img {
 
 .layout {
   min-height: 100dvh;
-  margin-bottom: 5.8vh;
+  padding-bottom: 7vh;
 }
 @media (min-width: 720px) {
   .layout {
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 .layout .container-site {

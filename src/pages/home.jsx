@@ -15,7 +15,7 @@ import { withTranslation } from "react-i18next";
 const home = ({ t }) => {
   return (
     <div className="home">
-      <div className="trainer-data card-padding card-color ">
+      <div className="trainer-data  card-color ">
         <h2>{t("Meet your trainer")}</h2>
         <img src={dmrblkprofile} alt="profile photo" />
         <h3>{t("Personal Trainer")}</h3>
@@ -36,7 +36,7 @@ const home = ({ t }) => {
         <h2>Stronger! and healthier!</h2>
         <SlickSlider />
       </div> */}
-      <div className="alerts card-padding card-color">
+      <div className="alerts  card-color">
         <NotificationsIcon /> <p>{t("There is no announcement")}</p>
       </div>
     </div>

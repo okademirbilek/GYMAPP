@@ -3,9 +3,9 @@
 
 .layout {
   min-height: 100dvh;
-  margin-bottom: 5.8vh;
+  padding-bottom: 7vh;
   @include md {
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
   .container-site {
     position: relative;
