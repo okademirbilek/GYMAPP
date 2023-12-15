@@ -8,12 +8,14 @@
     " trainer"
     " member"
     "alert  ";
-  padding: 20px 10px;
+  padding: 20px 15px;
   overflow-x: hidden;
   @include lg {
     grid-template-areas:
       " trainer  member member member member "
       "alert  alert alert alert alert";
+
+    padding: 20px;
   }
   .trainer-data {
     grid-area: trainer;
