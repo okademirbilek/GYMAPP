@@ -29,9 +29,11 @@ const Images = ({ t }) => {
       <div className="images-header  display-f align-center gp-1">
         <h2>{t("Images")}</h2>
       </div>
-      {currentUserData?.images?.map((data, index) => (
-        <TableImages key={data.timeStamp} data={data} index={index} />
-      ))}
+      {currentUserData?.images
+        ?.sort((a, b) => b.timeStamp.seconds - a.timeStamp.seconds)
+        .map((data, index) => (
+          <TableImages key={data.timeStamp} data={data} index={index} />
+        ))}
     </div>
   );
 };
