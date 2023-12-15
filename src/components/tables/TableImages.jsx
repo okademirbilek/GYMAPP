@@ -4,13 +4,17 @@ import arrow from "../../assets/images/downarrow.png";
 
 import useToggle from "../../customHooks/useToggle";
 
+import { useTranslation } from "react-i18next";
+
 const TableImages = ({ data }) => {
   const [value, toggleValue] = useToggle(false);
+  //language
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="images-table-container card-padding card-color">
       <div className="date-container display-f align-center">
-        <h3>{data.timeStamp && convertTime(data.timeStamp)}</h3>{" "}
+        <h3>{data.timeStamp && convertTime(data.timeStamp, i18n.language)}</h3>{" "}
         <button onClick={() => toggleValue((prev) => !prev)}>
           <img src={arrow} alt="down arrow" className="arrow ml-1" />
         </button>
