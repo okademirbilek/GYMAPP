@@ -4,18 +4,10 @@ import { db, storage } from "../../firebase";
 import { ref, deleteObject } from "firebase/storage";
 import {
   onSnapshot,
-  addDoc,
   collection,
   doc,
-  deleteDoc,
-  setDoc,
-  serverTimestamp,
-  getDocs,
-  query,
-  where,
   updateDoc,
   arrayUnion,
-  deleteField,
 } from "firebase/firestore";
 
 //uuid for array data

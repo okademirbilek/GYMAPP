@@ -1,21 +1,22 @@
-import React, { useContext, useState, useEffect, createContext } from "react";
-// import { enqueueSnackbar } from "notistack"
-import { auth, db, storage } from "../../firebase";
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  createContext,
+  useMemo,
+} from "react";
+import { auth, db } from "../../firebase";
 
 //firestore
 import {
   onSnapshot,
-  addDoc,
   collection,
   doc,
-  deleteDoc,
   setDoc,
   serverTimestamp,
-  getDocs,
   query,
   where,
   updateDoc,
-  arrayUnion,
 } from "firebase/firestore";
 
 //auth
@@ -38,7 +39,7 @@ function useAuth() {
 
 function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
-  const currentID = currentUser?.uid;
+
   const [currentUserData, setCurrentUserData] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -133,6 +134,7 @@ function AuthProvider({ children }) {
 
   //check any realtime changes
   useEffect(() => {
+    const currentID = currentUser?.uid;
     if (currentID) {
       const q = query(collection(db, "users"), where("uid", "==", currentID));
       const unsubscribedb = onSnapshot(q, function (snapshot) {
@@ -143,7 +145,7 @@ function AuthProvider({ children }) {
       });
       return unsubscribedb;
     }
-  }, [currentUser, currentID]);
+  }, [currentUser]);
 
   const value = {
     currentUser,
