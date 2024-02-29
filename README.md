@@ -37,8 +37,7 @@
 ## About The Project
 ![image](https://github.com/okademirbilek/GYMAPP/assets/48480726/df3e3847-a617-47c4-97a4-a3edf98f4a36)
 ![image](https://github.com/okademirbilek/GYMAPP/assets/48480726/2942222d-5d27-4696-aa2b-a7702635f033)
-![image](https://github.com/okademirbilek/GYMAPP/assets/48480726/386cf0ad-3ddd-46ee-af66-a048a9f7ccc6) ![image](https://github.com/okademirbilek/GYMAPP/assets/48480726/8e46fc54-3dbb-491d-b3fd-6ca6e349f85f) ![image](https://github.com/okademirbilek/GYMAPP/assets/48480726/a2b10f22-5cba-4d87-ad2a-d5fef68b287a)
-
+![image](https://github.com/okademirbilek/GYMAPP/assets/48480726/386cf0ad-3ddd-46ee-af66-a048a9f7ccc6) ![image](https://github.com/okademirbilek/GYMAPP/assets/48480726/8e46fc54-3dbb-491d-b3fd-6ca6e349f85f) 
 
 
 
